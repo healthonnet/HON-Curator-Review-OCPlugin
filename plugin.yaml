@@ -1,0 +1,6 @@
+plugin:
+    name: 'hon.honcuratorreview::lang.plugin.name'
+    description: 'hon.honcuratorreview::lang.plugin.description'
+    author: HON
+    icon: oc-icon-comments-o
+    homepage: ''
