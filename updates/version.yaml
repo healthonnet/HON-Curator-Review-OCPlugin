@@ -12,3 +12,12 @@
 1.0.5:
     - 'Created table hon_honcuratorreview_tags'
     - builder_table_create_hon_honcuratorreview_tags.php
+1.0.6:
+    - 'Created table hon_honcuratorreview_services_tags'
+    - builder_table_create_hon_honcuratorreview_services_tags.php
+1.0.7:
+    - 'Created table hon_honcuratorreview_services_platforms'
+    - builder_table_create_hon_honcuratorreview_services_platforms.php
+1.0.8:
+    - 'Updated table hon_honcuratorreview_services_platforms'
+    - builder_table_update_hon_honcuratorreview_services_platforms.php
