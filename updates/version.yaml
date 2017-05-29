@@ -40,3 +40,6 @@
     - 'Seed platforms & responsetypes tables'
     - seed_table_hon_honcuratorreview_platforms.php
     - seed_table_hon_honcuratorreview_responsetypes.php
+1.0.15:
+    - 'Updated table hon_honcuratorreview_reviews_questions'
+    - builder_table_update_hon_honcuratorreview_reviews_questions.php
