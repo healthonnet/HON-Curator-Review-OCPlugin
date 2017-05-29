@@ -25,4 +25,11 @@ class Responsetype extends Model
      * @var string The database table used by the model.
      */
     public $table = 'hon_honcuratorreview_responsetypes';
+
+    /**
+     * @array hasMany Models relations
+     */
+    public $hasMany = [
+        'questions' => 'HON\HonCuratorReview\Models\Question' // responsetype_id
+    ];
 }
