@@ -10,6 +10,10 @@ navigation:
         url: hon/honcuratorreview/reviews
         icon: icon-star-half-full
         sideMenu:
+            reviews-menu-item:
+                label: Reviews
+                url: hon/honcuratorreview/reviews
+                icon: icon-star
             question-menu-item:
                 label: Questions
                 url: /hon/honcuratorreview/questions
