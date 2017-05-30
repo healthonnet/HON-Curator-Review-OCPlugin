@@ -24,6 +24,7 @@ tabs:
             tab: Activities
         reviews:
             label: ''
+            context: [update, relationcontroller]
             span: 'full'
             type: 'partial'
             path: '$/hon/honcuratorreview/controllers/questions/_reviews_view.htm'
