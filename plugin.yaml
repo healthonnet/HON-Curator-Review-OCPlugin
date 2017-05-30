@@ -4,3 +4,21 @@ plugin:
     author: HON
     icon: oc-icon-comments-o
     homepage: ''
+navigation:
+    main-Review-item:
+        label: 'hon.honcuratorreview::lang.plugin.name'
+        url: hon/honcuratorreview/reviews
+        icon: icon-star-half-full
+        sideMenu:
+            question-menu-item:
+                label: Questions
+                url: /hon/honcuratorreview/questions
+                icon: icon-question-circle
+            tags-menu-item:
+                label: Tags
+                url: hon/honcuratorreview/tags
+                icon: icon-tags
+            services-menu-item:
+                label: Services
+                url: hon/honcuratorreview/services
+                icon: icon-globe
