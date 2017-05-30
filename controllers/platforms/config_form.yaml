@@ -1,0 +1,10 @@
+name: Platforms
+form: $/hon/honcuratorreview/models/platform/fields.yaml
+modelClass: HON\HonCuratorReview\Models\Platform
+defaultRedirect: hon/honcuratorreview/platforms
+create:
+    redirect: 'hon/honcuratorreview/platforms/update/:id'
+    redirectClose: hon/honcuratorreview/platforms
+update:
+    redirect: hon/honcuratorreview/platforms
+    redirectClose: hon/honcuratorreview/platforms

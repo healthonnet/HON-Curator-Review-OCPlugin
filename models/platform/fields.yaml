@@ -1,0 +1,6 @@
+fields:
+    name:
+        label: Label
+        span: auto
+        type: text
+        commentAbove: 'Platform label like android, ios, website'

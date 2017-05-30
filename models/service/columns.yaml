@@ -1,0 +1,16 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    owner:
+        label: owner
+        relation: user
+        select: name
+        searchable: true
+        sortable: true
+    name:
+        label: Service
+        type: text
+        searchable: true
+        sortable: true

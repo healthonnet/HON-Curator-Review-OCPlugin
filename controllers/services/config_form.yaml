@@ -1,0 +1,10 @@
+name: Services
+form: $/hon/honcuratorreview/models/service/fields.yaml
+modelClass: HON\HonCuratorReview\Models\Service
+defaultRedirect: hon/honcuratorreview/services
+create:
+    redirect: 'hon/honcuratorreview/services/update/:id'
+    redirectClose: hon/honcuratorreview/services
+update:
+    redirect: hon/honcuratorreview/services
+    redirectClose: hon/honcuratorreview/services

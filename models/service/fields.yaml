@@ -1,0 +1,32 @@
+fields:
+    name:
+        label: Service
+        span: left
+        type: text
+        commentAbove: 'Service name'
+    tags:
+        label: Tags
+        type: taglist
+        mode: relation
+        span: auto
+        commentAbove: 'List of Tags and categories'
+    user:
+            label: Owner
+            type: relation
+            commentAbove: Add a known user as the owner of this service
+            emptyOption: None
+tabs:
+    fields:
+        platforms:
+            context: [update, relationcontroller]
+            label: ''
+            commentAbove: Platforms Availables
+            type: partial
+            tab: Platforms
+        reviews:
+            context: [update, relationcontroller]
+            label: ''
+            commentAbove: Reviews related to this service
+            type: partial
+            tab: Reviews
+

@@ -1,0 +1,11 @@
+list: $/hon/honcuratorreview/models/service/columns.yaml
+modelClass: HON\HonCuratorReview\Models\Service
+title: Services
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'hon/honcuratorreview/services/update/:id'

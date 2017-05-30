@@ -1,0 +1,19 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+reviews:
+    label: Reviews
+    view:
+        list: $/hon/honcuratorreview/models/review/columns.yaml
+
+platforms:
+    label: Platforms
+    view:
+        list: $/hon/honcuratorreview/models/platformservicepivot/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        list: $/hon/honcuratorreview/models/platform/columns.yaml
+        toolbarButtons: add|remove
+    pivot:
+        form: $/hon/honcuratorreview/models/platformservicepivot/fields.yaml

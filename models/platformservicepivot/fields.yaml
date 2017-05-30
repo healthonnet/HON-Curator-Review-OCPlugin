@@ -1,0 +1,9 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    pivot[url]:
+        label: Service Url
+        required: true
+        span: auto
