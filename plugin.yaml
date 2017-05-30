@@ -26,3 +26,7 @@ navigation:
                 label: Services
                 url: hon/honcuratorreview/services
                 icon: icon-globe
+            platforms-menu-item:
+                label: Platforms
+                url: hon/honcuratorreview/platforms
+                icon: icon-sitemap
