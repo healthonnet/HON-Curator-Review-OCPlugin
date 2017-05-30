@@ -1,0 +1,10 @@
+name: Questions
+form: $/hon/honcuratorreview/models/question/fields.yaml
+modelClass: HON\HonCuratorReview\Models\Question
+defaultRedirect: hon/honcuratorreview/questions
+create:
+    redirect: 'hon/honcuratorreview/questions/update/:id'
+    redirectClose: hon/honcuratorreview/questions
+update:
+    redirect: hon/honcuratorreview/questions
+    redirectClose: hon/honcuratorreview/questions

@@ -1,0 +1,31 @@
+fields:
+    responsetype:
+        label: 'Response type'
+        span: auto
+        oc.commentPosition: ''
+        nameFrom: label
+        required: 1
+        type: relation
+    question:
+        label: Question
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        type: text
+tabs:
+    fields:
+        activities:
+            label: ''
+            nameFrom: label
+            descriptionFrom: description
+            span: auto
+            type: relation
+            commentAbove: 'Choose one or more targeted activities'
+            tab: Activities
+        reviews:
+            label: ''
+            span: 'full'
+            type: 'partial'
+            path: '$/hon/honcuratorreview/controllers/questions/_reviews_view.htm'
+            commentAbove: 'Reviews that answered this question'
+            tab: Reviews

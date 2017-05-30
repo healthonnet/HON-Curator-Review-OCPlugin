@@ -1,0 +1,16 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    question:
+        label: Question
+        type: text
+        searchable: true
+        sortable: true
+    responsetype:
+        label: "Response type"
+        relation: responsetype
+        select: label
+        searchable: true
