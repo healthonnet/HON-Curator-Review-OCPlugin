@@ -11,6 +11,16 @@ class Tag extends Model
 
     protected $fillable = ['name'];
 
+    /**
+     * Softly implement the TranslatableModel behavior.
+     */
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+
+    /**
+     * @var array Attributes that support translation, if available.
+     */
+    public $translatable = ['name'];
+
     /*
      * Validation
      */
