@@ -14,6 +14,16 @@ class Question extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['question', 'responsetype_id'];
 
+    /**
+     * Softly implement the TranslatableModel behavior.
+     */
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+
+    /**
+     * @var array Attributes that support translation, if available.
+     */
+    public $translatable = ['question'];
+
 
     /*
      * Validation

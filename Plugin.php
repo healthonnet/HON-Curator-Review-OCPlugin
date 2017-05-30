@@ -8,7 +8,7 @@ use HON\HonCuratorUser\Models\Activity;
 class Plugin extends PluginBase
 {
 
-    public $require = ['RainLab.User', 'HON.HonCuratorUser'];
+    public $require = ['RainLab.User', 'HON.HonCuratorUser', 'Rainlab.Translate'];
 
     public function registerComponents()
     {
