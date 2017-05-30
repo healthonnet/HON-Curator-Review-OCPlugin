@@ -1,0 +1,10 @@
+name: Reviews
+form: $/hon/honcuratorreview/models/review/fields.yaml
+modelClass: HON\HonCuratorReview\Models\Review
+defaultRedirect: hon/honcuratorreview/reviews
+create:
+    redirect: 'hon/honcuratorreview/reviews/update/:id'
+    redirectClose: hon/honcuratorreview/reviews
+update:
+    redirect: hon/honcuratorreview/reviews
+    redirectClose: hon/honcuratorreview/reviews

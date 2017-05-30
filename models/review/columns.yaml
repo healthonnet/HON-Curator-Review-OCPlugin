@@ -3,3 +3,15 @@ columns:
         label: id
         type: number
         sortable: true
+    user:
+        label: Reviewer
+        relation: user
+        select: name
+        sortable: true
+        searchable: true
+    questions_count:
+        label: Responses
+        relation: questions_count
+        valueFrom: count
+        sortable: false
+        default: 0

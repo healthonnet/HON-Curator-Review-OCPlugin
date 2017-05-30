@@ -1,0 +1,23 @@
+fields:
+    user:
+        label: User
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+        commentAbove: Reviewer
+    service:
+        label: Service
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation
+        commentAbove: 'service tested by the reviewer'
+tabs:
+    fields:
+        questions:
+            context: [update, relationcontroller]
+            label: ''
+            commentAbove: Questions availables
+            type: partial
+            tab: Questions

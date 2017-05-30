@@ -1,0 +1,12 @@
+columns:
+    id:
+        label: ID
+        searchable: true
+
+    question:
+        label: Question
+        searchable: true
+
+    pivot[value]:
+        label: Response
+        required: true

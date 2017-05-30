@@ -87,10 +87,14 @@ class ReviewTest extends PluginTestCase
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);
 
         $review->questions()->attach([$question->id => ['value' => 'test'], $question2->id => ['value' => 42]]);
+        $review = $review->fresh();
 
         $this->assertEquals(2, count($review->questions));
+        $this->assertEquals(2, $review->questions_count[0]->count);
         $this->assertEquals('test', $review->questions[0]->pivot->value);
         $this->assertEquals(42, $review->questions[1]->pivot->value);
     }
+
+
 
 }

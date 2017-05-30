@@ -1,0 +1,14 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+questions:
+    label: Questions
+    view:
+        list: $/hon/honcuratorreview/models/questionreviewpivot/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        list: $/hon/honcuratorreview/models/question/columns.yaml
+        toolbarButtons: add|remove
+    pivot:
+        form: $/hon/honcuratorreview/models/questionreviewpivot/fields.yaml

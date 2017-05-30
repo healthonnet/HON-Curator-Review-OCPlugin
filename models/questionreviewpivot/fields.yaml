@@ -1,0 +1,9 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    pivot[value]:
+        label: Response
+        required: true
+        span: auto
