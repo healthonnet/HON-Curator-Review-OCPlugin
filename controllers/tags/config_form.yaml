@@ -1,0 +1,10 @@
+name: Tags
+form: $/hon/honcuratorreview/models/tag/fields.yaml
+modelClass: HON\HonCuratorReview\Models\Tag
+defaultRedirect: hon/honcuratorreview/tags
+create:
+    redirect: 'hon/honcuratorreview/tags/update/:id'
+    redirectClose: hon/honcuratorreview/tags
+update:
+    redirect: hon/honcuratorreview/tags
+    redirectClose: hon/honcuratorreview/tags

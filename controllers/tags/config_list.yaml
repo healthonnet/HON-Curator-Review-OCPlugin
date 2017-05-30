@@ -1,0 +1,11 @@
+list: $/hon/honcuratorreview/models/tag/columns.yaml
+modelClass: HON\HonCuratorReview\Models\Tag
+title: Tags
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'hon/honcuratorreview/tags/update/:id'

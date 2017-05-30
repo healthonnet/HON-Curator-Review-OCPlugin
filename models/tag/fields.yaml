@@ -1,0 +1,8 @@
+fields:
+    name:
+        label: Label
+        span: auto
+        placeholder: ''
+        required: 1
+        type: text
+        commentAbove: 'Tag label'
