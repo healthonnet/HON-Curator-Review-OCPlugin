@@ -60,6 +60,7 @@ class Question extends Model
             'key'        => 'q_id',
             'otherKey'   => 'r_id',
             'pivot'      => ['value', 'deleted_at'],
+            'pivotModel' => 'HON\HonCuratorReview\Models\QuestionReviewPivot',
             'timestamps' => true
         ]
     ];

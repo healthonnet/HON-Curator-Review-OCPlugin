@@ -77,6 +77,7 @@ class QuestionTest extends PluginTestCase
 
         $this->assertEquals(2, count($question->reviews));
         $this->assertEquals('test', $question->reviews[0]->pivot->value);
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\QuestionReviewPivot', $question->reviews[0]->pivot);
         $this->assertEquals(42, $question->reviews[1]->pivot->value);
     }
 }

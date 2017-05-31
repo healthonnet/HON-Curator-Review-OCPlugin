@@ -43,6 +43,7 @@ class Review extends Model
             'key'        => 'r_id',
             'otherKey'   => 'q_id',
             'pivot'      => ['value', 'deleted_at'],
+            'pivotModel' => 'HON\HonCuratorReview\Models\QuestionReviewPivot',
             'timestamps' => true,
         ],
         'questions_count' => [
