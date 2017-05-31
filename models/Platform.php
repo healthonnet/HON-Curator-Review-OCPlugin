@@ -30,6 +30,7 @@ class Platform extends Model
             'key'        => 'plat_id',
             'otherKey'   => 'serv_id',
             'pivot'      => ['url', 'deleted_at'],
+            'pivotModel' => 'HON\HonCuratorReview\Models\PlatformServicePivot',
             'timestamps' => true
         ] // uses Service's model relation params
     ];

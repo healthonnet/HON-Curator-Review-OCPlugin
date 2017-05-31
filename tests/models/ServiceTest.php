@@ -63,6 +63,8 @@ class ServiceTest extends PluginTestCase
         $this->assertEquals(2, count($service->platforms), 'it Should have two platforms');
         $this->assertEquals($superUrl, $service->platforms[0]->pivot->url, 'it Should have url as a pivot value');
         $this->assertEquals($superUrl, $service->platforms[1]->pivot->url, 'it Should have url as a pivot value');
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\PlatformServicePivot', $service->platforms[1]->pivot);
+
     }
 
     public function testTagRelations()

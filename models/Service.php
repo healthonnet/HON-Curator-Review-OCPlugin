@@ -39,6 +39,7 @@ class Service extends Model
             'key'        => 'serv_id',
             'otherKey'   => 'plat_id',
             'pivot'      => ['url', 'deleted_at'],
+            'pivotModel' => 'HON\HonCuratorReview\Models\PlatformServicePivot',
             'timestamps' => true
         ]
     ];
