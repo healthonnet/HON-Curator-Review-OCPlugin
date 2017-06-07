@@ -14,6 +14,7 @@ class Service extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = ['name', 'owner_id'];
+
     /*
      * Validation
      */
@@ -48,7 +49,18 @@ class Service extends Model
      * @array hasMany Models relations
      */
     public $hasMany = [
-        'reviews' => 'HON\HonCuratorReview\Models\Review' // service_id
+        'apps' => ['HON\HonCuratorReview\Models\App', 'key' => 'serv_id'] // serv_id
+    ];
+
+    /**
+     * @array hasManyThrough Models relations
+     */
+    public $hasManyThrough = [
+        'reviews' => [
+            'HON\HonCuratorReview\Models\Review',
+            'key'        => 'serv_id',
+            'through'    => 'HON\HonCuratorReview\Models\App',
+        ],
     ];
 
     /**

@@ -10,9 +10,10 @@ class BuilderTableCreateHonHoncuratorreviewServicesPlatforms extends Migration
         Schema::create('hon_honcuratorreview_services_platforms', function($table)
         {
             $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->integer('serv_id');
             $table->integer('plat_id');
-            $table->primary(['serv_id','plat_id']);
+            $table->unique(['serv_id', 'plat_id']);
         });
     }
     

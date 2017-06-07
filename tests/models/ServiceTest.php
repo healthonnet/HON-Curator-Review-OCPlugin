@@ -2,8 +2,8 @@
 
 use HON\HonCuratorReview\Models\Platform;
 use HON\HonCuratorReview\Models\Tag;
-use Illuminate\Database\Eloquent\Model;
 use RainLab\User\Models\User;
+use HON\HonCuratorReview\Models\App;
 use HON\HonCuratorReview\Models\Review;
 use HON\HonCuratorReview\Models\Service;
 use PluginTestCase;
@@ -65,6 +65,9 @@ class ServiceTest extends PluginTestCase
         $this->assertEquals($superUrl, $service->platforms[1]->pivot->url, 'it Should have url as a pivot value');
         $this->assertInstanceOf('HON\HonCuratorReview\Models\PlatformServicePivot', $service->platforms[1]->pivot);
 
+        $apps = App::all();
+        $this->assertCount(2,$apps);
+
     }
 
     public function testTagRelations()
@@ -98,22 +101,56 @@ class ServiceTest extends PluginTestCase
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
 
+        $app = App::create([
+            'url' => 'http://super.service',
+            'serv_id' => 1,
+            'plat_id' => 1
+        ]);
+
         $review = Review::create([
             'user_id' => 1,
-            'service_id' => 1
+            'app_id' => 1
         ]);
 
         $review2 = Review::create([
             'user_id' => 2,
-            'service_id' => 1
+            'app_id' => 1
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review2);
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\App', $app);
 
         $this->assertEquals(2, count($service->reviews));
         $this->assertEquals($review->user_id, $service->reviews[0]->user_id);
         $this->assertEquals($review2->user_id, $service->reviews[1]->user_id);
+    }
+
+    public function testAppRelation()
+    {
+        $service = Service::create([
+            'name' => 'Super Service'
+        ]);
+
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
+
+        $app = App::create([
+            'url' => 'http://super.service',
+            'serv_id' => 1,
+            'plat_id' => 1
+        ]);
+        $app2 = App::create([
+            'url' => 'http://super.service2',
+            'serv_id' => 1,
+            'plat_id' => 2
+        ]);
+
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\App', $app);
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\App', $app2);
+
+        $this->assertEquals(2, count($service->apps));
+        $this->assertEquals($app->url, $service->apps[0]->url);
+        $this->assertEquals($app2->url, $service->apps[1]->url);
     }
 
 }

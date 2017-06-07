@@ -31,12 +31,12 @@ class UserTest extends PluginTestCase
 
         $review = Review::create([
             'user_id' => 1,
-            'service_id' => 1
+            'app_id' => 1
         ]);
 
         $review2 = Review::create([
             'user_id' => 1,
-            'service_id' => 2
+            'app_id' => 2
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);
@@ -49,8 +49,8 @@ class UserTest extends PluginTestCase
         $this->assertEquals(2, $user->reviews[1]->id);
         $this->assertEquals(1, $user->reviews[0]->user_id);
         $this->assertEquals(1, $user->reviews[1]->user_id);
-        $this->assertEquals(1, $user->reviews[0]->service_id);
-        $this->assertEquals(2, $user->reviews[1]->service_id);
+        $this->assertEquals(1, $user->reviews[0]->app_id);
+        $this->assertEquals(2, $user->reviews[1]->app_id);
 
 
     }

@@ -12,7 +12,7 @@ class Review extends Model
     use \October\Rain\Database\Traits\SoftDelete;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['user_id', 'service_id'];
+    protected $fillable = ['user_id', 'app_id'];
 
     /*
      * Validation
@@ -29,7 +29,7 @@ class Review extends Model
      * @array belongsTo Models relations
      */
     public $belongsTo = [
-        'service' => 'HON\HonCuratorReview\Models\Service', // service_id
+        'app' => 'HON\HonCuratorReview\Models\App', // app_id
         'user' => 'RainLab\User\Models\User' // user_id
     ];
 

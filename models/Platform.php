@@ -34,4 +34,11 @@ class Platform extends Model
             'timestamps' => true
         ] // uses Service's model relation params
     ];
+
+    /**
+     * @array hasMany Models relations
+     */
+    public $hasMany = [
+        'apps' => ['HON\HonCuratorReview\Models\App', 'key' => 'plat_id']
+    ];
 }

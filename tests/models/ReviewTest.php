@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use RainLab\User\Models\User;
 use HON\HonCuratorReview\Models\Review;
+use HON\HonCuratorReview\Models\App;
 use HON\HonCuratorReview\Models\Service;
 use HON\HonCuratorReview\Models\Question;
 use PluginTestCase;
@@ -35,7 +36,7 @@ class ReviewTest extends PluginTestCase
 
         $review = Review::create([
             'user_id' => 1,
-            'service_id' => 1
+            'app_id' => 1
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);
@@ -44,25 +45,34 @@ class ReviewTest extends PluginTestCase
 
     }
 
-    public function testServiceRelation()
+    public function testServiceAndAppRelation()
     {
         Service::create([
             'name' => 'Super Service'
         ]);
 
+        App::create([
+            'url' => 'http://super.service',
+            'serv_id' => 1,
+            'plat_id' => 1
+        ]);
+
         // Fetch created model
         $service = Service::find(1);
+        $app = App::find(1);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\App', $app);
 
         $review = Review::create([
             'user_id' => 1,
-            'service_id' => 1
+            'app_id' => 1
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);
 
-        $this->assertEquals($service, $review->service);
+        $this->assertEquals($app, $review->app);
+        $this->assertEquals($service, $review->app->service);
 
     }
 
@@ -81,7 +91,7 @@ class ReviewTest extends PluginTestCase
 
         $review = Review::create([
             'user_id' => 1,
-            'service_id' => 1
+            'app_id' => 1
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);
