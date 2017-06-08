@@ -13,10 +13,14 @@ fields:
         span: auto
         type: relation
         commentAbove: 'service tested by the reviewer'
+    title:
+        label: title
+        type: text
+        span: left
     global_rate:
         label: Global rate
         type: number
-        span: left
+        span: right
 tabs:
     fields:
         questions:
