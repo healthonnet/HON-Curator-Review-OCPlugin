@@ -49,6 +49,16 @@ class App extends Model
     }
 
     /**
+     * Custom accessor for preview_url
+     * @return string
+     */
+    public function getPreviewUrlAttribute() {
+        $previewUrl = 'https://www.google.com/s2/favicons?domain=' . $this->url;
+        // TODO Get Store App icon if possible.
+        return $previewUrl;
+    }
+
+    /**
      * Custom accessor for average_review
      * @return float
      */

@@ -71,6 +71,15 @@ class Service extends Model
     ];
 
     /**
+     * Custom accessor for preview_url
+     * @return string
+     */
+    public function getPreviewUrlAttribute() {
+        // TODO prefer App Icon over website image
+        return $this->apps[0]->preview_url;
+    }
+
+    /**
      * Custom accessor for average_review
      * @return float
      */

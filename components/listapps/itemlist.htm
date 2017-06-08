@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-lg-4">
     <div class="shop-product">
-        <a href="{{ 'shop/product'|page }}"><img src="{{ 'assets/images/shop/macbook.jpg'|theme }}" class="img-responsive" alt=""></a>
+        <a href="{{ 'shop/product'|page }}"><img src="{{ app.preview_url }}" style="height: 100px" class="img-responsive" alt=""></a>
         <a href="{{ 'shop/product'|page }}"><h6>{{ app.name }}</h6></a>
         <p>
             {% if app.average_rating > 0 %}
