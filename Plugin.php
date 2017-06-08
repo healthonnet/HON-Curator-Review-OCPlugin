@@ -12,6 +12,10 @@ class Plugin extends PluginBase
 
     public function registerComponents()
     {
+        return [
+            'HON\HonCuratorReview\Components\ListApps' => 'listApps',
+            'HON\HonCuratorReview\Components\ListServices' => 'listServices'
+        ];
     }
 
     public function registerSettings()

@@ -47,4 +47,13 @@ class App extends Model
         $platform = $this->platform()->find($this->plat_id);
         return $service->name . ' ( ' . $platform->name . ' )';
     }
+
+    /**
+     * Custom accessor for average_review
+     * @return float
+     */
+    public function getAverageRatingAttribute() {
+        // TODO get all computable values.
+        return 2;
+    }
 }

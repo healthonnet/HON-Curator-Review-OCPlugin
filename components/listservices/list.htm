@@ -1,0 +1,5 @@
+<div class="container">
+    {% for service in services %}
+        {% partial __SELF__ ~ '::itemlist' service=service %}
+    {% endfor %}
+</div>

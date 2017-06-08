@@ -1,0 +1,27 @@
+<div class="col-sm-6 col-lg-4">
+    <div class="shop-product">
+        <a href="{{ 'shop/product'|page }}"><img src="{{ 'assets/images/shop/macbook.jpg'|theme }}" class="img-responsive" alt=""></a>
+        <a href="{{ 'shop/product'|page }}"><h6>{{ service.name }}</h6></a>
+        <p>
+            {% if service.average_rating > 0 %}
+                {% for i in 1..service.average_rating %}
+                <i class="fa fa-star"></i>
+                {% endfor %}
+            {% endif %}
+            {% if ( service.average_rating|round(0,'floor') !=  service.average_rating|round(0,'ceil') ) %}
+                <i class="fa fa-star-half-full"></i>
+            {% endif %}
+
+            {% if service.average_rating < 5 %}
+                {% for i in service.average_rating..4 %}
+                <i class="fa fa-star-o"></i>
+                {% endfor %}
+            {% endif %}
+        </p>
+
+        {% if user %}
+            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-commenting-o"></i> Add my review</a>
+        {% endif %}
+
+    </div>
+</div>

@@ -69,4 +69,16 @@ class Service extends Model
     public $belongsTo = [
         'user' => ['RainLab\User\Models\User', 'key' => 'owner_id' ]
     ];
+
+    /**
+     * Custom accessor for average_review
+     * @return float
+     */
+    public function getAverageRatingAttribute() {
+        $value = 0;
+        foreach ($this->apps as $app){
+            $value += $app->average_rating;
+        }
+        return $value / count($this->apps);
+    }
 }
