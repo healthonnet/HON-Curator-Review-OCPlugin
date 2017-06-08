@@ -61,4 +61,20 @@ class AppTest extends PluginTestCase
         $this->assertEquals($app->platform, $platform);
     }
 
+    public function testNameAccessor()
+    {
+        Service::create([
+            'name' => 'Super Service'
+        ]);
+
+        $app = App::create([
+            'url' => 'http://super.service',
+            'serv_id' => 1,
+            'plat_id' => 1
+        ]);
+
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\App', $app);
+        $this->assertEquals($app->name, 'Super Service ( android )');
+    }
+
 }
