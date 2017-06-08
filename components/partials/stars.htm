@@ -1,13 +1,14 @@
 {% if rating > 0 %}
-    {% for i in 1..v %}
+    {% for i in 1..rating %}
         <i class="fa fa-star"></i>
     {% endfor %}
 {% endif %}
+
 {% if ( rating|round(0,'floor') !=  rating|round(0,'ceil') ) %}
     <i class="fa fa-star-half-full"></i>
 {% endif %}
 
-{% if rating < 5 %}
+{% if rating <= 4 %}
     {% for i in rating..4 %}
         <i class="fa fa-star-o"></i>
     {% endfor %}

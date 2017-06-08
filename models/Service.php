@@ -84,6 +84,10 @@ class Service extends Model
      * @return float
      */
     public function getAverageRatingAttribute() {
+        if (!count($this->apps)) {
+            return 0;
+        }
+
         $value = 0;
         foreach ($this->apps as $app){
             $value += $app->average_rating;

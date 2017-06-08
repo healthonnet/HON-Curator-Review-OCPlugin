@@ -65,6 +65,14 @@ class App extends Model
      */
     public function getAverageRatingAttribute() {
         // TODO get all computable values.
-        return 2;
+        if (!count($this->reviews)) {
+            return 0;
+        }
+
+        $value = 0;
+        foreach ($this->reviews as $review) {
+            $value += $review->global_rate;
+        }
+        return $value / count($this->reviews);
     }
 }

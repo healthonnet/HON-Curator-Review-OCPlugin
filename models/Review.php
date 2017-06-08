@@ -18,6 +18,7 @@ class Review extends Model
      * Validation
      */
     public $rules = [
+        'global_rate' => 'required|integer|min:0|max:5',
     ];
 
     /**
