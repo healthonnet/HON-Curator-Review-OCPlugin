@@ -5,9 +5,9 @@
         {% for review in service.last_reviews %}
         <div class="col-sm-4">
             <p>{{review.user.name}}</p>
+            <p class="rating">{% partial '@stars' rating=review.global_rate %}</p>
             <p>{{review.title}}</p>
             <p>{{review.app.platform.name}}</p>
-            <p class="rating">{% partial '@stars' rating=review.global_rate %}</p>
         </div>
         {% endfor %}
     </div>
