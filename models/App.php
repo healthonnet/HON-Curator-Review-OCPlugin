@@ -41,4 +41,10 @@ class App extends Model
     public $hasMany = [
         'reviews' => 'HON\HonCuratorReview\Models\Review'
     ];
+
+    public function getNameAttribute() {
+        $service = $this->service()->find($this->serv_id);
+        $platform = $this->platform()->find($this->plat_id);
+        return $service->name . ' ( ' . $platform->name . ' )';
+    }
 }
