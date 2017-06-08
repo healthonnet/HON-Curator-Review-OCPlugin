@@ -2,11 +2,6 @@
 #  Relation Behavior Config
 # ===================================
 
-reviews:
-    label: Reviews
-    view:
-        list: $/hon/honcuratorreview/models/review/columns.yaml
-
 platforms:
     label: Platforms
     view:
