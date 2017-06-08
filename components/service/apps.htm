@@ -1,0 +1,13 @@
+<!-- Available platforms -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="headline"><span>Available platforms</span></h4>
+        {% for app in apps %}
+        <div class="col-sm-4">
+            <p>{{app.platform.name}}</p>
+            <img src="{{app.preview_url}}" alt="{{app.name}}" >
+            <p><a href="{{app.url}}">{{app.url[:20] ~ '...' }}</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

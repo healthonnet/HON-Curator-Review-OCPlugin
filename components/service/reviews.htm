@@ -1,0 +1,13 @@
+<!-- Available platforms -->
+<div class="row">
+    <div class="col-sm-12">
+        <h4 class="headline"><span>Last reviews</span></h4>
+        {% for review in service.last_reviews %}
+        <div class="col-sm-4">
+            <p>{{review.user.name}}</p>
+            <p>{{review.title}}</p>
+            <p class="rating">{% partial '@stars' rating=review.global_rating %}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

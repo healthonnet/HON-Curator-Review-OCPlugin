@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="row">
+        <h3>{{service.name}}</h3>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div id="shopImages" class="shop-images">
+                        <div>
+                            <a href="{{ 'assets/images/shop/macbook.jpg'|theme }}">
+                                <img src="{{ 'assets/images/shop/macbook.jpg'|theme }}" class="img-responsive main" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-muted">This is my boss, Jonathan Hart, a self-made millionaire, he's quite a guy. This is Mrs H., she's gorgeous, she's one lady who knows how to take care of herself.</p>
+                    <p class="rating">{% partial '@stars' rating=service.average_rating %}</p>
+
+                    <span class="text-muted reviews">({{ service.reviews|length }} reviews)</span>
+
+                    {% if user %}
+                    <p><a href="#" class="btn btn-sm btn-info"><i class="fa fa-commenting-o"></i> Add my review</a></p>
+                    {% endif %}
+
+                    {% partial __SELF__ ~ '::apps' apps=service.apps %}
+                </div>
+            </div>
+
+
+            {% partial __SELF__ ~ '::details' service=service %}
+
+            {% partial __SELF__ ~ '::stats' service=service %}
+
+            {% partial __SELF__ ~ '::reviews' service=service %}
+
+        </div>
+    </div>
+</div>

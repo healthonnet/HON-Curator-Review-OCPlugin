@@ -90,4 +90,12 @@ class Service extends Model
         }
         return $value / count($this->apps);
     }
+
+    /**
+     * Custom accessor for average_review
+     * @return Review[]
+     */
+    public function getLastReviewsAttribute() {
+        return $this->reviews()->latest()->take(3)->get();
+    }
 }

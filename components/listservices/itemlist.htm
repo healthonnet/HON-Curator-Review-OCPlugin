@@ -3,20 +3,7 @@
         <a href="{{ 'shop/product'|page }}"><img src="{{ service.preview_url }}" style="height:100px" class="img-responsive" alt=""></a>
         <a href="{{ 'shop/product'|page }}"><h6>{{ service.name }}</h6></a>
         <p>
-            {% if service.average_rating > 0 %}
-                {% for i in 1..service.average_rating %}
-                <i class="fa fa-star"></i>
-                {% endfor %}
-            {% endif %}
-            {% if ( service.average_rating|round(0,'floor') !=  service.average_rating|round(0,'ceil') ) %}
-                <i class="fa fa-star-half-full"></i>
-            {% endif %}
-
-            {% if service.average_rating < 5 %}
-                {% for i in service.average_rating..4 %}
-                <i class="fa fa-star-o"></i>
-                {% endfor %}
-            {% endif %}
+            {% partial '@stars' rating=service.average_rating %}
         </p>
 
         {% if user %}
