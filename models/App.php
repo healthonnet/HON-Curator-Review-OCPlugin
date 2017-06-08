@@ -53,7 +53,8 @@ class App extends Model
      * @return string
      */
     public function getPreviewUrlAttribute() {
-        $previewUrl = 'https://www.google.com/s2/favicons?domain=' . $this->url;
+        $googleFavIcon = 'https://www.google.com/s2/favicons?domain=' . $this->url;
+        $previewUrl = 'https://icons.better-idea.org/icon?size=16..120..310&url=' . $this->url . '&fallback_icon_url=' . $googleFavIcon;
         // TODO Get Store App icon if possible.
         return $previewUrl;
     }
