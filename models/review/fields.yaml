@@ -6,8 +6,8 @@ fields:
         span: auto
         type: relation
         commentAbove: Reviewer
-    service:
-        label: Service
+    app:
+        label: Application
         nameFrom: name
         descriptionFrom: description
         span: auto
