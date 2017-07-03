@@ -19,7 +19,8 @@ class Review extends Model
      */
     public $rules = [
         'global_rate' => 'required|integer|min:0|max:5',
-        'title' => 'required|min:3|max:255',
+        'title' => 'required|min:3|max:30',
+        'global_comment' => 'required|min:3|max:255',
     ];
 
     /**

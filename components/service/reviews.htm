@@ -7,6 +7,7 @@
             <p>{{review.user.name}}</p>
             <p class="rating">{% partial '@stars' rating=review.global_rate %}</p>
             <p>{{review.title}}</p>
+            <p>{{review.global_comment}}</p>
             <p>{{review.app.platform.name}}</p>
         </div>
         {% endfor %}

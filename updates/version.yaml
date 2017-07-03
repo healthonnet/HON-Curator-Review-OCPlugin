@@ -49,3 +49,6 @@
 1.0.17:
     - 'Updated table hon_honcuratorreview_reviews'
     - builder_table_update_hon_honcuratorreview_reviews_2.php
+1.0.18:
+    - 'Updated table hon_honcuratorreview_reviews'
+    - builder_table_update_hon_honcuratorreview_reviews_3.php

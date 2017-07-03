@@ -14,13 +14,18 @@ fields:
         type: relation
         commentAbove: 'service tested by the reviewer'
     title:
-        label: title
+        label: Title
         type: text
         span: left
     global_rate:
         label: Global rate
         type: number
         span: right
+    global_comment:
+        label: Global Comment
+        type: textarea
+        size: small
+        span: full
 tabs:
     fields:
         questions:
