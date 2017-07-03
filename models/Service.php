@@ -1,6 +1,7 @@
 <?php namespace HON\HonCuratorReview\Models;
 
 use Model;
+use RainLab\User\Models\User;
 
 /**
  * Model
@@ -101,5 +102,17 @@ class Service extends Model
      */
     public function getLastReviewsAttribute() {
         return $this->reviews()->latest()->take(3)->get();
+    }
+
+    public function filterReviewedAppsBy(User $user)
+    {
+        if (!$user)
+            return false;
+        return $this->apps->filter(function($app) use ($user) {
+            if (Review::where('app_id', $app->id)->where('user_id', $user->id)->first()) {
+                return;
+            }
+            return $app;
+        });
     }
 }

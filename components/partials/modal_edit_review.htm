@@ -1,0 +1,27 @@
+
+<div class="modal fade form_edit_review_{{review.app_id}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        {{ form_ajax('onSaveReview', {success: "console.log(data)"}) }}
+        {{ form_model(review)}}
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Add your review about: {{ service.name }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                {% partial '@form_review' user=user %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-request-confirm="Are you sure ?"
+                                          data-request="onRemoveReview"
+                                          dara-request-data="id: review.id"
+                                          class="btn btn-danger">Remove my Review</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                {{ form_submit('Save', {class: "btn btn-primary"}) }}
+            </div>
+        </div><!-- /.modal-content -->
+        {{ form_close() }}
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

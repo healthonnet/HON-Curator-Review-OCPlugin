@@ -12,7 +12,7 @@ class Review extends Model
     use \October\Rain\Database\Traits\SoftDelete;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['user_id', 'app_id'];
+    protected $fillable = ['user_id', 'app_id', 'global_rate', 'title', 'global_comment'];
 
     /*
      * Validation

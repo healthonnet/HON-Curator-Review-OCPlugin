@@ -7,6 +7,14 @@
             <p>{{app.platform.name}}</p>
             <img src="{{app.preview_url}}" alt="{{app.name}}" >
             <p><a href="{{app.url}}">{{app.url[:20] ~ '...' }}</a></p>
+            {% if user %}
+                {% if  user.reviews().where('app_id', app.id).first() is not empty %}
+                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_edit_review_{{app.id}}">
+                    <i class="fa fa-commenting-o"></i> Edit my review
+                </button>
+                {% partial '@modal_edit_review' review=user.reviews().where('app_id', app.id).first() %}
+                {% endif %}
+            {% endif %}
         </div>
         {% endfor %}
     </div>

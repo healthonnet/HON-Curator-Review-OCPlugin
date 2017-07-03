@@ -25,11 +25,17 @@
                     <span class="text-muted reviews">({{ service.reviews|length }} reviews)</span>
 
                     {% if user %}
-                    <p><a href="#" class="btn btn-sm btn-info"><i class="fa fa-commenting-o"></i> Add my review</a></p>
+                        {% if service.filterReviewedAppsBy(user) is not empty %}
+                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+                            <i class="fa fa-commenting-o"></i> Add my review
+                        </button>
+                        {% partial '@modal_add_review' apps=service.filterReviewedAppsBy(user) user=user %}
+                        {% endif %}
                     {% endif %}
 
                     {% partial __SELF__ ~ '::apps' apps=service.apps %}
                 </div>
+
             </div>
 
 
