@@ -33,7 +33,8 @@ class Service extends \Cms\Classes\ComponentBase
         $review->fill(Input::all());
         if ($review->validate()) {
             $review->save();
-            return $review;
+            $this->page['review'] = $review;
+            return $this->onRequestQuestion();
         }
     }
 
@@ -45,7 +46,15 @@ class Service extends \Cms\Classes\ComponentBase
 
     public function onRequestQuestion()
     {
-        $review = Review::findOrFail(Input::get('review_id'));
+        $review = $this->page['review'];
+        if (!$review) {
+            $review = Review::findOrFail(Input::get('review_id'));
+        }
+        $target = Input::get('target');
+        if ($target) {
+            $this->page['target'] = $target;
+        }
+
         $this->page['review'] = $review;
         $question = $review->getNewQuestion();
         $this->page['question'] = $question;

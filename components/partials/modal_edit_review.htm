@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
 
         <div class="modal-content" id="modal-content_{{review.app_id}}">
-            {{ form_ajax('onSaveReview', {success: "console.log(data)"}) }}
+            {{ form_ajax('onSaveReview', {redirect: this.controller.currentPageUrl()}) }}
             {{ form_model(review)}}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -17,7 +17,8 @@
                         <button class=" btn btn-success"
                                 data-request-update="'@modal_question': '#modal-content_{{review.app_id}}'"
                                 data-request="onRequestQuestion"
-                                data-request-data="review_id: {{ review.id }}">Answer more questions</button>
+                                data-request-data="target: '#modal-content_{{review.app_id}}'">
+                            Answer more questions</button>
                         </div>
                     </div>
                 </div>
