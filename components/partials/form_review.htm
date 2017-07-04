@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col-sm-10 center-block form-group">
     {{ form_label('I test on :')}}
     {{ form_select('app_id', apps.lists('platform.name', 'id'), null, {class: 'form-control'})}}
@@ -16,4 +17,4 @@
     {{ form_textarea('global_comment', null, {class: 'form-control'})}}
 </div>
 {{ form_hidden('user_id', user.id)}}
-{{ form_hidden('review_id', review.id)}}
+</div>

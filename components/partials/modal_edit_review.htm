@@ -1,16 +1,25 @@
 
 <div class="modal fade form_edit_review_{{review.app_id}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
     <div class="modal-dialog modal-lg" role="document">
-        {{ form_ajax('onSaveReview', {success: "console.log(data)"}) }}
-        {{ form_model(review)}}
-        <div class="modal-content">
+
+        <div class="modal-content" id="modal-content_{{review.app_id}}">
+            {{ form_ajax('onSaveReview', {success: "console.log(data)"}) }}
+            {{ form_model(review)}}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridSystemModalLabel">Add your review about: {{ service.name }}</h4>
+                <h4 class="modal-title" id="gridSystemModalLabel">Edit your review about: {{ service.name }}</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
                 {% partial '@form_review' user=user %}
+                <div class="row">
+                    <div class="row">
+                        <div class="col-xs-12">
+                        <button class=" btn btn-success"
+                                data-request-update="'@modal_question': '#modal-content_{{review.app_id}}'"
+                                data-request="onRequestQuestion"
+                                data-request-data="review_id: {{ review.id }}">Answer more questions</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -19,9 +28,10 @@
                                           dara-request-data="id: review.id"
                                           class="btn btn-danger">Remove my Review</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                {{ form_hidden('review_id', review.id)}}
                 {{ form_submit('Save', {class: "btn btn-primary"}) }}
             </div>
+            {{ form_close() }}
         </div><!-- /.modal-content -->
-        {{ form_close() }}
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

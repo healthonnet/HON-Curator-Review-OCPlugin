@@ -1,0 +1,30 @@
+{{ form_ajax('onSaveAndRequestQuestion', {update: { '@modal_question': '#modal-content_' ~ review.app_id } }) }}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="gridSystemModalLabel">Additional Questions about: {{ service.name }}</h4>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+    {% if question is not empty %}
+        <div class="col-sm-10 center-block form-group">
+            {{ question.question }}
+        </div>
+        <div class="col-sm-10 center-block form-group">
+            {% partial '@' ~ question.responsetype.label %}
+        </div>
+    {% else %}
+        <h3>No more questions for you thanks !</h3>
+    {% endif %}
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    {{ form_hidden('review_id', review.id)}}
+    {{ form_hidden('question_id', question.id)}}
+    {% if question is not empty %}
+        {{ form_submit('Next Question', {class: "btn btn-success"}) }}
+    {% endif %}
+</div>
+{{ form_close() }}

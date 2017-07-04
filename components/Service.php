@@ -1,5 +1,6 @@
 <?php namespace HON\HonCuratorReview\Components;
 
+use HON\HonCuratorReview\Models\Question;
 use HON\HonCuratorReview\Models\Review;
 use HON\HonCuratorReview\Models\Service as ServiceModel;
 use Illuminate\Support\Facades\Input;
@@ -40,6 +41,27 @@ class Service extends \Cms\Classes\ComponentBase
     {
         $review = Review::findOrFail(Input::get('review_id'));
         $review->delete();
+    }
+
+    public function onRequestQuestion()
+    {
+        $review = Review::findOrFail(Input::get('review_id'));
+        $this->page['review'] = $review;
+        $question = $review->getNewQuestion();
+        $this->page['question'] = $question;
+        return "ok";
+    }
+
+    public function onSaveAndRequestQuestion()
+    {
+        // TODO Save response
+        $review = Review::findOrFail(Input::get('review_id'));
+        $question = Question::findOrFail(Input::get('question_id'));
+        $response = Input::get('response');
+
+        $review->questions()->attach([$question->id => ['value' =>  $response]]);
+
+        return $this->onRequestQuestion();
     }
 
 }

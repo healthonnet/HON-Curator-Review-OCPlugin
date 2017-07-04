@@ -57,4 +57,14 @@ class Review extends Model
             'count' => true
         ]
     ];
+
+    public function getNewQuestion()
+    {
+        $id = $this->id;
+
+        $question = $this->user->activity->questions()->whereDoesntHave('reviews', function ($query) use($id) {
+            $query->whereId($id);
+        })->orderByRaw("RAND()")->first();
+        return $question;
+    }
 }
