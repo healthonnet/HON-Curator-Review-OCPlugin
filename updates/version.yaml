@@ -61,3 +61,6 @@
 1.0.21:
     - 'Updated table hon_honcuratorreview_tags'
     - builder_table_update_hon_honcuratorreview_tags_2.php
+1.0.22:
+    - 'Updated table hon_honcuratorreview_services'
+    - builder_table_update_hon_honcuratorreview_services_2.php

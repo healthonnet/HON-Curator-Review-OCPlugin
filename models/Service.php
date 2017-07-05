@@ -15,7 +15,17 @@ class Service extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['name', 'owner_id'];
+    protected $fillable = ['name', 'owner_id', 'description'];
+
+    /**
+     * Softly implement the TranslatableModel behavior.
+     */
+    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
+
+    /**
+     * @var array Attributes that support translation, if available.
+     */
+    public $translatable = ['description'];
 
     /*
      * Validation
