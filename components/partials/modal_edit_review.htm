@@ -25,9 +25,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" data-request-confirm="Are you sure ?"
-                                          data-request="onRemoveReview"
-                                          dara-request-data="id: review.id"
-                                          class="btn btn-danger">Remove my Review</button>
+                        data-request-redirect="{{''|page}}"
+                        data-request="onRemoveReview"
+                        dara-request-data="id: review.id"
+                        class="btn btn-danger">Remove my Review</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 {{ form_hidden('review_id', review.id)}}
                 {{ form_submit('Save', {class: "btn btn-primary"}) }}
