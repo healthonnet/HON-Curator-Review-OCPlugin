@@ -9,7 +9,7 @@ class BuilderTableUpdateHonHoncuratorreviewReviews3 extends Migration
     {
         Schema::table('hon_honcuratorreview_reviews', function($table)
         {
-            $table->string('global_comment', 255);
+            $table->string('global_comment', 255)->default('');
         });
     }
     

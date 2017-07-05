@@ -15,13 +15,19 @@ fields:
 tabs:
     fields:
         activities:
-            label: ''
+            label: 'Activities'
             nameFrom: label
             descriptionFrom: description
             span: auto
             type: relation
             commentAbove: 'Choose one or more targeted activities'
-            tab: Activities
+            tab: Relations
+        platforms:
+            label: 'Platforms'
+            span: auto
+            type: relation
+            commentAbove: 'Choose one or more targeted platforms'
+            tab: Relations
         reviews:
             label: ''
             context: [update, relationcontroller]

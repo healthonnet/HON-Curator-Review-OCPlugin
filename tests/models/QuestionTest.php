@@ -1,11 +1,11 @@
 <?php namespace HON\HonCuratorReview\Tests;
 
+use HON\HonCuratorReview\Models\Platform;
 use HON\HonCuratorReview\Models\Review;
 use HON\HonCuratorUser\Models\Activity;
 use HON\HonCuratorReview\Models\Question;
 use HON\HonCuratorReview\Models\Responsetype;
 use PluginTestCase;
-use RainLab\User\Models\User;
 
 class QuestionTest extends PluginTestCase
 {
@@ -53,6 +53,33 @@ class QuestionTest extends PluginTestCase
         $this->assertEquals($activity2->id, $question->activities[1]->id);
     }
 
+    public function testPlatformRelation()
+    {
+        $question = Question::create([
+            'responsetype_id' => 1,
+            'question' => 'this.is.my.question.key.message'
+        ]);
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\Question', $question);
+
+        $platform = Platform::find(1);
+        $this->assertNotNull($platform);
+
+        $question->platforms()->attach($platform->id);
+
+        $this->assertEquals($platform->id, $question->platforms[0]->id);
+
+        $question->save();
+
+        // Refresh and add another one.
+        $question = Question::find(1);
+
+        $platform2 = Platform::find(2);
+        $this->assertNotNull($platform2);
+        $question->platforms()->attach($platform2->id);
+
+        $this->assertEquals($platform2->id, $question->platforms[1]->id);
+    }
+
     public function testReviewRelation()
     {
         $question = Question::create([
@@ -63,11 +90,17 @@ class QuestionTest extends PluginTestCase
 
         $review = Review::create([
             'user_id' => 1,
-            'app_id' => 1
+            'app_id' => 1,
+            'global_rate' => 4,
+            'global_comment' => 'test',
+            'title' => 'test'
         ]);
         $review2 = Review::create([
             'user_id' => 1,
-            'app_id' => 2
+            'app_id' => 2,
+            'global_rate' => 4,
+            'global_comment' => 'test',
+            'title' => 'test'
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Review', $review);

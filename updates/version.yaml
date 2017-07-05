@@ -55,3 +55,9 @@
 1.0.19:
     - 'Updated table hon_honcuratorreview_tags'
     - builder_table_update_hon_honcuratorreview_tags.php
+1.0.20:
+    - 'Created table hon_honcuratorreview_questions_platforms'
+    - builder_table_create_hon_honcuratorreview_questions_platforms.php
+1.0.21:
+    - 'Updated table hon_honcuratorreview_tags'
+    - builder_table_update_hon_honcuratorreview_tags_2.php

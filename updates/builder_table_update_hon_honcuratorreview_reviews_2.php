@@ -10,7 +10,7 @@ class BuilderTableUpdateHonHoncuratorreviewReviews2 extends Migration
         Schema::table('hon_honcuratorreview_reviews', function($table)
         {
             $table->smallInteger('global_rate')->default(0);
-            $table->string('title');
+            $table->string('title')->default('');
         });
     }
     

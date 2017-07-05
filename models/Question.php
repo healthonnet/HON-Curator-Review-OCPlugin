@@ -54,6 +54,12 @@ class Question extends Model
             'key'        => 'q_id',
             'otherKey'   => 'a_id'
         ],
+        'platforms' => [
+            'HON\HonCuratorReview\Models\Platform',
+            'table'      => 'hon_honcuratorreview_questions_platforms',
+            'key'        => 'q_id',
+            'otherKey'   => 'p_id'
+        ],
         'reviews' => [
             'HON\HonCuratorReview\Models\Review',
             'table'      => 'hon_honcuratorreview_reviews_questions',

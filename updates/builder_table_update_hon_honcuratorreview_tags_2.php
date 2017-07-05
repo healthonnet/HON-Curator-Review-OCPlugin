@@ -3,13 +3,13 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateHonHoncuratorreviewTags extends Migration
+class BuilderTableUpdateHonHoncuratorreviewTags2 extends Migration
 {
     public function up()
     {
         Schema::table('hon_honcuratorreview_tags', function($table)
         {
-            $table->string('type')->default('label');
+            $table->string('type', 255)->default('label')->change();
         });
     }
     
@@ -17,7 +17,7 @@ class BuilderTableUpdateHonHoncuratorreviewTags extends Migration
     {
         Schema::table('hon_honcuratorreview_tags', function($table)
         {
-            $table->dropColumn('type');
+            $table->string('type', 255)->default(null)->change();
         });
     }
 }

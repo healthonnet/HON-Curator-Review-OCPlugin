@@ -2,6 +2,7 @@
 
 use HON\HonCuratorReview\Models\App;
 use HON\HonCuratorReview\Models\Platform;
+use HON\HonCuratorReview\Models\Question;
 use HON\HonCuratorReview\Models\Service;
 use PluginTestCase;
 
@@ -42,5 +43,34 @@ class PlatformTest extends PluginTestCase
         $this->assertEquals($superUrl, $platform->services[0]->pivot->url, 'it Should have url as a pivot value');
 
         $this->assertCount(2,$platform->apps);
+    }
+
+    public function testPlatformRelation()
+    {
+        $question = Question::create([
+            'responsetype_id' => 1,
+            'question' => 'this.is.my.question.key.message'
+        ]);
+        $this->assertInstanceOf('HON\HonCuratorReview\Models\Question', $question);
+
+        $platform = Platform::find(1);
+        $this->assertNotNull($platform);
+
+        $platform->questions()->attach($question->id);
+
+        $this->assertEquals($platform->id, $platform->questions[0]->id);
+
+        $platform->save();
+
+        // Refresh and add another one.
+        $question2 = Question::create([
+            'responsetype_id' => 2,
+            'question' => 'this.is.my.question.key.message2'
+        ]);
+
+        $platform = Platform::find(1);
+        $platform->questions()->attach($question2->id);
+
+        $this->assertEquals($question2->id, $platform->questions[1]->id);
     }
 }

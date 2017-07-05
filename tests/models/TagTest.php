@@ -21,7 +21,9 @@ class TagTest extends PluginTestCase
         $tag = Tag::create([
             'name' => 'Awesome'
         ]);
+        $tag = $tag->fresh();
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Tag', $tag);
+        $this->assertEquals('label', $tag->type);
 
         $tag->services()->attach([$service->id, $service2->id]);
 

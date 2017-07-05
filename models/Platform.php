@@ -24,6 +24,14 @@ class Platform extends Model
      * @array belongsToMany Models relations
      */
     public $belongsToMany = [
+
+        'questions' => [
+            'HON\HonCuratorReview\Models\Question',
+            'table'      => 'hon_honcuratorreview_questions_platforms',
+            'key'        => 'p_id',
+            'otherKey'   => 'q_id'
+        ],
+
         'services' => [
             'HON\HonCuratorReview\Models\Service',
             'table'      => 'hon_honcuratorreview_services_platforms',
