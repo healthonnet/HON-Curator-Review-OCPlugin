@@ -1,6 +1,7 @@
 <?php namespace HON\HonCuratorReview\Models;
 
 use Model;
+use phpDocumentor\Reflection\Types\Boolean;
 use RainLab\User\Models\User;
 
 /**
@@ -104,6 +105,12 @@ class Service extends Model
         return $this->reviews()->latest()->take(3)->get();
     }
 
+
+    /**
+     * Return all apps not reviewed by a given User for this service
+     * @param User $user
+     * @return Review[]
+     */
     public function filterReviewedAppsBy(User $user)
     {
         if (!$user)
@@ -115,4 +122,20 @@ class Service extends Model
             return $app;
         });
     }
+
+    /**
+     * Return all apps not reviewed by a given User for this service
+     * @param String $platform
+     * @return Boolean
+     */
+    public function hasPlatform($platform)
+    {
+        foreach ( $this->platforms as $servicePlatorm) {
+            if ($servicePlatorm->name === $platform) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

@@ -1,3 +1,10 @@
-{% partial __SELF__ ~ '::list' %}
 
-{{ services.render|raw }}
+<div class="row">
+    <div class="col-sm-4">
+        {% partial '@sidebar' %}
+    </div>
+    <div class="col-sm-8">
+    {% partial '@list' %}
+
+    </div>
+</div>

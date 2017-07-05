@@ -1,5 +1,32 @@
-<div class="container">
-    {% for service in services %}
-        {% partial __SELF__ ~ '::itemlist' service=service %}
+<!-- Filters -->
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a href="#all" data-toggle="tab">All</a></li>
+    {% for platform in platforms %}
+    <li><a href="#{{platform.name}}" data-toggle="tab">{{platform.name}}</a></li>
     {% endfor %}
+</ul>
+
+<div class="row">
+    <div class="tab-content">
+
+        <!-- All-->
+        <div class="tab-pane fade in active" id="all">
+            {% for service in services %}
+                {% partial '@itemlist' service=service %}
+            {% endfor %}
+        </div>
+
+        {% for platform in platforms %}
+        <div class="tab-pane fade" id="{{platform.name}}">
+            {% for service in services %}
+                {% if service.hasPlatform(platform.name) %}
+                    {% partial '@itemlist' service=service %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% endfor %}
+    </div>
 </div>
+{{ services.render|raw }}
+
