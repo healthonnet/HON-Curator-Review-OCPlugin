@@ -61,9 +61,11 @@ class Review extends Model
     public function getNewQuestion()
     {
         $id = $this->id;
-
+        $platform_id = $this->app->platform->id;
         $question = $this->user->activity->questions()->whereDoesntHave('reviews', function ($query) use($id) {
             $query->whereId($id);
+        })->whereHas('platforms', function ($query) use($platform_id){
+            $query->whereId($platform_id);
         })->orderByRaw("RAND()")->first();
         return $question;
     }
