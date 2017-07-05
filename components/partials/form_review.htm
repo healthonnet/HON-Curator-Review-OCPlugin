@@ -8,8 +8,9 @@
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ form_label('Global Appreciation')}}
-    <p class="rating">{% partial '@stars' rating=3 %}</p>
-    {% partial '@stars-picker' %}
+    <div class="row">
+        {% partial '@stars-picker' id=review.id %}
+    </div>
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ form_label('Comment')}}

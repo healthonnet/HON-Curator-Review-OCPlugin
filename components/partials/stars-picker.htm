@@ -1,1 +1,45 @@
-{{ form_selectRange('global_rate', 1, 5, 3, {class: 'form-control'})}}
+<fieldset class="rating">
+    {{ form_radio('global_rate', 5, false, {id:'star5'~ id})}}<label class = "full" for="star5{{id}}" title="Awesome - 5 stars"></label>
+    {{ form_radio('global_rate', 4, false, {id:'star4'~ id})}}<label class = "full" for="star4{{id}}" title="Pretty good - 4 stars"></label>
+    {{ form_radio('global_rate', 3, true, {id:'star3'~ id})}}<label class = "full" for="star3{{id}}" title="Meh - 3 stars"></label>
+    {{ form_radio('global_rate', 2, false, {id:'star2'~ id})}}<label class = "full" for="star2{{id}}" title="Kinda bad - 2 stars"></label>
+    {{ form_radio('global_rate', 1, false, {id:'star1'~ id})}}<label class = "full" for="star1{{id}}" title="Sucks big time - 1 star"></label>
+</fieldset>
+<style>
+    /****** Style Star Rating Widget *****/
+
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input { display: none; }
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /***** CSS Magic to Highlight Stars on Hover *****/
+
+    .rating > input:checked ~ label, /* show gold star when clicked */
+    .rating:not(:checked) > label:hover, /* hover current star */
+    .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+    .rating > input:checked + label:hover, /* hover current star when changing rating */
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+    .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+</style>
