@@ -12,36 +12,54 @@
 
 <!-- Categories -->
 <div class="panel-group" id="shopNav">
+    {% if tags is not empty %}
     <div class="panel panel-default">
         <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavOne">
-                Tags
+                Themes
             </a>
         </div>
         <div id="shopNavOne" class="panel-collapse collapse in">
             <ul class="list-group filter-list-group">
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">17</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">8</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">10</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">24</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">4</span></li>
+            {% for tag in tags %}
+                {% if tag.type == 'theme' and tag.services|length > 0 %}
+                    <li class="list-group-item"><a href="#">{{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
+                {% endif %}
+            {% endfor %}
             </ul>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavTwo" class="collapsed">
-
+                Languages
             </a>
         </div>
         <div id="shopNavTwo" class="panel-collapse collapse">
             <ul class="list-group filter-list-group">
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">17</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">8</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">10</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">24</span></li>
-                <li class="list-group-item"><a href="#">Subcategory</a> <span class="badge">4</span></li>
+            {% for tag in tags %}
+                {% if tag.type == 'language' and tag.services|length > 0 %}
+                    <li class="list-group-item"><a href="#">{{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
+                {% endif %}
+            {% endfor %}
             </ul>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavThree" class="collapsed">
+                Labels
+            </a>
+        </div>
+        <div id="shopNavThree" class="panel-collapse collapse">
+            <ul class="list-group filter-list-group">
+            {% for tag in tags %}
+                {% if tag.type == 'label' and tag.services|length > 0 %}
+                    <li class="list-group-item"><a href="#">{{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
 </div>

@@ -9,7 +9,7 @@ class Tag extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'type'];
 
     /**
      * Softly implement the TranslatableModel behavior.

@@ -2,6 +2,7 @@
 
 use HON\HonCuratorReview\Models\Platform;
 use HON\HonCuratorReview\Models\Service;
+use HON\HonCuratorReview\Models\Tag;
 
 class ListServices extends \Cms\Classes\ComponentBase
 {
@@ -19,7 +20,8 @@ class ListServices extends \Cms\Classes\ComponentBase
     public function onRun()
     {
         $this->page['platforms'] = Platform::all();
-        $this->page['services'] = $this->services = Service::paginate(1);
+        $this->page['tags'] = Tag::all();
+        $this->page['services'] = $this->services = Service::searchWithPagination();
     }
 
 }
