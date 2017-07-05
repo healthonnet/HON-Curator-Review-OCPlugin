@@ -33,17 +33,17 @@
                         {% endif %}
                     {% endif %}
 
-                    {% partial __SELF__ ~ '::apps' apps=service.apps %}
+                    {% partial '@apps' apps=service.apps %}
                 </div>
 
             </div>
 
 
-            {% partial __SELF__ ~ '::details' service=service %}
+            {% partial '@details' service=service %}
 
-            {% partial __SELF__ ~ '::stats' service=service %}
+            {% partial '@stats' service=service %}
 
-            {% partial __SELF__ ~ '::reviews' service=service %}
+            {% partial '@reviews' service=service %}
 
         </div>
     </div>

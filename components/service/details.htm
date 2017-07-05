@@ -3,5 +3,52 @@
     <div class="col-sm-12">
         <h4 class="headline"><span>Service details</span></h4>
         <p>{{ service.description |default('No description given'|_)}}</p>
+        {% set hasThemes = false %}
+        {% set hasLanguages = false %}
+        {% set hasLabels = false %}
+
+        {% for tag in service.tags %}
+            {% if tag.type == 'theme' %}
+                {% set hasThemes = true %}
+            {% elseif tag.type == 'language' %}
+                {% set hasLanguages = true %}
+            {% elseif tag.type == 'label' %}
+                {% set hasLabels = true %}
+            {% endif %}
+        {% endfor %}
+
+        {{hasThemes }}
+        {% if hasThemes %}
+        <h4 class="headline"><span>Themes</span></h4>
+        <ul>
+            {% for tag in service.tags %}
+            {% if tag.type == 'theme' %}
+            <li><a href="#">{{tag.name}}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if hasLanguages %}
+        <h4 class="headline"><span>Languages</span></h4>
+        <ul>
+            {% for tag in service.tags %}
+            {% if tag.type == 'language' %}
+                <li><a href="#">{{tag.name}}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if hasLabels %}
+        <h4 class="headline"><span>Labels</span></h4>
+        <ul>
+            {% for tag in service.tags %}
+            {% if tag.type == 'label' %}
+            <li><a href="#">{{tag.name}}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
 </div>
