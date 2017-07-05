@@ -20,7 +20,7 @@
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" onclick="window.location.reload()" class="btn btn-default" data-dismiss="modal">Close</button>
     {{ form_hidden('review_id', review.id)}}
     {{ form_hidden('question_id', question.id)}}
     {{ form_hidden('target', target)}}
