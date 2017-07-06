@@ -1,3 +1,14 @@
+
+{% macro listTags(tags, type, filters, search) %}
+    {% for tag in tags %}
+    {% if tag.type == type and tag.services|length > 0 %}
+    <li class="list-group-item">
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|') ~'&'}} {{search ? 'search='~search}}">
+            {{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
+    {% endif %}
+    {% endfor %}
+{% endmacro %}
+
 <!-- Search -->
 <form role="form">
     <div class="well">
@@ -8,6 +19,17 @@
             </span>
         </div>
     </div>
+    {% if filters %}
+    <div class="well">
+        <div class="input-group">
+            {% for filter in filters|split('|') %}
+                {% set aFilters=filters|join('|') %}
+                <a href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')  }} {{search ? '&search='~search}}">
+                    <span>{{filter}}</span> <i class="fa fa-close"></i></a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 </form>
 
 <!-- Categories -->
@@ -21,11 +43,7 @@
         </div>
         <div id="shopNavOne" class="panel-collapse collapse in">
             <ul class="list-group filter-list-group">
-            {% for tag in tags %}
-                {% if tag.type == 'theme' and tag.services|length > 0 %}
-                    <li class="list-group-item"><a href="#">{{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
-                {% endif %}
-            {% endfor %}
+                {{ _self.listTags(tags, 'theme', filters, search) }}
             </ul>
         </div>
     </div>
@@ -37,11 +55,7 @@
         </div>
         <div id="shopNavTwo" class="panel-collapse collapse">
             <ul class="list-group filter-list-group">
-            {% for tag in tags %}
-                {% if tag.type == 'language' and tag.services|length > 0 %}
-                    <li class="list-group-item"><a href="#">{{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
-                {% endif %}
-            {% endfor %}
+                {{ _self.listTags(tags, 'language', filters, search) }}
             </ul>
         </div>
     </div>
@@ -53,11 +67,7 @@
         </div>
         <div id="shopNavThree" class="panel-collapse collapse">
             <ul class="list-group filter-list-group">
-            {% for tag in tags %}
-                {% if tag.type == 'label' and tag.services|length > 0 %}
-                    <li class="list-group-item"><a href="#">{{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
-                {% endif %}
-            {% endfor %}
+                {{ _self.listTags(tags, 'label', filters, search) }}
             </ul>
         </div>
     </div>

@@ -14,6 +14,11 @@
             {% for service in services %}
                 {% partial '@itemlist' service=service %}
             {% endfor %}
+            {% if services is empty %}
+                <div class="col-sm-8">
+                    <p>No Service is matching your request</p>
+                </div>
+            {% endif %}
         </div>
 
         {% for platform in platforms %}
@@ -28,5 +33,8 @@
         {% endfor %}
     </div>
 </div>
-{{ services.render|raw }}
+{% set urlFilters= filters ? {'filters': filters} %}
+{% set urlSearch= search ? {'search': search} %}
+
+{{ services.appends(urlFilters).appends(urlSearch).render|raw }}
 

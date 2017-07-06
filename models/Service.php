@@ -1,5 +1,7 @@
 <?php namespace HON\HonCuratorReview\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Input;
 use Model;
 use phpDocumentor\Reflection\Types\Boolean;
 use RainLab\User\Models\User;
@@ -134,7 +136,6 @@ class Service extends Model
     }
 
     /**
-     * Return all apps not reviewed by a given User for this service
      * @param String $platform
      * @return Boolean
      */
@@ -148,4 +149,52 @@ class Service extends Model
         return false;
     }
 
+    /**
+     * Prepare search
+     * @param Input[]
+     * @return Builder $query
+     */
+    public static function prepareSearch()
+    {
+        // Prepare query
+        $query = Service::query();
+        $filters = Input::get('filters');
+
+        // Add filters
+        if ($filters) {
+            foreach (explode('|', $filters) as $filter) {
+                $query->whereHas('tags', function ($query) use ($filter){
+                    $query->where('name', $filter);
+                });
+            }
+        }
+        // Add search field
+        if (true) {
+
+        }
+
+        return $query;
+    }
+
+
+    /**
+     * Get Search results with smart pagination
+     * @return Service[]
+     */
+    public static function searchWithPagination()
+    {
+        $query = Service::prepareSearch();
+        // Add
+        return $query->paginate(1);
+    }
+
+    /**
+     * Get Search results
+     * @return Service[]
+     */
+    public static function search()
+    {
+        $query = Service::prepareSearch();
+        return $query->get();
+    }
 }

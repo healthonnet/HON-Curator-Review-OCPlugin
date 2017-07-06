@@ -42,4 +42,27 @@ class Tag extends Model
         ]
     ];
 
+    /**
+     * Custom accessor for average_review
+     * @return Review[]
+     */
+    public function getUntranslatednameAttribute() {
+        return $this->getTranslateAttribute('name', 'en');
+    }
+
+    /**
+     * Keep only existing inputs
+     * @param String $input
+     * @return String $cleanedInput
+     */
+    public static function cleanInput($input)
+    {
+        $entries = array_unique(explode('|',$input));
+        $tags = Tag::all()->lists('untranslatedname');
+
+        return join('|', array_intersect($entries,$tags));
+
+
+    }
+
 }

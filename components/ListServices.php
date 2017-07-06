@@ -3,6 +3,7 @@
 use HON\HonCuratorReview\Models\Platform;
 use HON\HonCuratorReview\Models\Service;
 use HON\HonCuratorReview\Models\Tag;
+use Illuminate\Support\Facades\Input;
 
 class ListServices extends \Cms\Classes\ComponentBase
 {
@@ -21,6 +22,10 @@ class ListServices extends \Cms\Classes\ComponentBase
     {
         $this->page['platforms'] = Platform::all();
         $this->page['tags'] = Tag::all();
+
+        // Clean unknown tags
+        $filters = Tag::cleanInput(Input::get('filters'));
+        $this->page['filters'] = $filters;
         $this->page['services'] = $this->services = Service::searchWithPagination();
     }
 
