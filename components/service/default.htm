@@ -8,14 +8,48 @@
 
             <div class="row">
                 <div class="col-sm-6">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            {% for app in service.apps %}
+                            <li data-target="#myCarousel" data-slide-to="{{loop.index0}}" class="{{loop.index0 == 0 ? 'active'}}"></li>
+                            {% endfor %}
+                        </ol>
 
-                    <div id="shopImages" class="shop-images">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            {% for app in service.apps %}
+                            <div class="item {{ service.apps[0] == app ? 'active' }}">
+                                <a href="{{ app.url }}" target="_blank">
+                                    <img src='http://everyone.khresmoi.eu:3000/?url={{app.url}}&clipRect=%7B"top"%3A0%2C"left"%3A0%2C"width"%3A1024%2C"height"%3A600%7D' class="img-responsive main" alt="">
+                                    <div class="carousel-caption">
+                                        <p>{{app.platform.name}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="next">
+                            <i class="fa fa-chevron-left glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <i class="fa fa-chevron-right glyphicon-chevron-right" aria-hidden="true"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                    <!--div id="shopImages" class="shop-images">
+                        {% for app in service.apps %}
                         <div>
-                            <a href="{{ 'assets/images/shop/macbook.jpg'|theme }}">
-                                <img src="{{ 'assets/images/shop/macbook.jpg'|theme }}" class="img-responsive main" alt="">
+                            <a href="{{ app.url }}" target="_blank">
+                                <img src='http://everyone.khresmoi.eu:3000/?url={{app.url}}&clipRect=%7B"top"%3A0%2C"left"%3A0%2C"width"%3A1024%2C"height"%3A600%7D' class="img-responsive main" alt="">
                             </a>
                         </div>
-                    </div>
+                        {% endfor %}
+                    </div-->
                 </div>
                 <div class="col-sm-6">
                     <p class="text-muted">{{ service.description |default('No description given'|_)}}</p>
