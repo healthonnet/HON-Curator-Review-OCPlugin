@@ -3,35 +3,28 @@
     {% for tag in tags %}
     {% if tag.type == type and tag.services|length > 0 %}
     <li class="list-group-item">
-        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|') ~'&'}} {{search ? 'search='~search}}">
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}">
             {{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
     {% endif %}
     {% endfor %}
 {% endmacro %}
 
-<!-- Search -->
-<form role="form">
-    <div class="well">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search products...">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
-            </span>
-        </div>
+<!-- Filters -->
+{% if filters %}
+<div class="well">
+    <div class="panel-heading">
+        Active Filters
     </div>
-    {% if filters %}
-    <div class="well">
-        <div class="input-group">
-            {% for filter in filters|split('|') %}
-                {% set aFilters=filters|join('|') %}
-                <a style="margin: 3px" class="btn btn-sm btn-default"
-                   href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')  }} {{search ? '&search='~search}}">
-                    <span>{{filter}}</span> <i class="fa fa-close"></i></a>
-            {% endfor %}
-        </div>
+    <div class="input-group">
+        {% for filter in filters|split('|') %}
+            {% set aFilters=filters|join('|') %}
+            <a style="margin: 3px" class="btn btn-sm btn-default"
+               href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')}}{{search ? '&search='~search}}">
+                <span>{{filter}}</span> <i class="fa fa-close"></i></a>
+        {% endfor %}
     </div>
-    {% endif %}
-</form>
+</div>
+{% endif %}
 
 <!-- Categories -->
 <div class="panel-group" id="shopNav">

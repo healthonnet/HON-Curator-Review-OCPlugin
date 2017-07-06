@@ -154,11 +154,10 @@ class Service extends Model
      * @param Input[]
      * @return Builder $query
      */
-    public static function prepareSearch()
+    public static function prepareSearch($filters, $search)
     {
         // Prepare query
         $query = Service::query();
-        $filters = Input::get('filters');
 
         // Add filters
         if ($filters) {
@@ -168,8 +167,17 @@ class Service extends Model
                 });
             }
         }
+
         // Add search field
-        if (true) {
+        if ($search) {
+            $query->where(function($query) use ($search){
+                $query->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%')
+                    ->orWhereHas('platforms', function ($query) use ($search){
+                        $query->where('url', 'like', '%'.$search.'%');
+                    });
+            });
 
         }
 
@@ -181,9 +189,9 @@ class Service extends Model
      * Get Search results with smart pagination
      * @return Service[]
      */
-    public static function searchWithPagination()
+    public static function searchWithPagination($filters, $search)
     {
-        $query = Service::prepareSearch();
+        $query = Service::prepareSearch($filters, $search);
         // Add
         return $query->paginate(1);
     }
@@ -192,7 +200,7 @@ class Service extends Model
      * Get Search results
      * @return Service[]
      */
-    public static function search()
+    public static function search($filters, $search)
     {
         $query = Service::prepareSearch();
         return $query->get();

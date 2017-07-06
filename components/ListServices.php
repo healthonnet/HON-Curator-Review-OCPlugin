@@ -22,11 +22,13 @@ class ListServices extends \Cms\Classes\ComponentBase
     {
         $this->page['platforms'] = Platform::all();
         $this->page['tags'] = Tag::all();
+        $this->page['search'] = Input::get('search');
+
 
         // Clean unknown tags
         $filters = Tag::cleanInput(Input::get('filters'));
         $this->page['filters'] = $filters;
-        $this->page['services'] = $this->services = Service::searchWithPagination();
+        $this->page['services'] = $this->services = Service::searchWithPagination($filters, $this->page['search']);
     }
 
 }

@@ -13,11 +13,13 @@ It adds : Translatable questions, user reviews, tags and tools
 
 ## Usage
 * You can manage elements through the backend.
+* Add components on your pages and enjoy !
 
 ## Upcoming
 * Components (forms, stats)
 * translated plugin (backend)
 * Comments
+* Better search
 * Stats (backend)
 
 ## Developers
