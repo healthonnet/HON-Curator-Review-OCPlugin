@@ -1,3 +1,11 @@
+{% macro listTags(tags, type) %}
+    {% for tag in tags %}
+        {% if tag.type == type %}
+            <li><a href="{{'services/services'|page()}}?filter={{tag.untranslatedname}}">{{tag.name}}</a></li>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
 <!-- Item Description -->
 <div class="row">
     <div class="col-sm-12">
@@ -21,33 +29,21 @@
         {% if hasThemes %}
         <h4 class="headline"><span>Themes</span></h4>
         <ul>
-            {% for tag in service.tags %}
-            {% if tag.type == 'theme' %}
-            <li><a href="#">{{tag.name}}</a></li>
-            {% endif %}
-            {% endfor %}
+            {{ _self.listTags(service.tags, 'theme') }}
         </ul>
         {% endif %}
 
         {% if hasLanguages %}
         <h4 class="headline"><span>Languages</span></h4>
         <ul>
-            {% for tag in service.tags %}
-            {% if tag.type == 'language' %}
-                <li><a href="#">{{tag.name}}</a></li>
-            {% endif %}
-            {% endfor %}
+            {{ _self.listTags(service.tags, 'language') }}
         </ul>
         {% endif %}
 
         {% if hasLabels %}
         <h4 class="headline"><span>Labels</span></h4>
         <ul>
-            {% for tag in service.tags %}
-            {% if tag.type == 'label' %}
-            <li><a href="#">{{tag.name}}</a></li>
-            {% endif %}
-            {% endfor %}
+            {{ _self.listTags(service.tags, 'label') }}
         </ul>
         {% endif %}
     </div>
