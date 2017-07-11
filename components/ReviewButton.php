@@ -20,6 +20,7 @@ class ReviewButton extends ServiceDetails
     {
         $request = Input::get('modal_search', Input::get('search'));
         if ($request) {
+            $this->page['modal_request'] = $request;
             $this->page['modal_services'] = ServiceModel::search(array(), $request);
         }
     }
@@ -38,6 +39,7 @@ class ReviewButton extends ServiceDetails
     {
         $request = Input::get('modal_search', Input::get('search'));
         if ($request) {
+            $this->page['modal_request'] = $request;
             $this->page['modal_services'] = ServiceModel::search(array(), $request);
         }
     }

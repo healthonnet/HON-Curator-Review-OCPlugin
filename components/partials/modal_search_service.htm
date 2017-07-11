@@ -4,24 +4,26 @@
         <h4 class="modal-title" id="gridSystemModalLabel">Search the service to review</h4>
     </div>
     <div class="modal-body">
-        {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'} }) }}
         <div class="row">
+        {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'} }) }}
             <div class="input-group">
-                <input type="text" class="form-control" name="search" value="{{search}}" placeholder="Search service...">
+                <input type="text" class="form-control" name="search" value="{{modal_request}}" placeholder="Search service...">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                 </span>
             </div>
-        </div>
         {{ form_close() }}
+        </div>
         <div class="table-responsive" data-request-data="target: '#modal-content-search_'">
             <table class="table table-hover">
+                <thead>
                 <tr>
-                    <td class="active">...</td>
-                    <td class="success">...</td>
-                    <td class="danger">...</td>
-                    <td class="info">...</td>
+                    <td class="active">Name</td>
+                    <td class="active">Description</td>
+                    <td class="active">Platforms</td>
+                    <td class="active">link</td>
                 </tr>
+                </thead>
                 {% if modal_services|length > 0 %}
                 {% for modal_service in modal_services %}
                 <tr data-request-data="service: {{modal_service.id}}">
