@@ -202,7 +202,7 @@ class Service extends Model
      */
     public static function search($filters, $search)
     {
-        $query = Service::prepareSearch();
+        $query = Service::prepareSearch($filters, $search);
         return $query->get();
     }
 }

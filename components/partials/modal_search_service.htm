@@ -1,0 +1,56 @@
+<div class="modal-content" id="modal-content-search_">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Search the service to review</h4>
+    </div>
+    <div class="modal-body">
+        {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'} }) }}
+        <div class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" value="{{search}}" placeholder="Search service...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        {{ form_close() }}
+        <div class="table-responsive" data-request-data="target: '#modal-content-search_'">
+            <table class="table table-hover">
+                <tr>
+                    <td class="active">...</td>
+                    <td class="success">...</td>
+                    <td class="danger">...</td>
+                    <td class="info">...</td>
+                </tr>
+                {% if modal_services|length > 0 %}
+                {% for modal_service in modal_services %}
+                <tr data-request-data="service: {{modal_service.id}}">
+                    <td>{{modal_service.name}}</td>
+                    <td>{{modal_service.description}}</td>
+                    <td>
+                    {% for platform in modal_service.platforms %}
+                        {% partial '@platform_icon' platform=platform.name %}
+                    {% endfor %}
+                    </td>
+                    <td><button type="button"
+                                data-request="onStartReview"
+                                data-request-update="'@modal_add_review': '#modal-content-search_'"
+                                class="btn btn-primary">
+                        Review this service</button></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+</div><!-- /.modal-content -->

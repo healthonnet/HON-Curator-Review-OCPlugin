@@ -52,7 +52,12 @@
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
                             <i class="fa fa-commenting-o"></i> Add my review
                         </button>
-                        {% partial '@modal_add_review' apps=service.filterReviewedAppsBy(user) user=user %}
+
+                        <div class="modal fade form_review" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                {% partial '@modal_add_review' apps=service.filterReviewedAppsBy(user) user=user %}
+                            </div>
+                        </div>
                         {% endif %}
                     {% endif %}
 

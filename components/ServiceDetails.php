@@ -4,8 +4,9 @@ use HON\HonCuratorReview\Models\Question;
 use HON\HonCuratorReview\Models\Review;
 use HON\HonCuratorReview\Models\Service as ServiceModel;
 use Illuminate\Support\Facades\Input;
+use RainLab\User\Facades\Auth;
 
-class Service extends \Cms\Classes\ComponentBase
+class ServiceDetails extends \Cms\Classes\ComponentBase
 {
     public $service;
 
@@ -26,11 +27,17 @@ class Service extends \Cms\Classes\ComponentBase
 
     public function onSaveReview()
     {
-        $review = Review::where('app_id', Input::get('app_id'))->where('user_id', Input::get('user_id'))->first();
-        if (!$review)
+        if (!Auth::check()) return;
+        $user = Auth::getUser();
+
+        $review = Review::where('app_id', Input::get('app_id'))->where('user_id', $user->id)->first();
+        if (!$review) {
             $review = new Review();
+        }
 
         $review->fill(Input::all());
+        $review->user_id = $user->id;
+
         if ($review->validate()) {
             $review->save();
             $this->page['review'] = $review;
@@ -63,7 +70,6 @@ class Service extends \Cms\Classes\ComponentBase
 
     public function onSaveAndRequestQuestion()
     {
-        // TODO Save response
         $review = Review::findOrFail(Input::get('review_id'));
         $question = Question::findOrFail(Input::get('question_id'));
         $response = Input::get('response');
