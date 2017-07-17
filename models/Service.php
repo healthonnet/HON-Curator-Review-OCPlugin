@@ -33,6 +33,8 @@ class Service extends Model
      * Validation
      */
     public $rules = [
+        'name' => 'required|min:3|unique:hon_honcuratorreview_services',
+        'description' => 'required|min:5'
     ];
 
     /**
@@ -133,6 +135,16 @@ class Service extends Model
             }
             return $app;
         });
+    }
+
+    /**
+     * Return all platforms that does not exist by a given Service
+     * @return Collection[]
+     */
+    public function filterExistingPlatforms()
+    {
+        $allPlatforms = Platform::all();
+        return $allPlatforms->diff($this->platforms);
     }
 
     /**

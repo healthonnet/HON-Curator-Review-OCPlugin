@@ -36,6 +36,7 @@
                     </td>
                     <td><button type="button"
                                 data-request="onStartReview"
+                                data-request-data="target: '#modal-content-search_'"
                                 data-request-update="'@modal_add_review': '#modal-content-search_'"
                                 class="btn btn-primary">
                         Review this service</button></td>
@@ -51,6 +52,16 @@
                 {% endif %}
             </table>
         </div>
+        {% if modal_request %}
+        <div class="row">
+            You didn't find it ? <button type="button"
+                                         data-request="onStartService"
+                                         data-request-data="target: '#modal-content-search_'"
+                                         data-request-update="'@modal_add_service': '#modal-content-search_'"
+                                         class="btn btn-primary">Create It</button>
+            <p>Please be sure before creating it to prevent duplicates</p>
+        </div>
+        {% endif %}
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

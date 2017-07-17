@@ -17,5 +17,16 @@
             {% endif %}
         </div>
         {% endfor %}
+
+        {% if remainingPlatforms is not empty and user %}
+        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_app">
+            <i class="fa fa-commenting-o"></i> Add a platform
+        </button>
+        <div class="modal fade form_app" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                {% partial '@modal_add_app' %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>

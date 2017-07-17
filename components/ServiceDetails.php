@@ -2,8 +2,11 @@
 
 use HON\HonCuratorReview\Models\Question;
 use HON\HonCuratorReview\Models\Review;
+use HON\HonCuratorReview\Models\App;
 use HON\HonCuratorReview\Models\Service as ServiceModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use October\Rain\Exception\ValidationException;
 use RainLab\User\Facades\Auth;
 
 class ServiceDetails extends \Cms\Classes\ComponentBase
@@ -23,6 +26,45 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         // TODO Better fail catch
 
         $this->page['service'] = $this->service = ServiceModel::findOrFail($this->property('id'));
+        $this->page['remainingPlatforms'] = $this->service->filterExistingPlatforms();
+    }
+
+    public function onAddApp()
+    {
+        self::onRun();
+
+        if (!Auth::check()) return;
+        $acceptedPlatforms = array();
+        $erroredPlatforms = array();
+        // At least one valid platform
+        foreach (Input::get('platforms') as $platform => $url) {
+            $validator = Validator::make(
+                [
+                    'plat_id' => $platform,
+                    'url' => $url
+                ],
+                [
+                    'plat_id' => 'required|exists:hon_honcuratorreview_platforms,id',
+                    'url' => 'required|unique:hon_honcuratorreview_services_platforms|url',
+                ]
+            );
+
+            if ($validator->fails()) {
+                $erroredPlatforms['platform['. $platform .']'] = $validator->messages()->first();
+            } else {
+                $acceptedPlatforms[$platform] = $url;
+            }
+        }
+        if (empty($acceptedPlatforms)) {
+            throw new ValidationException($erroredPlatforms);
+        }
+
+        foreach ($acceptedPlatforms as $plaform => $url) {
+            $app = new App(['url' => $url, 'plat_id' => $plaform, 'serv_id' => $this->service->id]);
+            if($app->validate()) {
+                $app->save();
+            }
+        }
     }
 
     public function onSaveReview()

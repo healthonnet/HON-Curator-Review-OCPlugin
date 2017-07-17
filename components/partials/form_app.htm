@@ -1,0 +1,10 @@
+
+{% for platform in remainingPlatforms %}
+{% if platform not in service.platforms|keys %}
+<div class="col-sm-10 center-block form-group">
+    {{ form_label(platform.name) }}
+    {{ form_text('platforms['~platform.id~']', null, {class: 'form-control'}) }}
+    {{ form_hidden('service', service )}}
+</div>
+{% endif %}
+{% endfor %}

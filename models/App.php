@@ -18,7 +18,9 @@ class App extends Model
      * @var array Rules
      */
     public $rules = [
-        'url' => 'required|url',
+        'url'     => 'required|url',
+        'plat_id' => 'required',
+        'serv_id' => 'required',
     ];
 
     /**

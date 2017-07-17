@@ -1,0 +1,29 @@
+<div class="col-sm-10 center-block form-group">
+    <h4>General details</h4>
+    {{ form_label('Serivce Name') }}
+    {{ form_text('name', null, {class: 'form-control'}) }}
+</div>
+<div class="col-sm-10 center-block form-group">
+
+{{ form_label('Description')}}
+{{ form_textarea('description', null, {class: 'form-control'})}}
+</div>
+
+<div class="col-sm-10 center-block form-group">
+    <h4>Available platforms</h4>
+    <small class="text-danger">at least one platform</small>
+</div>
+{% for platform in platforms %}
+<div class="col-sm-10 center-block form-group">
+    {{ form_label(platform.name) }}
+    {{ form_text('platforms['~platform.id~']', null, {class: 'form-control'}) }}
+</div>
+{% endfor %}
+
+
+<div class="col-sm-10 center-block form-group">
+    <h4>Ownership</h4>
+    {{ form_label('Are you the owner of this service ?') }}
+    {{ form_checkbox('owner', true, false, {class: 'form-control'}) }}
+    <small class="info">We may contact you to confirm ownership</small>
+</div>
