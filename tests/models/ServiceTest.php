@@ -36,6 +36,7 @@ class ServiceTest extends PluginTestCase
 
         $service = Service::create([
             'name' => 'Super Service',
+            'description' => 'description',
             'owner_id' => 1
         ]);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
@@ -49,7 +50,9 @@ class ServiceTest extends PluginTestCase
         $superUrl = 'https://superservice.website';
 
         $service = Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
+
         ]);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
 
@@ -73,7 +76,9 @@ class ServiceTest extends PluginTestCase
     public function testTagRelations()
     {
         $service = Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
+
         ]);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
 
@@ -96,7 +101,9 @@ class ServiceTest extends PluginTestCase
     public function testReviewRelation()
     {
         $service = Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
+
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
@@ -135,7 +142,9 @@ class ServiceTest extends PluginTestCase
     public function testAppRelation()
     {
         $service = Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
+
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);

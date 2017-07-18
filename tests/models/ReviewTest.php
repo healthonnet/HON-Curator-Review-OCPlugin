@@ -51,7 +51,9 @@ class ReviewTest extends PluginTestCase
     public function testServiceAndAppRelation()
     {
         Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
+
         ]);
 
         App::create([

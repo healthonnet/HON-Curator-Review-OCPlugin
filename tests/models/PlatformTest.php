@@ -17,7 +17,8 @@ class PlatformTest extends PluginTestCase
     public function testServiceAndAppRelation()
     {
         $service = Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
         ]);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
         $this->assertNotNull($service, "it should return the service object");

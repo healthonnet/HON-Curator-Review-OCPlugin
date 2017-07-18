@@ -46,7 +46,8 @@ class AppTest extends PluginTestCase
     public function testServiceAndPlatformRelations()
     {
         Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
         ]);
 
         $service = Service::find(1);
@@ -70,7 +71,8 @@ class AppTest extends PluginTestCase
     public function testNameAccessor()
     {
         Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
         ]);
 
         $app = App::create([

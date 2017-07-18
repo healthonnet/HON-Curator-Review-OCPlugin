@@ -83,11 +83,15 @@ class UserTest extends PluginTestCase
 
 
         $service = Service::create([
-            'name' => 'Super Service'
+            'name' => 'Super Service',
+            'description' => 'description',
+
         ]);
 
         $service2 = Service::create([
-            'name' => 'Super Service 2'
+            'name' => 'Super Service 2',
+            'description' => 'description',
+
         ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Service', $service);
