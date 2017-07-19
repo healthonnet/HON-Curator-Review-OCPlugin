@@ -1,0 +1,33 @@
+[{
+  "name": "WebMD Gateway",
+  "description": "The WebMD network of sites helps individuals take an active role in managing their own health and wellness by providing relevant, timely and objective lifestyle and condition information that is developed by an award-winning editorial staff which includes medical writers and editors, physicians and health educators. Interactive services enable consumers to obtain in-depth information on a particular disease or condition, research and plan for a healthy lifestyle goal, search for relevant health information across the web, and watch originally produced videos. Unique features on WebMD help consumers check symptoms, locate physicians, assess personal health status, receive e-newsletters and alerts, and participate in online communities with peers and medical experts.",
+  "keywords": [
+    "Diseases",
+    "Portal",
+    "Index",
+    "News",
+    "Information",
+    "Support"
+  ],
+  "url": "http://www.webmd.com/",
+  "language": "English",
+  "type": "Commercial",
+  "platform": "website",
+  "certified": true
+}, {
+  "name": "Fondation Pro Visu",
+  "description": "Pro Visu est une Fondation d'utilité publique en Suisse, agissant pour la promotion et la prévention des maladies oculaires. Le site internet de la Fondation donne accès aux utilisateurs à un contenu d'information concernant les pathologies visuelles, ainsi que leur prévention. De plus, Provisu.ch propose une accessibilité spéciale pour les personnes ayant des troubles de la vision.",
+  "keywords": [
+    "pathologies",
+    "yeux",
+    "prévention",
+    "accessibilité",
+    "malvoyance",
+    "maladies"
+  ],
+  "url": "http://www.webmd.com/",
+  "language": "French, English, Spanish, Deutsch",
+  "type": "Non-profit",
+  "platform": "website",
+  "certified": true
+}]

@@ -1,0 +1,54 @@
+[
+  {
+    "name": "certified",
+    "type": "label"
+  },
+  {
+    "name": "cancer",
+    "type": "theme"
+  },
+  {
+    "name": "children",
+    "type": "theme"
+  },
+  {
+    "name": "diseases",
+    "type": "theme"
+  },
+  {
+    "name": "profissional",
+    "type": "label"
+  },
+  {
+    "name": "Non-profit",
+    "type": "label"
+  },
+  {
+    "name": "Individual",
+    "type": "label"
+  },
+  {
+    "name": "Commercial",
+    "type": "label"
+  },
+  {
+    "name": "Educational",
+    "type": "label"
+  },
+  {
+    "name": "Organization",
+    "type": "label"
+  },
+  {
+    "name": "Government",
+    "type": "label"
+  },
+  {
+    "name": "Network",
+    "type": "label"
+  },
+  {
+    "name": "Military",
+    "type": "label"
+  }
+]

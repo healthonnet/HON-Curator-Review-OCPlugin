@@ -1,0 +1,24 @@
+[{
+  "question": "A very simple yes or no question",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "A very simple radio question",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Professional"
+  ],
+  "responsetype": "radio"
+}]
