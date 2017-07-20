@@ -11,7 +11,6 @@
   ],
   "url": "http://www.webmd.com/",
   "language": "English",
-  "type": "Commercial",
   "platform": "website",
   "certified": true
 }, {
@@ -27,7 +26,6 @@
   ],
   "url": "http://www.webmd.com/",
   "language": "French, English, Spanish, Deutsch",
-  "type": "Non-profit",
   "platform": "website",
   "certified": true
 }]
