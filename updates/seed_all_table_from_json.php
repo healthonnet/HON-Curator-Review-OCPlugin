@@ -38,7 +38,6 @@ class SeedFromJSON extends Seeder
                 }
             }
         }
-        //dd($taggedUrl["http://www.webmd.com"]);
 
         $tags = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/hon_tags.json'));
         foreach ($tags as $tag) {
