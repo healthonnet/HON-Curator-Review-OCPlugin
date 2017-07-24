@@ -60,7 +60,7 @@
   ],
   "responsetype": "checkbox"
 }, {
-  "question": "L'accès au site est sécurisé (cadenas visible 🔒)",
+  "question": "L'accès au site est sécurisé (cadenas visible)",
   "platforms": [
     "website"
   ],
