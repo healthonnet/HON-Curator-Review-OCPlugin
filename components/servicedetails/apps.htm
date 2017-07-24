@@ -10,7 +10,7 @@
             {% if user %}
                 {% if  user.reviews().where('app_id', app.id).first() is not empty %}
                 <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_edit_review_{{app.id}}">
-                    <i class="fa fa-commenting-o"></i> Edit my review
+                    <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.edit' | trans }}
                 </button>
                 {% partial '@modal_edit_review' review=user.reviews().where('app_id', app.id).first() %}
                 {% endif %}
@@ -20,7 +20,7 @@
 
         {% if remainingPlatforms is not empty and user %}
         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_app">
-            <i class="fa fa-commenting-o"></i> Add a platform
+            <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.platform.add' | trans }}
         </button>
         <div class="modal fade form_app" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog modal-lg" role="document">

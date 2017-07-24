@@ -1,5 +1,5 @@
 [{
-  "question": "A very simple yes or no question",
+  "question": "L’information est vérifiable, les sources sont indiquées",
   "platforms": [
     "android",
     "ios",
@@ -12,13 +12,357 @@
   ],
   "responsetype": "checkbox"
 }, {
-  "question": "A very simple radio question",
+  "question": "On peut déceler un point de vue particulier qui n’est pas référencé",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site vend des produits ou services",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site a été récemment mis à jour",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site propose un abonnement, une consultation",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "L'accès au site est sécurisé (cadenas visible 🔒)",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site contient trop de publicités",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "L’auteur du contenu ou le responsable éditorial est clairement identifié",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Les qualifications de l’auteur / du responsable éditorial sont mentionnées",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Je peux savoir le pays d'origine du site",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le financement du site est indiqué",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site est financé par des entreprises du médicament / de matériel médical",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site est financé par des banques / mutuelles / assurances",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site est financé par la publicité",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Je sais comment mes données (données d’inscription, données d’utilisation, traces de navigation, etc.) sont traitées",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site précise d’emblée que toutes les données personnelles (identité, localisation…) restent confidentielles",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le but du site est en lien avec son contenu",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "J’ai trouvé facilement l’information que je cherchais",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "On peut contacter l’auteur ou le responsable du site facilement",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site est logiquement structuré",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site est attrayant, agréable à lire",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le site est facilement navigable et compréhensible",
+  "platforms": [
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Le temps de chargement est correct",
+  "platforms": [
+    "android",
+    "ios",
+    "website"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Avant son installation, l’application demande à l’utilisateur son accord concernant l’accès aux données personnelles, en explicitant quel type de données seront récoltées et/ou utilisées",
   "platforms": [
     "android",
     "ios"
   ],
   "activities": [
-    "Professional"
+    "Student",
+    "Professional",
+    "Patient"
   ],
-  "responsetype": "radio"
+  "responsetype": "checkbox"
+}, {
+  "question": "Une politique de confidentialité est accessible à tout moment au sein de l’application",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "La dernière version de l’application est proposée afin de corriger les éventuelles erreurs et fournir une utilisation adaptée aux besoins de l’utilisateur",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Les auteurs et créateurs de l’application sont identifiés",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Des experts (concernant les informations médicales proposées) sont impliqués dans la création du contenu",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Les références des données présentées sont accessibles au sein de l’application",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "De la publicité est présente au sein de l’application",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
+}, {
+  "question": "Les sources de financement de l’application sont mentionnées",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "activities": [
+    "Student",
+    "Professional",
+    "Patient"
+  ],
+  "responsetype": "checkbox"
 }]

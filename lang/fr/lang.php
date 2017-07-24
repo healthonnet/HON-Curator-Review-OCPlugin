@@ -4,10 +4,10 @@
         'description' => ''
     ],
     'review' => [
-        'add' => 'Add my review',
-        'edit' => 'Edit my review',
+        'add' => 'Ajouter un avis',
+        'edit' => 'Editer un avis',
     ],
     'platform' => [
-        'add' => 'Add a platform',
+        'add' => 'Ajouter une platforme',
     ]
 ];
