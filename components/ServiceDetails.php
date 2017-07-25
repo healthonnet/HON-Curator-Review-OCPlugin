@@ -115,8 +115,10 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $review = Review::findOrFail(Input::get('review_id'));
         $question = Question::findOrFail(Input::get('question_id'));
         $response = Input::get('response');
-
-        $review->questions()->attach([$question->id => ['value' =>  $response]]);
+        // Prevent already exist
+        if (!$review->questions()->where('q_id', $question->id)->first()) {
+            $review->questions()->attach([$question->id => ['value' =>  $response]]);
+        }
 
         return $this->onRequestQuestion();
     }
