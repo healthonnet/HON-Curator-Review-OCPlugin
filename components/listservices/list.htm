@@ -27,6 +27,11 @@
                 {% if service.hasPlatform(platform.name) %}
                     {% partial '@itemlist' service=service %}
                 {% endif %}
+                {% if services is empty %}
+                <div class="col-sm-8">
+                    <p>No Service is matching your request</p>
+                </div>
+                {% endif %}
             {% endfor %}
         </div>
 
