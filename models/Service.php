@@ -188,6 +188,9 @@ class Service extends Model
                     ->orWhere('description', 'like', '%'.$search.'%')
                     ->orWhereHas('platforms', function ($query) use ($search){
                         $query->where('url', 'like', '%'.$search.'%');
+                    })
+                    ->orWhereHas('tags', function ($query) use ($search){
+                        $query->where('name', 'like', '%'.$search.'%');
                     });
             });
 
