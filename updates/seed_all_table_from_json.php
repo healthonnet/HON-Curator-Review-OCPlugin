@@ -25,7 +25,11 @@ class SeedFromJSON extends Seeder
         $taggedUrl = [];
         foreach ($labels as $label) {
             $labelName = substr($label, 10, -4);
-            $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'theme'));
+            if (substr($labelName , 0, 2)== 'SL') {
+                $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'financial'));
+            } else {
+                $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'theme'));
+            }
 
             $lines = file($labelsDir.$label);
             foreach ($lines as $line) {
