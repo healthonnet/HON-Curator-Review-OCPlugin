@@ -115,5 +115,55 @@ class SeedFromJSON extends Seeder
             $question->platforms()->attach($platforms);
         }
 
+        $applications = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/applications.json'));
+
+        $androidPlatform = Platform::where('name', 'android')->firstOrFail();
+        $iosPlatform = Platform::where('name', 'ios')->firstOrFail();
+
+        foreach ($applications as $application) {
+            $langs = explode(',', $application->language);
+            foreach ($langs as $lang) {
+                Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
+            }
+            $service = Service::create([
+                'name' => $application->title,
+                'description' => $application->description,
+            ]);
+
+            if (property_exists($application, 'certified')) {
+                if($application->certified) {
+                    $certifiedTag = Tag::where('name', 'certified')->firstOrFail();
+                    $certifiedTag->services()->attach($service->id);
+                }
+            }
+
+            // If keyword exist, attached to service. (prevent useless keywords)
+            if (isset($application->keywords)) {
+                foreach ($application->keywords as $keyword) {
+                    $tag = Tag::where('name', $keyword)->first();
+                    if ($tag) {
+                        $tag->services()->attach($service->id);
+                    }
+                }
+            }
+
+            if ($application->android) {
+                $application->android = trim($application->android, "/");
+                $androidApp = App::create([
+                    'url' => $application->android,
+                    'serv_id' => $service->id,
+                    'plat_id' => $androidPlatform->id
+                ]);
+            }
+
+            if ($application->ios) {
+                $application->ios = trim($application->ios, "/");
+                $iosApp = App::create([
+                    'url' => $application->ios,
+                    'serv_id' => $service->id,
+                    'plat_id' => $iosPlatform->id
+                ]);
+            }
+        }
     }
 }
