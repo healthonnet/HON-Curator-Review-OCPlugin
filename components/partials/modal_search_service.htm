@@ -5,7 +5,7 @@
     </div>
     <div class="modal-body">
         <div class="row">
-        {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'} }) }}
+        {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'}, id: 'nav-search-form' }) }}
             <div class="input-group">
                 <input type="text" class="form-control" name="search" value="{{modal_request}}" placeholder="Search service...">
                 <span class="input-group-btn">
@@ -18,42 +18,49 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <td class="active">Name</td>
-                    <td class="active">Description</td>
-                    <td class="active">Platforms</td>
-                    <td class="active">link</td>
+                    <td class="active col-xs-1 col-sm-2">Name</td>
+                    <td class="active hidden-xs col-sm-7">Description</td>
+                    <td class="active hidden-xs col-xs-1">Platforms</td>
+                    <td class="active col-xs-1 col-sm-2">link</td>
                 </tr>
                 </thead>
                 {% if modal_services|length > 0 %}
                 {% for modal_service in modal_services %}
                 <tr data-request-data="service: {{modal_service.id}}">
-                    <td>{{modal_service.name}}</td>
-                    <td>{{modal_service.description}}</td>
-                    <td>
+                    <td class="active col-xs-1 col-sm-2">{{modal_service.name}}</td>
+                    <td class="active hidden-xs col-sm-7">{{modal_service.description}}</td>
+                    <td class="active hidden-xs col-xs-1">
                     {% for platform in modal_service.platforms %}
                         {% partial '@platform_icon' platform=platform.name %}
                     {% endfor %}
                     </td>
-                    <td><button type="button"
+                    <td class="active col-xs-1 col-sm-2">
+                        <a href="{{ 'services/service'|page({ serviceid: modal_service.id}) }}">
+                        <button type="button"
+                                class="btn btn-info">
+                            See details</button></a>
+
+                        <button type="button"
                                 data-request="onStartReview"
                                 data-request-data="target: '#modal-content-search_'"
                                 data-request-update="'@modal_add_review': '#modal-content-search_'"
-                                class="btn btn-primary">
-                        Review this service</button></td>
+                                class="btn btn-primary breakable">
+                            Review this service</button>
+                    </td>
                 </tr>
                 {% endfor %}
                 {% else %}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="active col-xs-1 col-sm-2"></td>
+                    <td class="active hidden-xs col-sm-7"></td>
+                    <td class="active hidden-xs col-xs-1"></td>
+                    <td class="active col-xs-2"></td>
                 </tr>
                 {% endif %}
             </table>
         </div>
         {% if modal_request %}
-        <div class="row">
+        <div class="row col-xs-offset-1">
             You didn't find it ? <button type="button"
                                          data-request="onStartService"
                                          data-request-data="target: '#modal-content-search_'"

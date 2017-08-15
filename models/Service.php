@@ -91,7 +91,7 @@ class Service extends Model
      * @return string
      */
     public function getPreviewUrlAttribute() {
-        // TODO prefer App Icon over website image
+        // TODO Find a dynamic way to get the better icon
         return $this->apps[0]->preview_url;
     }
 
@@ -208,7 +208,7 @@ class Service extends Model
     {
         $query = Service::prepareSearch($filters, $search);
         // Add
-        return $query->paginate(1);
+        return $query->paginate(6);
     }
 
     /**

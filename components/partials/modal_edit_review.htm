@@ -10,16 +10,14 @@
                 <h4 class="modal-title" id="gridSystemModalLabel">Edit your review about: {{ service.name }}</h4>
             </div>
             <div class="modal-body">
-                {% partial '@form_review' user=user %}
-                <div class="row">
-                    <div class="row">
-                        <div class="col-xs-12">
+                <div class="row col-sm-offset-1">
+                    {% partial '@form_review' user=user %}
+                    <div class="col-sm-10 center-block form-group">
                         <button class=" btn btn-success"
                                 data-request-update="'@modal_question': '#modal-content_{{review.app_id}}'"
                                 data-request="onRequestQuestion"
                                 data-request-data="target: '#modal-content_{{review.app_id}}'">
                             Answer more questions</button>
-                        </div>
                     </div>
                 </div>
             </div>

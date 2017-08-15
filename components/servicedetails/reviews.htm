@@ -1,15 +1,23 @@
 <!-- Available platforms -->
 <div class="row">
     <div class="col-sm-12">
+        {% if service.last_reviews|length > 0%}
         <h4 class="headline"><span>Last reviews</span></h4>
         {% for review in service.last_reviews %}
         <div class="col-sm-4">
-            <p>{{review.user.name}}</p>
-            <p class="rating">{% partial '@stars' rating=review.global_rate %}</p>
-            <p>{{review.title}}</p>
-            <p>{{review.global_comment}}</p>
-            <p>{{review.app.platform.name}}</p>
+            <div class="last-review">
+                <p>By : {{review.user.name |capitalize}}</p>
+                <p>{% partial '@platform_icon' platform=review.app.platform.name %} {{review.title}}</p>
+                <p>{% partial '@stars' rating=review.global_rate %} </p>
+                <p>{{review.global_comment}}</p>
+            </div>
         </div>
         {% endfor %}
+        {% else %}
+        <h4 class="headline"><span>No review</span></h4>
+        <p class="col-sm-12 bg-warning"> Be the first to review this service:  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+            <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.add' | trans }}
+        </button></p>
+        {% endif %}
     </div>
 </div>

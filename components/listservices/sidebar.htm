@@ -4,7 +4,8 @@
     {% if tag.type == type and tag.services|length > 0 %}
     <li class="list-group-item">
         <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}">
-            {{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span></li>
+            {{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span>
+    </li>
     {% endif %}
     {% endfor %}
 {% endmacro %}

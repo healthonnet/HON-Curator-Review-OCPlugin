@@ -41,8 +41,8 @@
 
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-muted">{{ service.description |default('No description given'|_)}}</p>
-
+                    <!-- p class="text-muted">{{ service.description |default('No description given'|_)}}</p-->
+                    <h4 class="headline"><span>Global rate</span></h4>
                     <p class="rating">{% partial '@stars' rating=service.average_rating %}</p>
 
                     <span class="text-muted reviews">({{ service.reviews|length }} reviews)</span>

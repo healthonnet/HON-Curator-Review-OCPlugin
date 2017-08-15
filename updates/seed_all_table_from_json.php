@@ -51,25 +51,30 @@ class SeedFromJSON extends Seeder
         $honConducts = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/honconducts.json'));
 
         foreach ($honConducts as $honConduct) {
-            $langs = explode(',', $honConduct->language);
-            foreach ($langs as $lang) {
-                Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
-            }
+
             $service = Service::create([
                 'name' => $honConduct->name,
                 'description' => $honConduct->description,
             ]);
 
+            $langs = explode(',', $honConduct->language);
+            foreach ($langs as $lang) {
+                if (!empty($lang)) {
+                    $langTag = Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
+                    $langTag->services()->attach($service->id);
+                }
+            }
+
             if ($honConduct->certified) {
                 $certifiedTag = Tag::where('name', 'certified')->firstOrFail();
-                $certifiedTag->services()->attach($service->id);
+                $certifiedTag->services()->sync([$service->id], false);
             }
 
             // If keyword exist, attached to service. (prevent useless keywords)
             foreach ($honConduct->keywords as $keyword) {
                 $tag = Tag::where('name', $keyword)->first();
                 if ($tag) {
-                    $tag->services()->attach($service->id);
+                    $tag->services()->sync([$service->id], false);
                 }
             }
 
@@ -83,9 +88,7 @@ class SeedFromJSON extends Seeder
 
             // then check if the url has hon labels
             if (isset($taggedUrl[$app->url])) {
-                foreach ($taggedUrl[$app->url] as $honTags) {
-                    $service->tags()->attach($honTags);
-                }
+                $service->tags()->sync($taggedUrl[$app->url], false);
             }
         }
 
@@ -121,19 +124,27 @@ class SeedFromJSON extends Seeder
         $iosPlatform = Platform::where('name', 'ios')->firstOrFail();
 
         foreach ($applications as $application) {
-            $langs = explode(',', $application->language);
-            foreach ($langs as $lang) {
-                Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
+            $service = Service::where('name', $application->title)->first();
+            if (empty($service)) {
+                $service = Service::Create([
+                    'name' => $application->title,
+                    'description' => $application->description,
+                ]);
             }
-            $service = Service::create([
-                'name' => $application->title,
-                'description' => $application->description,
-            ]);
+
+
+            $langs = explode(',', trim($application->language, ","));
+            foreach ($langs as $lang) {
+                if (!empty($lang)) {
+                    $langTag = Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
+                    $langTag->services()->sync([$service->id], false);
+                }
+            }
 
             if (property_exists($application, 'certified')) {
                 if($application->certified) {
                     $certifiedTag = Tag::where('name', 'certified')->firstOrFail();
-                    $certifiedTag->services()->attach($service->id);
+                    $certifiedTag->services()->sync([$service->id], false);
                 }
             }
 
@@ -142,7 +153,7 @@ class SeedFromJSON extends Seeder
                 foreach ($application->keywords as $keyword) {
                     $tag = Tag::where('name', $keyword)->first();
                     if ($tag) {
-                        $tag->services()->attach($service->id);
+                        $tag->services()->sync([$service->id], false);
                     }
                 }
             }

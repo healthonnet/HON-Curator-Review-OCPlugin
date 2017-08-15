@@ -23,8 +23,10 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
 
     public function onRun()
     {
-        // TODO Better fail catch
+        $this->addCss('/plugins/hon/honcuratorreview/assets/css/common.css');
+        $this->addCss('/plugins/hon/honcuratorreview/assets/css/serviceDetails.css');
 
+        // TODO Better fail catch
         $this->page['service'] = $this->service = ServiceModel::findOrFail($this->property('id'));
         $this->page['remainingPlatforms'] = $this->service->filterExistingPlatforms();
     }

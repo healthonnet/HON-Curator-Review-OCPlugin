@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="gridSystemModalLabel">Add your review about: {{ service.name }}</h4>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <div class="row col-sm-offset-1">
             {% partial '@form_review' user=user %}
         </div>
     </div>
@@ -22,7 +22,7 @@
         <h4 class="modal-title" id="gridSystemModalLabel">Add your review about: {{ service.name }}</h4>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <div class="row col-sm-offset-1">
             <p>You already reviewed all platforms on this service thanks !</p>
             <p>You can edit or complete them on the <a href="{{ 'services/service'|page({ serviceid: service.id })}}" class="btn btn-success">detail page </a></p>
         </div>

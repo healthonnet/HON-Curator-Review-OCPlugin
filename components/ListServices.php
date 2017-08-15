@@ -20,8 +20,12 @@ class ListServices extends \Cms\Classes\ComponentBase
 
     public function onRun()
     {
+        $this->addCss('/plugins/hon/honcuratorreview/assets/css/listServices.css');
         $this->page['platforms'] = Platform::all();
-        $this->page['tags'] = Tag::all();
+        $this->page['tags'] = Tag::with('services')->get()->sortBy(function($tag)
+        {
+            return $tag->services->count();
+        }, SORT_REGULAR, true);
         $this->page['search'] = Input::get('search');
 
 

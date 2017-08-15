@@ -19,6 +19,7 @@ class ReviewModal extends ServiceModal
 
     public function onRun()
     {
+        $this->addCss('/plugins/hon/honcuratorreview/assets/css/common.css');
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/customforms.css');
         $request = Input::get('modal_search', Input::get('search'));
         if ($request) {

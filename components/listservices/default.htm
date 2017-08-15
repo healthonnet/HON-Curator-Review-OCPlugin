@@ -15,10 +15,10 @@
 {{ form_close() }}
 
 <div class="row">
-    <div class="col-sm-4">
-        {% partial '@sidebar' %}
+    <div class="col-sm-8 col-sm-push-4">
+        {% partial '@list' %}
     </div>
-    <div class="col-sm-8">
-    {% partial '@list' %}
+    <div class="col-sm-4 col-sm-pull-8">
+        {% partial '@sidebar' %}
     </div>
 </div>
