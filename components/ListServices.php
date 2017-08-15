@@ -22,12 +22,8 @@ class ListServices extends \Cms\Classes\ComponentBase
     {
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/listServices.css');
         $this->page['platforms'] = Platform::all();
-        $this->page['tags'] = Tag::with('services')->get()->sortBy(function($tag)
-        {
-            return $tag->services->count();
-        }, SORT_REGULAR, true);
+        $this->page['tags'] = Tag::all()->sortBy('name');
         $this->page['search'] = Input::get('search');
-
 
         // Clean unknown tags
         $filters = Tag::cleanInput(Input::get('filters'));

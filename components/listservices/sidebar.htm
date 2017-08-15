@@ -36,7 +36,7 @@
                 Themes
             </a>
         </div>
-        <div id="shopNavOne" class="panel-collapse collapse in">
+        <div id="shopNavOne" class="panel-collapse collapse in" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
                 {{ _self.listTags(tags, 'theme', filters, search) }}
             </ul>
@@ -48,7 +48,7 @@
                 Languages
             </a>
         </div>
-        <div id="shopNavTwo" class="panel-collapse collapse">
+        <div id="shopNavTwo" class="panel-collapse collapse"  style="max-height: 300px;">
             <ul class="list-group filter-list-group">
                 {{ _self.listTags(tags, 'language', filters, search) }}
             </ul>
@@ -60,9 +60,33 @@
                 Labels
             </a>
         </div>
-        <div id="shopNavThree" class="panel-collapse collapse">
+        <div id="shopNavThree" class="panel-collapse collapse" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
                 {{ _self.listTags(tags, 'label', filters, search) }}
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavFour" class="collapsed">
+                Audience
+            </a>
+        </div>
+        <div id="shopNavFour" class="panel-collapse collapse"  style="max-height: 300px;">
+            <ul class="list-group filter-list-group">
+                {{ _self.listTags(tags, 'audience', filters, search) }}
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavFive" class="collapsed">
+                Type
+            </a>
+        </div>
+        <div id="shopNavFive" class="panel-collapse collapse"  style="max-height: 300px;">
+            <ul class="list-group filter-list-group">
+                {{ _self.listTags(tags, 'type', filters, search) }}
             </ul>
         </div>
     </div>
