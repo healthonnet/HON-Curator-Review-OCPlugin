@@ -1,8 +1,12 @@
 <!-- Filters -->
 <ul class="nav nav-tabs nav-justified">
-    <li class="active"><a href="#all" data-toggle="tab">All</a></li>
-    {% for platform in platforms %}
-    <li><a href="#{{platform.name}}" data-toggle="tab">{{platform.name}}</a></li>
+    <li  class="{{ platform ? '': 'active' }}">
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}">
+            All</a></li>
+    {% for oPlatform in platforms %}
+    <li class="{{ (platform == oPlatform.name) ? 'active': '' }}">
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}&platform={{oPlatform.name}}">
+            {{oPlatform.name}}</a></li>
     {% endfor %}
 </ul>
 

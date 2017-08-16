@@ -177,11 +177,17 @@ class Service extends Model
      * @param Input[]
      * @return Builder $query
      */
-    public static function prepareSearch($filters, $search, $sortBy = 'reviews')
+    public static function prepareSearch($filters, $search, $platform, $sortBy)
     {
         // Prepare query
         $query = Service::query();
 
+        // Add platform
+        if ($platform) {
+            $query->whereHas('platforms', function ($query) use ($platform) {
+                $query->where('name', '=', $platform);
+            });
+        }
 
         // Add filters
         if ($filters) {
@@ -222,9 +228,9 @@ class Service extends Model
      * Get Search results with smart pagination
      * @return Service[]
      */
-    public static function searchWithPagination($filters, $search)
+    public static function searchWithPagination($filters, $search, $platform = false, $sortBy = 'reviews')
     {
-        $query = Service::prepareSearch($filters, $search);
+        $query = Service::prepareSearch($filters, $search, $platform, $sortBy);
 
         return $query->paginate(6);
     }
@@ -233,9 +239,9 @@ class Service extends Model
      * Get Search results
      * @return Service[]
      */
-    public static function search($filters, $search)
+    public static function search($filters, $search, $platform = false, $sortBy = 'reviews')
     {
-        $query = Service::prepareSearch($filters, $search);
+        $query = Service::prepareSearch($filters, $search, $platform, $sortBy);
 
         return $query->get();
     }

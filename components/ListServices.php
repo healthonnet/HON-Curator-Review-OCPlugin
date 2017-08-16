@@ -22,13 +22,16 @@ class ListServices extends \Cms\Classes\ComponentBase
     {
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/listServices.css');
         $this->page['platforms'] = Platform::all();
+
+        // TODO SORT by translation (not key)
         $this->page['tags'] = Tag::all()->sortBy('name');
         $this->page['search'] = Input::get('search');
+        $this->page['platform'] = Input::get('platform');
 
         // Clean unknown tags
         $filters = Tag::cleanInput(Input::get('filters'));
         $this->page['filters'] = $filters;
-        $this->page['services'] = $this->services = Service::searchWithPagination($filters, $this->page['search']);
+        $this->page['services'] = $this->services = Service::searchWithPagination($filters, $this->page['search'], $this->page['platform']);
     }
 
 }
