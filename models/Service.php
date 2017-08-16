@@ -87,6 +87,17 @@ class Service extends Model
     ];
 
     /**
+     * Scope for reviews count
+     */
+    public function scopeReviewsCount($query){
+        return $query->leftjoin('hon_honcuratorreview_services_platforms',
+            'hon_honcuratorreview_services_platforms.serv_id','=','hon_honcuratorreview_services.id')
+            ->leftjoin('hon_honcuratorreview_reviews',
+                'hon_honcuratorreview_reviews.app_id','=','hon_honcuratorreview_services_platforms.id')
+            ->selectRaw('hon_honcuratorreview_services.*, count(hon_honcuratorreview_reviews.id) as count');
+    }
+
+    /**
      * Custom accessor for preview_url
      * @return string
      */
@@ -166,10 +177,11 @@ class Service extends Model
      * @param Input[]
      * @return Builder $query
      */
-    public static function prepareSearch($filters, $search)
+    public static function prepareSearch($filters, $search, $sortBy = 'reviews')
     {
         // Prepare query
         $query = Service::query();
+
 
         // Add filters
         if ($filters) {
@@ -193,10 +205,16 @@ class Service extends Model
                         $query->where('name', 'like', '%'.$search.'%');
                     });
             });
-
         }
 
-        return $query;
+        $preparedQuery = $query;
+
+        if ($sortBy == 'reviews') {
+            $query->reviewsCount();
+            $query->groupBy('hon_honcuratorreview_services.id');
+            $preparedQuery = $query->orderBy('count', 'desc');
+        }
+        return  $preparedQuery;
     }
 
 
@@ -207,7 +225,7 @@ class Service extends Model
     public static function searchWithPagination($filters, $search)
     {
         $query = Service::prepareSearch($filters, $search);
-        // Add
+
         return $query->paginate(6);
     }
 
@@ -218,6 +236,7 @@ class Service extends Model
     public static function search($filters, $search)
     {
         $query = Service::prepareSearch($filters, $search);
+
         return $query->get();
     }
 }
