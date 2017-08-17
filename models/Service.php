@@ -97,6 +97,45 @@ class Service extends Model
             ->selectRaw('hon_honcuratorreview_services.*, count(hon_honcuratorreview_reviews.id) as count');
     }
 
+    public function scopeMatchRequest($query, $filters, $search, $platform ) {
+        // Add platform
+        if ($platform) {
+            $query->whereHas('platforms', function ($query) use ($platform) {
+                $query->where('name', '=', $platform);
+            });
+        }
+
+        // Add filters
+        if ($filters) {
+            $query->leftjoin('hon_honcuratorreview_services_tags as st',
+                'hon_honcuratorreview_services.id','=','st.service_id')
+            ->leftjoin('hon_honcuratorreview_tags',
+                'hon_honcuratorreview_tags.id','=','st.tag_id')
+            ->whereIn('hon_honcuratorreview_tags.name',explode('|', $filters))
+            ->groupBy('st.service_id')
+            ->havingRaw('COUNT(DISTINCT st.tag_id) = '.count(explode('|', $filters)));
+        }
+
+        // Add search field
+        if ($search) {
+            $query->where(function($query) use ($search){
+                $query->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%')
+                    ->orWhereHas('platforms', function ($query) use ($search){
+                        $query->where('url', 'like', '%'.$search.'%');
+                    })
+                    ->orWhereHas('tags', function ($query) use ($search){
+                        $query->where('name', 'like', '%'.$search.'%');
+                    });
+            });
+        }
+
+        $query->reviewsCount();
+        $query->groupBy('hon_honcuratorreview_services.id');
+        return $query;
+    }
+
     /**
      * Custom accessor for preview_url
      * @return string
@@ -177,47 +216,15 @@ class Service extends Model
      * @param Input[]
      * @return Builder $query
      */
-    public static function prepareSearch($filters, $search, $platform, $sortBy)
+    public static function prepareSearch($filters, $search, $platform, $sortBy = false)
     {
         // Prepare query
         $query = Service::query();
 
-        // Add platform
-        if ($platform) {
-            $query->whereHas('platforms', function ($query) use ($platform) {
-                $query->where('name', '=', $platform);
-            });
-        }
-
-        // Add filters
-        if ($filters) {
-            foreach (explode('|', $filters) as $filter) {
-                $query->whereHas('tags', function ($query) use ($filter){
-                    $query->where('name', $filter);
-                });
-            }
-        }
-
-        // Add search field
-        if ($search) {
-            $query->where(function($query) use ($search){
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('description', 'like', '%'.$search.'%')
-                    ->orWhere('description', 'like', '%'.$search.'%')
-                    ->orWhereHas('platforms', function ($query) use ($search){
-                        $query->where('url', 'like', '%'.$search.'%');
-                    })
-                    ->orWhereHas('tags', function ($query) use ($search){
-                        $query->where('name', 'like', '%'.$search.'%');
-                    });
-            });
-        }
-
-        $preparedQuery = $query;
+        $preparedQuery = $query->matchRequest($filters, $search, $platform);
 
         if ($sortBy == 'reviews') {
-            $query->reviewsCount();
-            $query->groupBy('hon_honcuratorreview_services.id');
+
             $preparedQuery = $query->orderBy('count', 'desc');
         }
         return  $preparedQuery;
