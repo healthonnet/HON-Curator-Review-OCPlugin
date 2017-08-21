@@ -9,6 +9,12 @@
             {% else %}
                 {{'No reviews'|_}}</p>
             {% endif %}
+            {% for app in service.apps %}
+            {% if app.average_rating %}
+            <h6 class="headline"><span>{{app.platform.name}} ratings</span></h6>
+                {% partial '@stars' rating=app.average_rating %}
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>

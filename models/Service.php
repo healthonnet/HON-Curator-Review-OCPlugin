@@ -155,10 +155,20 @@ class Service extends Model
         }
 
         $value = 0;
+        $reviewedPlatorms = 0;
         foreach ($this->apps as $app){
-            $value += $app->average_rating;
+            $appAverage  = $app->average_rating;
+            if ($appAverage) {
+                $value += $appAverage;
+                $reviewedPlatorms++;
+            }
         }
-        return $value / count($this->apps);
+
+        if (empty($reviewedPlatorms)) {
+            return 0;
+        }
+
+        return $value / $reviewedPlatorms;
     }
 
     /**
