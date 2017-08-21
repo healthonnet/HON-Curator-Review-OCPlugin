@@ -46,5 +46,6 @@
 {% set urlSearch= search ? {'search': search} %}
 
 {{ services.appends(urlFilters).appends(urlSearch).render|raw }}
+{% if not services is empty %}
 <p><span>{{services.total}} results</span></p>
-
+{% endif %}
