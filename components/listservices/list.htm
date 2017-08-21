@@ -46,4 +46,5 @@
 {% set urlSearch= search ? {'search': search} %}
 
 {{ services.appends(urlFilters).appends(urlSearch).render|raw }}
+<p><span>{{services.total}} results</span></p>
 
