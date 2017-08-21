@@ -32,7 +32,13 @@ class ListServices extends \Cms\Classes\ComponentBase
         $this->page['services'] = Service::searchWithPagination($filters, $this->page['search'], $this->page['platform']);
 
         // TODO SORT by translation (not key)
-        $this->page['tags'] = Tag::all()->sortBy('name');
+        $tags = Tag::all()->sortBy('name');
+        $this->page['tags'] = array();
+        $typeTag = array();
+        foreach ($tags as $tag) {
+            $typeTag[$tag->type][] = $tag;
+        }
+        $this->page['tags'] = $typeTag;
 
     }
 

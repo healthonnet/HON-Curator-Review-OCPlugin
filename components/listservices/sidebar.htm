@@ -1,12 +1,10 @@
 
-{% macro listTags(tags, type, filters, search, platform) %}
+{% macro listTags(tags, filters, search, platform) %}
     {% for tag in tags %}
-    {% if tag.type == type and tag.services|length > 0 %}
     <li class="list-group-item">
         <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}{{platform ? '&platform='~platform}}">
-            {{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span>
+            {{ tag.name}}</a> <!-- span class="badge">{#tag.services().count#}</span -->
     </li>
-    {% endif %}
     {% endfor %}
 {% endmacro %}
 
@@ -38,7 +36,7 @@
         </div>
         <div id="shopNavOne" class="panel-collapse collapse in" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'theme', filters, search, platform) }}
+                {{ _self.listTags(tags.theme, filters, search, platform) }}
             </ul>
         </div>
     </div>
@@ -50,7 +48,7 @@
         </div>
         <div id="shopNavTwo" class="panel-collapse collapse"  style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'language', filters, search, platform) }}
+                {{ _self.listTags(tags.language, filters, search, platform) }}
             </ul>
         </div>
     </div>
@@ -62,7 +60,7 @@
         </div>
         <div id="shopNavThree" class="panel-collapse collapse" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'label', filters, search, platform) }}
+                {{ _self.listTags(tags.label, filters, search, platform) }}
             </ul>
         </div>
     </div>
@@ -74,7 +72,7 @@
         </div>
         <div id="shopNavFour" class="panel-collapse collapse"  style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'audience', filters, search, platform) }}
+                {{ _self.listTags(tags.audience, filters, search, platform) }}
             </ul>
         </div>
     </div>
@@ -86,7 +84,7 @@
         </div>
         <div id="shopNavFive" class="panel-collapse collapse"  style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'type', filters, search, platform) }}
+                {{ _self.listTags(tags.type, filters, search, platform) }}
             </ul>
         </div>
     </div>
