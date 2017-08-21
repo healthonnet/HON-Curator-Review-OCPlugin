@@ -27,9 +27,9 @@
                 {% if modal_services|length > 0 %}
                 {% for modal_service in modal_services %}
                 <tr data-request-data="service: {{modal_service.id}}">
-                    <td class="active col-xs-1 col-sm-2">{{modal_service.name}}</td>
-                    <td class="active hidden-xs col-sm-7">{{modal_service.description}}</td>
-                    <td class="active hidden-xs col-xs-1">
+                    <td class="col-xs-1 col-sm-2">{{modal_service.name}}</td>
+                    <td class="hidden-xs col-sm-7">{{modal_service.description|slice(0, 150) ~ '...'}}</td>
+                    <td class="hidden-xs col-xs-1">
                     {% for platform in modal_service.platforms %}
                         {% partial '@platform_icon' platform=platform.name %}
                     {% endfor %}
@@ -37,7 +37,7 @@
                     <td class="active col-xs-1 col-sm-2">
                         <a href="{{ 'services/service'|page({ serviceid: modal_service.id}) }}">
                         <button type="button"
-                                class="btn btn-info">
+                                class="btn btn-info" style="margin-bottom: 5px">
                             See details</button></a>
 
                         <button type="button"
@@ -45,7 +45,7 @@
                                 data-request-data="target: '#modal-content-search_'"
                                 data-request-update="'@modal_add_review': '#modal-content-search_'"
                                 class="btn btn-primary breakable">
-                            Review this service</button>
+                            Review </button>
                     </td>
                 </tr>
                 {% endfor %}
