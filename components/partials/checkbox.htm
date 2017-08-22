@@ -1,9 +1,8 @@
 <!-- You can create and extend partial form response types.
-     You must send informations as 'response' or Update Service controller -->
-<div class="col-sm-8">
-{{ form_label('response', 'Yes or No ?')}}
-<div class="switch">
-    <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" value="true" name="response" type="checkbox">
-    <label for="cmn-toggle-1"></label>
-</div>
+     You must send informations as 'response' or Update Service controller to fits your needs -->
+<div class="switch-field">
+    <input  type="radio" id="switch_left" name="response" value="true" />
+    <label class="full" for="switch_left">Yes</label>
+    <input type="radio" id="switch_right" name="response" value="false" />
+    <label class="full" for="switch_right">No</label>
 </div>

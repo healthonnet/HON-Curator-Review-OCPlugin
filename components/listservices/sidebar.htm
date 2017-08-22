@@ -1,12 +1,10 @@
 
-{% macro listTags(tags, type, filters, search) %}
+{% macro listTags(tags, filters, search, platform) %}
     {% for tag in tags %}
-    {% if tag.type == type and tag.services|length > 0 %}
     <li class="list-group-item">
-        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}">
-           {{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a> <span class="badge">{{ tag.services|length}}</span>
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}{{platform ? '&platform='~platform}}">
+            {{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a> <!-- span class="badge">{#tag.services().count#}</span -->
     </li>
-    {% endif %}
     {% endfor %}
 {% endmacro %}
 
@@ -20,7 +18,7 @@
         {% for filter in filters|split('|') %}
             {% set aFilters=filters|join('|') %}
             <a style="margin: 3px" class="btn btn-sm btn-default"
-               href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')}}{{search ? '&search='~search}}">
+               href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')}}{{search ? '&search='~search}}{{platform ? '&platform='~platform}}">
                 <span>{{ "hon.honcuratorreview::lang.labels.#{filter}" | trans }}</span> <i class="fa fa-close"></i></a>
         {% endfor %}
     </div>
@@ -36,9 +34,9 @@
                 {{ "hon.honcuratorreview::lang.search.themes" | trans }}
             </a>
         </div>
-        <div id="shopNavOne" class="panel-collapse collapse in">
+        <div id="shopNavOne" class="panel-collapse collapse in" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'theme', filters, search) }}
+                {{ _self.listTags(tags.theme, filters, search, platform) }}
             </ul>
         </div>
     </div>
@@ -48,9 +46,9 @@
                 {{ "hon.honcuratorreview::lang.search.languages" | trans }}
             </a>
         </div>
-        <div id="shopNavTwo" class="panel-collapse collapse">
+        <div id="shopNavTwo" class="panel-collapse collapse"  style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'language', filters, search) }}
+                {{ _self.listTags(tags.language, filters, search, platform) }}
             </ul>
         </div>
     </div>
@@ -60,9 +58,33 @@
                 {{ "hon.honcuratorreview::lang.search.labels" | trans }}
             </a>
         </div>
-        <div id="shopNavThree" class="panel-collapse collapse">
+        <div id="shopNavThree" class="panel-collapse collapse" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags, 'label', filters, search) }}
+                {{ _self.listTags(tags.label, filters, search, platform) }}
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavFour" class="collapsed">
+                Audience
+            </a>
+        </div>
+        <div id="shopNavFour" class="panel-collapse collapse"  style="max-height: 300px;">
+            <ul class="list-group filter-list-group">
+                {{ _self.listTags(tags.audience, filters, search, platform) }}
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavFive" class="collapsed">
+                Type
+            </a>
+        </div>
+        <div id="shopNavFive" class="panel-collapse collapse"  style="max-height: 300px;">
+            <ul class="list-group filter-list-group">
+                {{ _self.listTags(tags.type, filters, search, platform) }}
             </ul>
         </div>
     </div>

@@ -22,8 +22,11 @@
 
 
 <div class="col-sm-10 center-block form-group">
-    <h4>{{ "hon.honcuratorreview::lang.review.ownership" | trans }}</h4> 
-    {{ form_checkbox('owner', true, false, {class: 'form-control'}) }}   
-    {{ form_label(form.name, "hon.honcuratorreview::lang.review.owner" | trans) }}      
+    <h4>{{ "hon.honcuratorreview::lang.review.ownership" | trans }}</h4>
+    {{ form_label(form.name, "hon.honcuratorreview::lang.review.owner" | trans) }}
+    <div class="switch">
+        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" value="true" name="owner" type="checkbox">
+        <label for="cmn-toggle-1"></label>
+    </div>
     <small class="info">{{ "hon.honcuratorreview::lang.review.contact_you" | trans }}</small>
 </div>

@@ -5,7 +5,7 @@
         {% for app in apps %}
         <div class="col-sm-4">
             <p>{{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</p>
-            <img src="{{app.preview_url}}" alt="{{app.name}}" >
+            <img src="{{app.preview_url}}" class="img-responsive" alt="{{app.name}}" >
             <p><a href="{{app.url}}">{{app.url[:20] ~ '...' }}</a></p>
             {% if user %}
                 {% if  user.reviews().where('app_id', app.id).first() is not empty %}

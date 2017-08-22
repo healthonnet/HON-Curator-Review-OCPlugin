@@ -16,3 +16,7 @@ fields:
             label: Label
             language: Language
             financial: Financial
+            type: Type
+            audience: Audience
+
+

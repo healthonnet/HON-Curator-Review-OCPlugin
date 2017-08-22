@@ -1,8 +1,12 @@
 <!-- Filters -->
 <ul class="nav nav-tabs nav-justified">
-    <li class="active"><a href="#all" data-toggle="tab">{{ "hon.honcuratorreview::lang.platform.all" | trans }}</a></li>
-    {% for platform in platforms %}
-    <li><a href="#{{platform.name}}" data-toggle="tab">{{ "hon.honcuratorreview::lang.platform.#{platform.name}" | trans }}</a></li>
+    <li  class="{{ platform ? '': 'active' }}">
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}">
+            {{ "hon.honcuratorreview::lang.platform.all" | trans }}</a></li>
+    {% for oPlatform in platforms %}
+    <li class="{{ (platform == oPlatform.name) ? 'active': '' }}">
+        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}&platform={{oPlatform.name}}">
+            {{ "hon.honcuratorreview::lang.platform.#{oPlatform.name}" | trans }}</a></li>
     {% endfor %}
 </ul>
 
@@ -42,4 +46,6 @@
 {% set urlSearch= search ? {'search': search} %}
 
 {{ services.appends(urlFilters).appends(urlSearch).render|raw }}
-
+{% if not services is empty %}
+<p><span>{{services.total}} results</span></p>
+{% endif %}

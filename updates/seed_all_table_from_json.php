@@ -48,13 +48,13 @@ class SeedFromJSON extends Seeder
             Tag::create($this->object_to_array($tag));
         }
 
-        $honConducts = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/honconducts.json'));
+        $honConducts = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/honconducts2.json'));
 
         foreach ($honConducts as $honConduct) {
 
             $service = Service::create([
-                'name' => $honConduct->name,
-                'description' => $honConduct->description,
+                'name' => html_entity_decode($honConduct->name),
+                'description' => html_entity_decode($honConduct->description),
             ]);
 
             $langs = explode(',', $honConduct->language);
@@ -127,8 +127,8 @@ class SeedFromJSON extends Seeder
             $service = Service::where('name', $application->title)->first();
             if (empty($service)) {
                 $service = Service::Create([
-                    'name' => $application->title,
-                    'description' => $application->description,
+                    'name' => html_entity_decode ( $application->title),
+                    'description' => html_entity_decode ( $application->description),
                 ]);
             }
 

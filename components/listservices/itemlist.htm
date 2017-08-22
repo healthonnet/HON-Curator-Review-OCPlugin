@@ -4,6 +4,7 @@
         <a href="{{ 'services/service'|page({ serviceid: service.id}) }}"><h6>{{ service.name }}</h6></a>
         <p>
             {% partial '@stars' rating=service.average_rating %}
+            <span class="text-muted reviews">({{ service.reviews|length }})</span>
         </p>
     </div>
 </div>

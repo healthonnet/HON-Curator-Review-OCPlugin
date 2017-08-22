@@ -87,6 +87,56 @@ class Service extends Model
     ];
 
     /**
+     * Scope for reviews count
+     */
+    public function scopeReviewsCount($query){
+        return $query->leftjoin('hon_honcuratorreview_services_platforms',
+            'hon_honcuratorreview_services_platforms.serv_id','=','hon_honcuratorreview_services.id')
+            ->leftjoin('hon_honcuratorreview_reviews',
+                'hon_honcuratorreview_reviews.app_id','=','hon_honcuratorreview_services_platforms.id')
+            ->selectRaw('hon_honcuratorreview_services.*, count(hon_honcuratorreview_reviews.id) as count');
+    }
+
+    public function scopeMatchRequest($query, $filters, $search, $platform ) {
+        // Add platform
+        if ($platform) {
+            $query->whereHas('platforms', function ($query) use ($platform) {
+                $query->where('name', '=', $platform);
+            });
+        }
+
+        // Add filters
+        if ($filters) {
+            $query->leftjoin('hon_honcuratorreview_services_tags as st',
+                'hon_honcuratorreview_services.id','=','st.service_id')
+            ->leftjoin('hon_honcuratorreview_tags',
+                'hon_honcuratorreview_tags.id','=','st.tag_id')
+            ->whereIn('hon_honcuratorreview_tags.name',explode('|', $filters))
+            ->groupBy('st.service_id')
+            ->havingRaw('COUNT(DISTINCT st.tag_id) = '.count(explode('|', $filters)));
+        }
+
+        // Add search field
+        if ($search) {
+            $query->where(function($query) use ($search){
+                $query->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%')
+                    ->orWhereHas('platforms', function ($query) use ($search){
+                        $query->where('url', 'like', '%'.$search.'%');
+                    })
+                    ->orWhereHas('tags', function ($query) use ($search){
+                        $query->where('name', 'like', '%'.$search.'%');
+                    });
+            });
+        }
+
+        $query->reviewsCount();
+        $query->groupBy('hon_honcuratorreview_services.id');
+        return $query;
+    }
+
+    /**
      * Custom accessor for preview_url
      * @return string
      */
@@ -105,10 +155,20 @@ class Service extends Model
         }
 
         $value = 0;
+        $reviewedPlatorms = 0;
         foreach ($this->apps as $app){
-            $value += $app->average_rating;
+            $appAverage  = $app->average_rating;
+            if ($appAverage) {
+                $value += $appAverage;
+                $reviewedPlatorms++;
+            }
         }
-        return $value / count($this->apps);
+
+        if (empty($reviewedPlatorms)) {
+            return 0;
+        }
+
+        return $value / $reviewedPlatorms;
     }
 
     /**
@@ -166,37 +226,18 @@ class Service extends Model
      * @param Input[]
      * @return Builder $query
      */
-    public static function prepareSearch($filters, $search)
+    public static function prepareSearch($filters, $search, $platform, $sortBy = false)
     {
         // Prepare query
         $query = Service::query();
 
-        // Add filters
-        if ($filters) {
-            foreach (explode('|', $filters) as $filter) {
-                $query->whereHas('tags', function ($query) use ($filter){
-                    $query->where('name', $filter);
-                });
-            }
+        $preparedQuery = $query->matchRequest($filters, $search, $platform);
+
+        if ($sortBy == 'reviews') {
+
+            $preparedQuery = $query->orderBy('count', 'desc');
         }
-
-        // Add search field
-        if ($search) {
-            $query->where(function($query) use ($search){
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orWhere('description', 'like', '%'.$search.'%')
-                    ->orWhere('description', 'like', '%'.$search.'%')
-                    ->orWhereHas('platforms', function ($query) use ($search){
-                        $query->where('url', 'like', '%'.$search.'%');
-                    })
-                    ->orWhereHas('tags', function ($query) use ($search){
-                        $query->where('name', 'like', '%'.$search.'%');
-                    });
-            });
-
-        }
-
-        return $query;
+        return  $preparedQuery;
     }
 
 
@@ -204,10 +245,10 @@ class Service extends Model
      * Get Search results with smart pagination
      * @return Service[]
      */
-    public static function searchWithPagination($filters, $search)
+    public static function searchWithPagination($filters, $search, $platform = false, $sortBy = 'reviews')
     {
-        $query = Service::prepareSearch($filters, $search);
-        // Add
+        $query = Service::prepareSearch($filters, $search, $platform, $sortBy);
+
         return $query->paginate(6);
     }
 
@@ -215,9 +256,10 @@ class Service extends Model
      * Get Search results
      * @return Service[]
      */
-    public static function search($filters, $search)
+    public static function search($filters, $search, $platform = false, $sortBy = 'reviews')
     {
-        $query = Service::prepareSearch($filters, $search);
+        $query = Service::prepareSearch($filters, $search, $platform, $sortBy);
+
         return $query->get();
     }
 }

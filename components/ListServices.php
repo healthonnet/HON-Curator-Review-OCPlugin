@@ -22,17 +22,24 @@ class ListServices extends \Cms\Classes\ComponentBase
     {
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/listServices.css');
         $this->page['platforms'] = Platform::all();
-        $this->page['tags'] = Tag::with('services')->get()->sortBy(function($tag)
-        {
-            return $tag->services->count();
-        }, SORT_REGULAR, true);
-        $this->page['search'] = Input::get('search');
 
+        $this->page['search'] = Input::get('search');
+        $this->page['platform'] = Input::get('platform');
 
         // Clean unknown tags
         $filters = Tag::cleanInput(Input::get('filters'));
         $this->page['filters'] = $filters;
-        $this->page['services'] = $this->services = Service::searchWithPagination($filters, $this->page['search']);
+        $this->page['services'] = Service::searchWithPagination($filters, $this->page['search'], $this->page['platform']);
+
+        // TODO SORT by translation (not key)
+        $tags = Tag::all()->sortBy('name');
+        $this->page['tags'] = array();
+        $typeTag = array();
+        foreach ($tags as $tag) {
+            $typeTag[$tag->type][] = $tag;
+        }
+        $this->page['tags'] = $typeTag;
+
     }
 
 }

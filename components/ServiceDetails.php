@@ -97,10 +97,12 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
 
     public function onRequestQuestion()
     {
+
         $review = $this->page['review'];
         if (!$review) {
             $review = Review::findOrFail(Input::get('review_id'));
         }
+
         $target = Input::get('target');
         if ($target) {
             $this->page['target'] = $target;
@@ -117,9 +119,9 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $review = Review::findOrFail(Input::get('review_id'));
         $question = Question::findOrFail(Input::get('question_id'));
         $response = Input::get('response');
-        // Prevent already exist
-        if (!$review->questions()->where('q_id', $question->id)->first()) {
-            $review->questions()->attach([$question->id => ['value' =>  $response]]);
+
+        if (!empty($response)) {
+            $review->questions()->sync([$question->id => ['value' =>  $response]], false);
         }
 
         return $this->onRequestQuestion();
