@@ -46,12 +46,12 @@ class SeedFromJSON extends Seeder
             }
         }
 
-        $tags = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/hon_tags.json'));
+        $tags = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/whitelist_tags.json'));
         foreach ($tags as $tag) {
             Tag::create($this->object_to_array($tag));
         }
 
-        $honConducts = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/honconducts2.json'));
+        $honConducts = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/honconducts.json'));
 
         foreach ($honConducts as $honConduct) {
 
