@@ -19,26 +19,29 @@ class SeedFromJSON extends Seeder
 
     public function run()
     {
-        $labelsDir = './plugins/hon/honcuratorreview/updates/labels/';
-        $labels = array_diff(scandir ($labelsDir), array('..', '.'));
-        // dd($labels);
         $taggedUrl = [];
-        foreach ($labels as $label) {
-            $labelName = substr($label, 10, -4);
-            if (substr($labelName , 0, 2)== 'SL') {
-                $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'financial'));
-            } else {
-                $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'theme'));
-            }
 
-            $lines = file($labelsDir.$label);
-            foreach ($lines as $line) {
-                $line = trim($line);
-                $line = trim($line, "/");
-                if(isset($taggedUrl[trim($line)])){
-                    $taggedUrl[$line][] = $tag->id;
+        $labelsDir = './plugins/hon/honcuratorreview/updates/labels/';
+        if (file_exists($labelsDir)) {
+            $labels = array_diff(scandir ($labelsDir), array('..', '.'));
+            // dd($labels);
+            foreach ($labels as $label) {
+                $labelName = substr($label, 10, -4);
+                if (substr($labelName , 0, 2)== 'SL') {
+                    $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'financial'));
                 } else {
-                    $taggedUrl[$line] = [$tag->id];
+                    $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'theme'));
+                }
+
+                $lines = file($labelsDir.$label);
+                foreach ($lines as $line) {
+                    $line = trim($line);
+                    $line = trim($line, "/");
+                    if(isset($taggedUrl[trim($line)])){
+                        $taggedUrl[$line][] = $tag->id;
+                    } else {
+                        $taggedUrl[$line] = [$tag->id];
+                    }
                 }
             }
         }
