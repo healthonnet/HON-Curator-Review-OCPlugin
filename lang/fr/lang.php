@@ -87,6 +87,7 @@
         'create' => 'Créer',  
         'filter' => 'Filtres activés',
         'name' => 'Sites Web / Apps',
+        'ratings_on' => 'Notes sur',
     ],
     'labels' => [
         'certified' => 'Certifié', 

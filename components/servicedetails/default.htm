@@ -65,13 +65,16 @@
                 </div>
 
             </div>
-
-
-            {% partial '@details' service=service %}
+            <div class="row">
+                <div class="col-sm-12">
+                   <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.detail" | trans }}</span></h4>
+                    <p>{{ service.description |default('No description given'|_)}}</p>
+                </div>
+            </div>
 
             {% partial '@stats' service=service %}
-
             {% partial '@reviews' service=service %}
+            {% partial '@details' service=service %}
 
         </div>
     </div>

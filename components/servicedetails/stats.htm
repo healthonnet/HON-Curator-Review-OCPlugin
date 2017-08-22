@@ -1,20 +1,24 @@
 <!-- Item Description -->
+{% if service.average_rating %}
 <div class="row">
     <div class="col-sm-12">
         <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.statistics" | trans }}</span></h4>
         <div class="col-sm-12">
             <h6 class="headline"><span>{{ "hon.honcuratorreview::lang.service.global_rate" | trans }}</span></h6>
-            {% if service.average_rating %}
-                {% partial '@stars' rating=service.average_rating %}
-            {% else %}
-                {{ "hon.honcuratorreview::lang.service.no_rate" | trans }}</p>
-            {% endif %}
+            {% partial '@stars' rating=service.average_rating %}
+
+
+        </div>
+        <div class="col-sm-12 row">
             {% for app in service.apps %}
-            {% if app.average_rating %}
-            <h6 class="headline"><span>{{app.platform.name}} ratings</span></h6>
-                {% partial '@stars' rating=app.average_rating %}
-            {% endif %}
+                {% if app.average_rating %}
+                <div class="col-sm-4">
+                    <h6 class="headline"><span>{{ "hon.honcuratorreview::lang.service.ratings_on" | trans }} {{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</span></h6>
+                    {% partial '@stars' rating=app.average_rating %}
+                </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
 </div>
+{% endif %}
