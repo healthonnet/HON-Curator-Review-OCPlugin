@@ -26,7 +26,7 @@
         'service_name' => 'Service Name',
         'description' => 'Description',
         'general_detail' => 'General details',
-        'additional' => 'Additional Questions about:',
+        'additional' => 'Additional Questions:',
         'no_more' => 'No more questions for you thanks !',
         'next' => 'Next Question',
         'edit_about' => 'Edit your review about:',
@@ -40,6 +40,10 @@
         'star4' => '4 stars',
         'star5' => '5 stars',
         'reviews' => 'Reviews',
+        'answers' => [
+            'yes' => 'Yes',
+            'no' => 'No',
+        ],
     ],
     'platform' => [
         'add' => 'Add a platform',
@@ -69,6 +73,7 @@
         'themes' => 'Themes',
         'languages' => 'Languages',
         'labels' => 'Labels',
+        'results' => 'results',
         'fieldsearch' => 'Search service...',
     ],
     'service' => [

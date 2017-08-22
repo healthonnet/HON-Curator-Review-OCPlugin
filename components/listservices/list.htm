@@ -47,5 +47,5 @@
 
 {{ services.appends(urlFilters).appends(urlSearch).render|raw }}
 {% if not services is empty %}
-<p><span>{{services.total}} results</span></p>
+<p><span>{{services.total}} {{ "hon.honcuratorreview::lang.search.results" | trans }}</span></p>
 {% endif %}

@@ -26,7 +26,7 @@
         'service_name' => 'Nom',
         'description' => 'Description',
         'general_detail' => 'Généralités',
-        'additional' => 'Questions supplémentaires pour:',
+        'additional' => 'Questions supplémentaires :',
         'no_more' => "Il n'y a plus de questions, merci !",
         'next' => 'Prochaine question',
         'edit_about' => 'Modifier votre avis sur:',
@@ -40,6 +40,10 @@
         'star4' => '4 étoiles',
         'star5' => '5 étoiles',
         'reviews' => 'Avis',
+        'answers' => [
+            'yes' => 'Oui',
+            'no' => 'Non',
+        ],
     ],
     'platform' => [
         'add' => 'Ajouter une platforme',
@@ -69,6 +73,7 @@
         'themes' => 'Thèmes',
         'languages' => 'Langues',
         'labels' => 'Labels',
+        'results' => 'résultats',
         'fieldsearch' => 'Chercher un site Web ou une App ...',
     ],
     'service' => [
