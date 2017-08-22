@@ -87,7 +87,7 @@
         'create' => 'Create',
         'filter' => 'Active Filters',
         'name' => 'Websites / Apps',
-        'ratings_on' => 'ratings on',
+        'ratings_on' => 'Ratings on',
     ],
     'labels' => [
         'certified' => 'Certified',
