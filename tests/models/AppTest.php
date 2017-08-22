@@ -70,14 +70,14 @@ class AppTest extends PluginTestCase
 
     public function testNameAccessor()
     {
-        Service::create([
+        $service = Service::create([
             'name' => 'Super Service',
             'description' => 'description',
         ]);
 
         $app = App::create([
             'url' => 'http://super.service',
-            'serv_id' => 1,
+            'serv_id' => $service->id,
             'plat_id' => 1
         ]);
 

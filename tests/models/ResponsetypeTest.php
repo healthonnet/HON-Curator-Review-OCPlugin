@@ -30,7 +30,7 @@ class ResponsetypeTest extends PluginTestCase
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Question', $question);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Question', $question2);
 
-        $questionsFromRelation = $responsetype->questions;
-        $this->assertEquals(2, count($questionsFromRelation));
+        $this->assertEquals($question->id, $responsetype->questions()->find($question->id)->id);
+        $this->assertEquals($question2->id, $responsetype->questions()->find($question2->id)->id);
     }
 }

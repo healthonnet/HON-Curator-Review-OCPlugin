@@ -21,7 +21,7 @@ class SeedFromJSON extends Seeder
     {
         $taggedUrl = [];
 
-        $labelsDir = './plugins/hon/honcuratorreview/updates/labels/';
+        $labelsDir = dirname(__FILE__).'/labels/';
         if (file_exists($labelsDir)) {
             $labels = array_diff(scandir ($labelsDir), array('..', '.'));
             // dd($labels);
@@ -46,12 +46,12 @@ class SeedFromJSON extends Seeder
             }
         }
 
-        $tags = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/whitelist_tags.json'));
+        $tags = json_decode(File::get(dirname(__FILE__).'/json/whitelist_tags.json'));
         foreach ($tags as $tag) {
             Tag::create($this->object_to_array($tag));
         }
 
-        $honConducts = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/honconducts.json'));
+        $honConducts = json_decode(File::get(dirname(__FILE__).'/json/honconducts.json'));
 
         foreach ($honConducts as $honConduct) {
 
@@ -95,7 +95,7 @@ class SeedFromJSON extends Seeder
             }
         }
 
-        $questions = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/questions.json'));
+        $questions = json_decode(File::get(dirname(__FILE__).'/json/questions.json'));
         foreach ($questions as $quest) {
             $responseType = Responsetype::where('label', $quest->responsetype)->firstOrFail();
             $question = Question::create([
@@ -121,7 +121,7 @@ class SeedFromJSON extends Seeder
             $question->platforms()->attach($platforms);
         }
 
-        $applications = json_decode(File::get('./plugins/hon/honcuratorreview/updates/json/applications.json'));
+        $applications = json_decode(File::get(dirname(__FILE__).'/json/applications.json'));
 
         $androidPlatform = Platform::where('name', 'android')->firstOrFail();
         $iosPlatform = Platform::where('name', 'ios')->firstOrFail();

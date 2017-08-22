@@ -100,8 +100,8 @@ class UserTest extends PluginTestCase
         $user->services()->saveMany([$service, $service2]);
         $this->assertEquals(2, count($user->services));
 
-        $this->assertEquals(1, $user->services[0]->id);
-        $this->assertEquals(2, $user->services[1]->id);
+        $this->assertEquals($service->id, $user->services[0]->id);
+        $this->assertEquals($service2->id, $user->services[1]->id);
         $this->assertEquals('Super Service', $user->services[0]->name);
         $this->assertEquals('Super Service 2', $user->services[1]->name);
     }

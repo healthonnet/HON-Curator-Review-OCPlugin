@@ -68,9 +68,6 @@ class ServiceTest extends PluginTestCase
         $this->assertEquals($superUrl, $service->platforms[1]->pivot->url, 'it Should have url as a pivot value');
         $this->assertInstanceOf('HON\HonCuratorReview\Models\PlatformServicePivot', $service->platforms[1]->pivot);
 
-        $apps = App::all();
-        $this->assertCount(2,$apps);
-
     }
 
     public function testTagRelations()
@@ -110,13 +107,13 @@ class ServiceTest extends PluginTestCase
 
         $app = App::create([
             'url' => 'http://super.service',
-            'serv_id' => 1,
+            'serv_id' => $service->id,
             'plat_id' => 1
         ]);
 
         $review = Review::create([
             'user_id' => 1,
-            'app_id' => 1,
+            'app_id' => $app->id,
             'global_rate' => 4,
             'global_comment' => 'test',
             'title' => 'test'
@@ -124,7 +121,7 @@ class ServiceTest extends PluginTestCase
 
         $review2 = Review::create([
             'user_id' => 2,
-            'app_id' => 1,
+            'app_id' => $app->id,
             'global_rate' => 4,
             'global_comment' => 'test',
             'title' => 'test'
@@ -151,12 +148,12 @@ class ServiceTest extends PluginTestCase
 
         $app = App::create([
             'url' => 'http://super.service',
-            'serv_id' => 1,
+            'serv_id' => $service->id,
             'plat_id' => 1
         ]);
         $app2 = App::create([
             'url' => 'http://super.service2',
-            'serv_id' => 1,
+            'serv_id' => $service->id,
             'plat_id' => 2
         ]);
 

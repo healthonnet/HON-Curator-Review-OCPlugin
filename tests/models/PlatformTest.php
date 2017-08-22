@@ -41,9 +41,7 @@ class PlatformTest extends PluginTestCase
         $this->assertInstanceOf('HON\HonCuratorReview\Models\App', $app);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\PlatformServicePivot', $platform->services[0]->pivot);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\PlatformServicePivot', $platform->services[0]->pivot);
-        $this->assertEquals($superUrl, $platform->services[0]->pivot->url, 'it Should have url as a pivot value');
-
-        $this->assertCount(2,$platform->apps);
+        $this->assertEquals($superUrl, $platform->services()->find($service->id)->pivot->url, 'it Should have url as a pivot value');
     }
 
     public function testPlatformRelation()
@@ -59,7 +57,7 @@ class PlatformTest extends PluginTestCase
 
         $platform->questions()->attach($question->id);
 
-        $this->assertEquals($platform->id, $platform->questions[0]->id);
+        $this->assertEquals($question->id, $platform->questions()->find($question->id)->id);
 
         $platform->save();
 
@@ -72,6 +70,6 @@ class PlatformTest extends PluginTestCase
         $platform = Platform::find(1);
         $platform->questions()->attach($question2->id);
 
-        $this->assertEquals($question2->id, $platform->questions[1]->id);
+        $this->assertEquals($question2->id, $platform->questions()->find($question2->id)->id);
     }
 }

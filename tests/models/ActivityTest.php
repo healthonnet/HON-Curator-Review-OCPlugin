@@ -28,7 +28,11 @@ class ActivityTest extends PluginTestCase
             'question' => 'this.is.my.second.question.key.message'
         ]);
 
-        $activity = Activity::find(1);
+        $activity = Activity::create([
+            'label' => 'test',
+            'description' => 'test',
+            'level' => 1
+        ]);
 
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Question', $question);
         $this->assertInstanceOf('HON\HonCuratorReview\Models\Question', $question2);

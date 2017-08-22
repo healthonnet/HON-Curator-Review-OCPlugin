@@ -39,18 +39,17 @@ class QuestionTest extends PluginTestCase
 
         $question->activities()->attach($activity->id);
 
-        $this->assertEquals($activity->id, $question->activities[0]->id);
+        $this->assertEquals($activity->id, $question->activities()->find($activity->id)->id);
 
         $question->save();
 
         // Refresh and add another one.
-        $question = Question::find(1);
-
+        $question = $question->fresh();
         $activity2 = Activity::find(2);
         $this->assertNotNull($activity2);
         $question->activities()->attach($activity2->id);
 
-        $this->assertEquals($activity2->id, $question->activities[1]->id);
+        $this->assertEquals($activity2->id, $question->activities()->find($activity2->id)->id);
     }
 
     public function testPlatformRelation()
@@ -71,7 +70,7 @@ class QuestionTest extends PluginTestCase
         $question->save();
 
         // Refresh and add another one.
-        $question = Question::find(1);
+        $question = $question->fresh();
 
         $platform2 = Platform::find(2);
         $this->assertNotNull($platform2);
