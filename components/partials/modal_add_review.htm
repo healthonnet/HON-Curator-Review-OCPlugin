@@ -4,7 +4,7 @@
 {{ form_ajax('onSaveReview', {update: {'@modal_question': target ? target : '#modal-content_' }, data: {target: target ? target : '#modal-content_'}}) }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Add your review about: {{ service.name }}</h4>
+        <h4 class="modal-title" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.add_review" | trans }} {{ service.name }}</h4>
     </div>
     <div class="modal-body">
         <div class="row col-sm-offset-1">
@@ -12,23 +12,23 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {{ form_submit('Save', {class: "btn btn-primary"}) }}
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ "hon.honcuratorreview::lang.review.close" | trans }}</button>
+        {{ form_submit("hon.honcuratorreview::lang.review.save" | trans, {class: "btn btn-primary"}) }}        
     </div>
 {{ form_close() }}
 {% else %}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Add your review about: {{ service.name }}</h4>
+        <h4 class="modal-title" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.add_review" | trans }} {{ service.name }}</h4>
     </div>
     <div class="modal-body">
         <div class="row col-sm-offset-1">
-            <p>You already reviewed all platforms on this service thanks !</p>
-            <p>You can edit or complete them on the <a href="{{ 'services/service'|page({ serviceid: service.id })}}" class="btn btn-success">detail page </a></p>
+            <p>{{ "hon.honcuratorreview::lang.review.already_review" | trans }}</p>
+            <p>{{ "hon.honcuratorreview::lang.review.edit_review" | trans }} <a href="{{ 'services/service'|page({ serviceid: service.id })}}" class="btn btn-success">{{ "hon.honcuratorreview::lang.review.detail" | trans }}</a></p>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ "hon.honcuratorreview::lang.review.close" | trans }}</button>
     </div>
 {% endif %}
 </div><!-- /.modal-content -->

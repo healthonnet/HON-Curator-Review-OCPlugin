@@ -1,13 +1,13 @@
 <!-- Item Description -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="headline"><span>Service Statistics</span></h4>
+        <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.statistics" | trans }}</span></h4>
         <div class="col-sm-12">
-            <h6 class="headline"><span>Global rating</span></h6>
+            <h6 class="headline"><span>{{ "hon.honcuratorreview::lang.service.global_rate" | trans }}</span></h6>
             {% if service.average_rating %}
                 {% partial '@stars' rating=service.average_rating %}
             {% else %}
-                {{'No reviews'|_}}</p>
+                {{ "hon.honcuratorreview::lang.service.no_rate" | trans }}</p>
             {% endif %}
         </div>
     </div>

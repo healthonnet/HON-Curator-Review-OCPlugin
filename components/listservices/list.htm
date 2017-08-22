@@ -1,8 +1,8 @@
 <!-- Filters -->
 <ul class="nav nav-tabs nav-justified">
-    <li class="active"><a href="#all" data-toggle="tab">All</a></li>
+    <li class="active"><a href="#all" data-toggle="tab">{{ "hon.honcuratorreview::lang.platform.all" | trans }}</a></li>
     {% for platform in platforms %}
-    <li><a href="#{{platform.name}}" data-toggle="tab">{{platform.name}}</a></li>
+    <li><a href="#{{platform.name}}" data-toggle="tab">{{ "hon.honcuratorreview::lang.platform.#{platform.name}" | trans }}</a></li>
     {% endfor %}
 </ul>
 
@@ -16,7 +16,7 @@
             {% endfor %}
             {% if services is empty %}
                 <div class="col-sm-8">
-                    <p>No Service is matching your request</p>
+                    <p>{{ "hon.honcuratorreview::lang.search.noresult" | trans }}</p>
                 </div>
             {% endif %}
         </div>
@@ -30,7 +30,7 @@
             {% endfor %}
             {% if services is empty %}
             <div class="col-sm-8">
-                <p>No Service is matching your request</p>
+                <p>{{ "hon.honcuratorreview::lang.search.noresult" | trans }}</p>
             </div>
             {% endif %}
         </div>

@@ -1,9 +1,9 @@
 <fieldset class="rating">
-    {{ form_radio('global_rate', 5, false, {id:'star5'~ id})}}<label class = "full" for="star5{{id}}" title="Awesome - 5 stars"></label>
-    {{ form_radio('global_rate', 4, false, {id:'star4'~ id})}}<label class = "full" for="star4{{id}}" title="Pretty good - 4 stars"></label>
-    {{ form_radio('global_rate', 3, true, {id:'star3'~ id})}}<label class = "full" for="star3{{id}}" title="Meh - 3 stars"></label>
-    {{ form_radio('global_rate', 2, false, {id:'star2'~ id})}}<label class = "full" for="star2{{id}}" title="Kinda bad - 2 stars"></label>
-    {{ form_radio('global_rate', 1, false, {id:'star1'~ id})}}<label class = "full" for="star1{{id}}" title="Sucks big time - 1 star"></label>
+    {{ form_radio('global_rate', 5, false, {id:'star5'~ id})}}<label class = "full" for="star5{{id}}" title="{{ "hon.honcuratorreview::lang.review.star5" | trans }}"></label>
+    {{ form_radio('global_rate', 4, false, {id:'star4'~ id})}}<label class = "full" for="star4{{id}}" title="{{ "hon.honcuratorreview::lang.review.star4" | trans }}"></label>
+    {{ form_radio('global_rate', 3, true, {id:'star3'~ id})}}<label class = "full" for="star3{{id}}" title={{ "hon.honcuratorreview::lang.review.star3" | trans }}"></label>
+    {{ form_radio('global_rate', 2, false, {id:'star2'~ id})}}<label class = "full" for="star2{{id}}" title="{{ "hon.honcuratorreview::lang.review.star2" | trans }}"></label>
+    {{ form_radio('global_rate', 1, false, {id:'star1'~ id})}}<label class = "full" for="star1{{id}}" title="{{ "hon.honcuratorreview::lang.review.star1" | trans }}"></label>
 </fieldset>
 <style>
     /****** Style Star Rating Widget *****/

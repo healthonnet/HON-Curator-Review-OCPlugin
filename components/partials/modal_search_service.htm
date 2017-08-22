@@ -1,13 +1,13 @@
 <div class="modal-content" id="modal-content-search_">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Search the service to review</h4>
+        <h4 class="modal-title" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.platform.search" | trans }}</h4>
     </div>
     <div class="modal-body">
         <div class="row">
         {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'}, id: 'nav-search-form' }) }}
             <div class="input-group">
-                <input type="text" class="form-control" name="search" value="{{modal_request}}" placeholder="Search service...">
+                <input type="text" class="form-control" name="search" value="{{modal_request}}" placeholder="{{ "hon.honcuratorreview::lang.search.fieldsearch" | trans }}">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                 </span>
@@ -18,10 +18,10 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <td class="active col-xs-1 col-sm-2">Name</td>
-                    <td class="active hidden-xs col-sm-7">Description</td>
-                    <td class="active hidden-xs col-xs-1">Platforms</td>
-                    <td class="active col-xs-1 col-sm-2">link</td>
+                    <td class="active col-xs-1 col-sm-2">{{ "hon.honcuratorreview::lang.platform.plat_name" | trans }}</td>
+                    <td class="active hidden-xs col-sm-7">{{ "hon.honcuratorreview::lang.platform.plat_description" | trans }}</td>
+                    <td class="active hidden-xs col-xs-1">{{ "hon.honcuratorreview::lang.platform.name" | trans }}</td>
+                    <td class="active col-xs-1 col-sm-2">{{ "hon.honcuratorreview::lang.platform.plat_link" | trans }}</td>
                 </tr>
                 </thead>
                 {% if modal_services|length > 0 %}
@@ -38,14 +38,14 @@
                         <a href="{{ 'services/service'|page({ serviceid: modal_service.id}) }}">
                         <button type="button"
                                 class="btn btn-info">
-                            See details</button></a>
+                            {{ "hon.honcuratorreview::lang.platform.see_details" | trans }}</button></a>
 
                         <button type="button"
                                 data-request="onStartReview"
                                 data-request-data="target: '#modal-content-search_'"
                                 data-request-update="'@modal_add_review': '#modal-content-search_'"
                                 class="btn btn-primary breakable">
-                            Review this service</button>
+                            {{ "hon.honcuratorreview::lang.platform.review_this" | trans }}</button>
                     </td>
                 </tr>
                 {% endfor %}
@@ -61,16 +61,16 @@
         </div>
         {% if modal_request %}
         <div class="row col-xs-offset-1">
-            You didn't find it ? <button type="button"
+          {{ "hon.honcuratorreview::lang.platform.not_find" | trans }} <button type="button"
                                          data-request="onStartService"
                                          data-request-data="target: '#modal-content-search_'"
                                          data-request-update="'@modal_add_service': '#modal-content-search_'"
-                                         class="btn btn-primary">Create It</button>
-            <p>Please be sure before creating it to prevent duplicates</p>
+                                         class="btn btn-primary">{{ "hon.honcuratorreview::lang.platform.create_it" | trans }}</button>
+            <p>{{ "hon.honcuratorreview::lang.platform.prevent_duplicate" | trans }}</p>
         </div>
         {% endif %}
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ "hon.honcuratorreview::lang.review.close" | trans }}</button>
     </div>
 </div><!-- /.modal-content -->

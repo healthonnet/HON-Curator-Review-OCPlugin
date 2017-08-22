@@ -4,7 +4,7 @@
     {% if tag.type == type and tag.services|length > 0 %}
     <li class="list-group-item">
         <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}">
-            {{ tag.name}}</a> <span class="badge">{{ tag.services|length}}</span>
+           {{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a> <span class="badge">{{ tag.services|length}}</span>
     </li>
     {% endif %}
     {% endfor %}
@@ -14,14 +14,14 @@
 {% if filters %}
 <div class="well">
     <div class="panel-heading">
-        Active Filters
+      {{ "hon.honcuratorreview::lang.service.filter" | trans }}
     </div>
     <div class="input-group">
         {% for filter in filters|split('|') %}
             {% set aFilters=filters|join('|') %}
             <a style="margin: 3px" class="btn btn-sm btn-default"
                href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')}}{{search ? '&search='~search}}">
-                <span>{{filter}}</span> <i class="fa fa-close"></i></a>
+                <span>{{ "hon.honcuratorreview::lang.labels.#{filter}" | trans }}</span> <i class="fa fa-close"></i></a>
         {% endfor %}
     </div>
 </div>
@@ -33,7 +33,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavOne">
-                Themes
+                {{ "hon.honcuratorreview::lang.search.themes" | trans }}
             </a>
         </div>
         <div id="shopNavOne" class="panel-collapse collapse in">
@@ -45,7 +45,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavTwo" class="collapsed">
-                Languages
+                {{ "hon.honcuratorreview::lang.search.languages" | trans }}
             </a>
         </div>
         <div id="shopNavTwo" class="panel-collapse collapse">
@@ -57,7 +57,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavThree" class="collapsed">
-                Labels
+                {{ "hon.honcuratorreview::lang.search.labels" | trans }}
             </a>
         </div>
         <div id="shopNavThree" class="panel-collapse collapse">

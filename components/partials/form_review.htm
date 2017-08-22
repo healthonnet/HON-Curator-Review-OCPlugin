@@ -1,16 +1,16 @@
 <div class="col-sm-10 center-block form-group">
-    {{ form_label('I test on :')}}
+    {{ "hon.honcuratorreview::lang.review.test_on" | trans }}
     {{ form_select('app_id', apps.pluck('platform.name', 'id'), null, {class: 'form-control'})}}
 </div>
 <div class="col-sm-10 center-block form-group">
-    {{ form_label('Your Review') }}
+    {{ "hon.honcuratorreview::lang.review.your" | trans }}
     {{ form_text('title', null, {class: 'form-control'}) }}
 </div>
 <div class="col-sm-10 center-block form-group">
-    {{ form_label('Global Appreciation')}}
+    {{ "hon.honcuratorreview::lang.review.appreciation" | trans }}
     <div class="cols-sm-12">{% partial '@stars-picker' id=review.id %}</div>
 </div>
 <div class="col-sm-10 center-block form-group">
-    {{ form_label('Comment')}}
+    {{ "hon.honcuratorreview::lang.review.comment" | trans }}
     {{ form_textarea('global_comment', null, {class: 'form-control', rows: 4})}}
 </div>

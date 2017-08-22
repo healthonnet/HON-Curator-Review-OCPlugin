@@ -1,7 +1,7 @@
 {% macro listTags(tags, type) %}
     {% for tag in tags %}
         {% if tag.type == type %}
-            <li class="col-sm-3 col-xs-6"><a href="{{'services/services'|page()}}?filter={{tag.untranslatedname}}">{{tag.name}}</a></li>
+            <li class="col-sm-3 col-xs-6"><a href="{{'services/services'|page()}}?filter={{tag.untranslatedname}}">{{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a></li>
         {% endif %}
     {% endfor %}
 {% endmacro %}
@@ -9,7 +9,7 @@
 <!-- Item Description -->
 <div class="row">
     <div class="col-sm-12">
-        <h4 class="headline"><span>Service details</span></h4>
+        <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.detail" | trans }}</span></h4>
         <p>{{ service.description |default('No description given'|_)}}</p>
 
         {% set hasThemes = false %}
@@ -30,28 +30,28 @@
         {% endfor %}
 
         {% if hasFinancial %}
-        <h4 class="headline"><span>Service financed by</span></h4>
+        <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.financed_by" | trans }}</span></h4>
         <ul class="row">
             {{ _self.listTags(service.tags, 'financial') }}
         </ul>
         {% endif %}
 
         {% if hasThemes %}
-        <h4 class="headline"><span>Themes</span></h4>
+        <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.search.themes" | trans }}</span></h4>
         <ul class="row">
             {{ _self.listTags(service.tags, 'theme') }}
         </ul>
         {% endif %}
 
         {% if hasLanguages %}
-        <h4 class="headline"><span>Languages</span></h4>
+        <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.search.languages" | trans }}</span></h4>
         <ul class="row">
             {{ _self.listTags(service.tags, 'language') }}
         </ul>
         {% endif %}
 
         {% if hasLabels %}
-        <h4 class="headline"><span>Labels</span></h4>
+        <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.search.labels" | trans }}</span></h4>
         <ul class="row">
             {{ _self.listTags(service.tags, 'label') }}
         </ul>

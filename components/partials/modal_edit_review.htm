@@ -7,7 +7,7 @@
             {{ form_model(review)}}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridSystemModalLabel">Edit your review about: {{ service.name }}</h4>
+                <h4 class="modal-title" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.edit_about" | trans }} {{ service.name }}</h4>
             </div>
             <div class="modal-body">
                 <div class="row col-sm-offset-1">
@@ -17,7 +17,7 @@
                                 data-request-update="'@modal_question': '#modal-content_{{review.app_id}}'"
                                 data-request="onRequestQuestion"
                                 data-request-data="target: '#modal-content_{{review.app_id}}'">
-                            Answer more questions</button>
+                            {{ "hon.honcuratorreview::lang.review.answer_more" | trans }}</button>
                     </div>
                 </div>
             </div>
@@ -26,10 +26,11 @@
                         data-request-redirect="{{''|page}}"
                         data-request="onRemoveReview"
                         dara-request-data="id: review.id"
-                        class="btn btn-danger">Remove my Review</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        class="btn btn-danger">{{ "hon.honcuratorreview::lang.review.remove" | trans }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ "hon.honcuratorreview::lang.review.close" | trans }}</button>
                 {{ form_hidden('review_id', review.id)}}
-                {{ form_submit('Save', {class: "btn btn-primary"}) }}
+                {{ form_submit("hon.honcuratorreview::lang.review.save" | trans, {class: "btn btn-primary"}) }} 
+
             </div>
             {{ form_close() }}
         </div><!-- /.modal-content -->
