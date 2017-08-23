@@ -44,8 +44,8 @@
 </div>
 {% set urlFilters= filters ? {'filters': filters} %}
 {% set urlSearch= search ? {'search': search} %}
+{% if not services is empty %}
+<p><small><em>{{services.total}} {{ "hon.honcuratorreview::lang.search.results" | trans }}</em></small></p>
+{% endif %}
 
 {{ services.appends(urlFilters).appends(urlSearch).render|raw }}
-{% if not services is empty %}
-<p><span>{{services.total}} {{ "hon.honcuratorreview::lang.search.results" | trans }}</span></p>
-{% endif %}

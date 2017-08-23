@@ -10,13 +10,5 @@ class SeedResponsetypesTable extends Seeder
         Responsetype::create([
             'label' => 'checkbox',
         ]);
-
-        Responsetype::create([
-            'label' => 'radio',
-        ]);
-
-        Responsetype::create([
-            'label' => 'textarea',
-        ]);
     }
 }

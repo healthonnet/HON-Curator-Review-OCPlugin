@@ -14,7 +14,9 @@
             {% partial '@' ~ question.responsetype.label %}
         </div>
     {% else %}
-        <h3>{{ "hon.honcuratorreview::lang.review.no_more" | trans }}</h3>
+        <div class="col-sm-offset-1">
+            <h3>{{ "hon.honcuratorreview::lang.review.no_more" | trans }}</h3>
+        </div>
     {% endif %}
     </div>
 </div>

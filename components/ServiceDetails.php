@@ -119,9 +119,8 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $review = Review::findOrFail(Input::get('review_id'));
         $question = Question::findOrFail(Input::get('question_id'));
         $response = Input::get('response');
-
         if (!empty($response)) {
-            $review->questions()->sync([$question->id => ['value' =>  $response]], false);
+            $review->questions()->sync([$question->id => ['value' =>  json_encode($response)]], false);
         }
 
         return $this->onRequestQuestion();

@@ -97,7 +97,7 @@ class SeedFromJSON extends Seeder
 
         $questions = json_decode(File::get(dirname(__FILE__).'/json/questions.json'));
         foreach ($questions as $quest) {
-            $responseType = Responsetype::where('label', $quest->responsetype)->firstOrFail();
+            $responseType = Responsetype::firstOrCreate(['label'=> $quest->responsetype]);
             $question = Question::create([
                "question" => $quest->question,
                 "responsetype_id" => $responseType->id
