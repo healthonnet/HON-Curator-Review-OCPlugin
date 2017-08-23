@@ -2,3 +2,11 @@
     white-space:normal !important;
     word-wrap: break-word;
 }
+
+.flow-item .icon {
+    float: left;
+    margin-right: 15px;
+    color: #f1c40f;
+    width: 25px;
+    font-size: 200%;
+}

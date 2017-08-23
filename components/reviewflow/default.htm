@@ -1,0 +1,35 @@
+<div class="recent-tweets">
+    <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.review.recent_reviews" | trans }}</span></h4>
+    <div id="carousel-review-flow" class="carousel slide" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" style="padding: 10px" role="listbox">
+            {% for review in review_flow %}
+                {% if loop.index0 is even %}
+                <div class="item {{loop.first ? 'active'}}">
+                {% endif %}
+                    <div class="flow-item col-sm-5 col-sm-offset-1">
+                        <div class="row">
+                            <img src="{{review.app.preview_url}}" class="img-responsive icon">
+                            <span><a href="{{ 'services/service'|page({ serviceid: review.app.service.id}) }}">{{review.app.service.name}}</a></span>
+                        </div>
+                        <p>{{review.user.name}}</p>
+                        <p>{{review.title}}</p>
+                        <p>{% partial '@stars' rating=review.global_rate %} </p>
+                    </div>
+                {% if loop.index0 is odd or loop.last %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#carousel-review-flow" data-slide="next">
+            <i class="fa fa-chevron-left glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
+            <span class="sr-only">{{ "hon.honcuratorreview::lang.platform.previous" | trans }}</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-review-flow" data-slide="next">
+            <i class="fa fa-chevron-right glyphicon-chevron-right" aria-hidden="true"></i>
+            <span class="sr-only">{{ "hon.honcuratorreview::lang.platform.next" | trans }}</span>
+        </a>
+    </div>
+</div>

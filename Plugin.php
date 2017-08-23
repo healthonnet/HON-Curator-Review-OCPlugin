@@ -16,7 +16,8 @@ class Plugin extends PluginBase
             'HON\HonCuratorReview\Components\ListApps' => 'listApps',
             'HON\HonCuratorReview\Components\ListServices' => 'listServices',
             'HON\HonCuratorReview\Components\ReviewModal' => 'reviewModal',
-            'HON\HonCuratorReview\Components\ServiceDetails' => 'serviceDetails'
+            'HON\HonCuratorReview\Components\ServiceDetails' => 'serviceDetails',
+            'HON\HonCuratorReview\Components\ReviewFlow' => 'reviewFlow'
         ];
     }
 

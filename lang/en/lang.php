@@ -4,6 +4,7 @@
         'description' => ''
     ],
     'review' => [
+        'recent_reviews' => 'Recent reviews',
         'name' => 'reviews', 
         'no_review' => 'No reviews', 
         'add' => 'Add my review',

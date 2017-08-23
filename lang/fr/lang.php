@@ -4,6 +4,7 @@
         'description' => ''
     ],
     'review' => [
+        'recent_reviews' => 'Avis récents',
         'name' => 'avis', 
         'no_review' => "Pas d'avis",    
         'add' => 'Ajouter un avis',
