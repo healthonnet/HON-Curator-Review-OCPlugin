@@ -1,3 +1,4 @@
+{% if review_flow is not empty %}
 <div class="recent-tweets">
     <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.review.recent_reviews" | trans }}</span></h4>
     <div id="carousel-review-flow" class="carousel slide" data-ride="carousel">
@@ -33,3 +34,4 @@
         </a>
     </div>
 </div>
+{% endif %}
