@@ -1,21 +1,5 @@
 [
   {
-    "name": "certified",
-    "type": "label"
-  },
-  {
-    "name": "cancer",
-    "type": "theme"
-  },
-  {
-    "name": "children",
-    "type": "theme"
-  },
-  {
-    "name": "diseases",
-    "type": "theme"
-  },
-  {
     "name": "profissional",
     "type": "label"
   }

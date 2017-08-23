@@ -69,7 +69,7 @@ class SeedFromJSON extends Seeder
             }
 
             if ($honConduct->certified) {
-                $certifiedTag = Tag::where('name', 'certified')->firstOrFail();
+                $certifiedTag = Tag::firstOrCreate(['name' => 'certified']);
                 $certifiedTag->services()->sync([$service->id], false);
             }
 
@@ -146,7 +146,7 @@ class SeedFromJSON extends Seeder
 
             if (property_exists($application, 'certified')) {
                 if($application->certified) {
-                    $certifiedTag = Tag::where('name', 'certified')->firstOrFail();
+                    $certifiedTag = Tag::firstOrCreate(['name' => 'certified']);
                     $certifiedTag->services()->sync([$service->id], false);
                 }
             }
