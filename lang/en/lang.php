@@ -89,6 +89,7 @@
         'filter' => 'Active Filters',
         'name' => 'Websites / Apps',
         'ratings_on' => 'Ratings on',
+        'access' => 'Access',
     ],
     'labels' => [
         'certified' => 'Certified',

@@ -10,3 +10,15 @@
     width: 25px;
     font-size: 200%;
 }
+
+.app-link {
+    border: 1px solid #DDDDDD;
+    display: block;
+    padding: 10px;
+    border-radius: 13px;
+    margin-bottom: 5px;
+}
+
+.app-link img {
+    height: 45px;
+}

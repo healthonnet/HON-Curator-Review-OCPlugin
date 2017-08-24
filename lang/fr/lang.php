@@ -89,6 +89,7 @@
         'filter' => 'Filtres activés',
         'name' => 'Sites Web / Apps',
         'ratings_on' => 'Notes sur',
+        'access' => 'Accéder',
     ],
     'labels' => [
         'certified' => 'Certifié', 

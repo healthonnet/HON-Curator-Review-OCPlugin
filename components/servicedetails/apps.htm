@@ -4,24 +4,29 @@
         <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.available" | trans }}</span></h4>
         {% for app in apps %}
         <div class="col-sm-4">
-            <p>{{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</p>
-            <img src="{{app.preview_url}}" class="img-responsive" alt="{{app.name}}" >
-            <p><a href="{{app.url}}">{{app.url[:20] ~ '...' }}</a></p>
+            <a href="{{app.url}}"class="app-link">
+                <p class="text-center">{{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</p>
+                <img src="{{app.preview_url}}" class="img-responsive center-block" alt="{{app.name}}" >
+            </a>
+            <!--p class="text-center truncate-text"><a class="truncate-text" href="{{app.url}}">{{app.url}}</a></-p-->
             {% if user %}
                 {% if  user.reviews().where('app_id', app.id).first() is not empty %}
-                <button type="button" class="btn btn-sm btn-info breakable" data-toggle="modal" data-target=".form_edit_review_{{app.id}}">
+                <button type="button" class="btn btn-sm btn-info breakable center-block" data-toggle="modal" data-target=".form_edit_review_{{app.id}}">
                     <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.edit' | trans }}
                 </button>
                 {% partial '@modal_edit_review' review=user.reviews().where('app_id', app.id).first() %}
                 {% endif %}
             {% endif %}
         </div>
+        <hr class="visible-xs">
         {% endfor %}
 
         {% if remainingPlatforms is not empty and user %}
-        <button type="button" class="btn btn-sm btn-info col-sm-4 breakable" data-toggle="modal" data-target=".form_app">
-            <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.platform.add' | trans }}
-        </button>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-sm btn-info breakable  center-block" data-toggle="modal" data-target=".form_app">
+                <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.platform.add' | trans }}
+            </button>
+        </div>
         <div class="modal fade form_app" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 {% partial '@modal_add_app' %}
