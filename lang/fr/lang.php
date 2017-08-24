@@ -90,6 +90,7 @@
         'name' => 'Sites Web / Apps',
         'ratings_on' => 'Notes sur',
         'access' => 'Accéder',
+        'extra_datas' => 'Informations complémentaires',
     ],
     'labels' => [
         'certified' => 'Certifié', 
