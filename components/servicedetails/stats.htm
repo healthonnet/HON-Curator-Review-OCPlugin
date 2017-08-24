@@ -9,16 +9,22 @@
 
 
         </div>
+        {% if service.apps|length > 1 %}
         <div class="col-sm-12 row">
             {% for app in service.apps %}
-                {% if app.average_rating %}
                 <div class="col-sm-4">
                     <h6 class="headline"><span>{{ "hon.honcuratorreview::lang.service.ratings_on" | trans }} {{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</span></h6>
-                    {% partial '@stars' rating=app.average_rating %}
+                    {% if app.average_rating %}
+                        {% partial '@stars' rating=app.average_rating %} <span class="text-muted reviews">({{ app.reviews|length }} {{ "hon.honcuratorreview::lang.review.name" | trans }})</span>
+                    {% else %}
+                        <p class="col-sm-12 bg-warning" style="padding: 10px"> {{ 'hon.honcuratorreview::lang.review.be_first' | trans }}  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+                            <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.add' | trans }}
+                        </button></p>
+                    {% endif %}
                 </div>
-                {% endif %}
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 </div>
 {% endif %}
