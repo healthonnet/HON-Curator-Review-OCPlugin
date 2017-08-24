@@ -9,14 +9,14 @@
                 {% if loop.index0 is even %}
                 <div class="item {{loop.first ? 'active'}}">
                 {% endif %}
-                    <div class="flow-item col-sm-5 col-sm-offset-1">
-                        <div class="row">
+                    <div class="flow-item col-sm-5 col-sm-offset-1 ">
+                        <div class="row cols-sm-12">
                             <img src="{{review.app.preview_url}}" class="img-responsive icon">
-                            <span><a href="{{ 'services/service'|page({ serviceid: review.app.service.id}) }}">{{review.app.service.name}}</a></span>
+                            <p><a href="{{ 'services/service'|page({ serviceid: review.app.service.id}) }}">{{review.app.service.name}}</a></p>
                         </div>
-                        <p>{{review.user.name}}</p>
-                        <p>{{review.title}}</p>
+                        <p><i class="fa fa-user"></i> {{review.user.name}}</p>
                         <p>{% partial '@stars' rating=review.global_rate %} </p>
+                        <p>{{review.title}}</p>
                     </div>
                 {% if loop.index0 is odd or loop.last %}
                 </div>
@@ -24,7 +24,7 @@
             {% endfor %}
         </div>
         <!-- Left and right controls -->
-        <a class="left carousel-control" href="#carousel-review-flow" data-slide="next">
+        <a class="left carousel-control" href="#carousel-review-flow" data-slide="prev">
             <i class="fa fa-chevron-left glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
             <span class="sr-only">{{ "hon.honcuratorreview::lang.platform.previous" | trans }}</span>
         </a>

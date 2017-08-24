@@ -29,7 +29,7 @@
                         </div>
 
                         <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" data-slide="next">
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                             <i class="fa fa-chevron-left glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
                             <span class="sr-only">{{ "hon.honcuratorreview::lang.platform.previous" | trans }}</span>
                         </a>
@@ -41,26 +41,29 @@
 
                 </div>
                 <div class="col-sm-6">
-                    <!-- p class="text-muted">{{ service.description |default('No description given'|_)}}</p-->
-                    <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.global_rate" | trans }}</span></h4>
-                    <p class="rating">{% partial '@stars' rating=service.average_rating %}</p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- p class="text-muted">{{ service.description |default('No description given'|_)}}</p-->
+                            <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.global_rate" | trans }}</span></h4>
+                            <p class="rating">{% partial '@stars' rating=service.average_rating %}</p>
 
-                    <span class="text-muted reviews">({{ service.reviews|length }} {{ "hon.honcuratorreview::lang.review.name" | trans }})</span>
+                            <span class="text-muted reviews">({{ service.reviews|length }} {{ "hon.honcuratorreview::lang.review.name" | trans }})</span>
 
-                    {% if user %}
-                        {% if service.filterReviewedAppsBy(user) is not empty %}
-                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
-                            <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.add' | trans }}
-                        </button>
+                            {% if user %}
+                                {% if service.filterReviewedAppsBy(user) is not empty %}
+                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+                                    <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.add' | trans }}
+                                </button>
 
-                        <div class="modal fade form_review" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-                            <div class="modal-dialog modal-lg" role="document">
-                                {% partial '@modal_add_review' apps=service.filterReviewedAppsBy(user) user=user %}
-                            </div>
+                                <div class="modal fade form_review" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        {% partial '@modal_add_review' apps=service.filterReviewedAppsBy(user) user=user %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endif %}
                         </div>
-                        {% endif %}
-                    {% endif %}
-
+                    </div>
                     {% partial '@apps' apps=service.apps %}
                 </div>
 
