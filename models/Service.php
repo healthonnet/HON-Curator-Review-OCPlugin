@@ -101,7 +101,7 @@ class Service extends Model
         // Add platform
         if ($platform) {
             $query->whereHas('platforms', function ($query) use ($platform) {
-                $query->where('name', '=', $platform);
+                $query->where('hon_honcuratorreview_platforms.name', '=', $platform);
             });
         }
 
@@ -119,14 +119,14 @@ class Service extends Model
         // Add search field
         if ($search) {
             $query->where(function($query) use ($search){
-                $query->where('name', 'like', '%'.$search.'%')
+                $query->where('hon_honcuratorreview_services.name', 'like', '%'.$search.'%')
                     ->orWhere('description', 'like', '%'.$search.'%')
                     ->orWhere('description', 'like', '%'.$search.'%')
                     ->orWhereHas('platforms', function ($query) use ($search){
                         $query->where('url', 'like', '%'.$search.'%');
                     })
                     ->orWhereHas('tags', function ($query) use ($search){
-                        $query->where('name', 'like', '%'.$search.'%');
+                        $query->where('hon_honcuratorreview_tags.name', 'like', '%'.$search.'%');
                     });
             });
         }
