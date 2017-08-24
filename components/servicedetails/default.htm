@@ -20,7 +20,8 @@
                         <div class="carousel-inner">
                             {% for app in service.apps %}
                             <div class="item {{ service.apps[0] == app ? 'active' }}">
-                                <img src='http://everyone.khresmoi.eu:3000/?url={{app.url}}&clipRect=%7B"top"%3A0%2C"left"%3A0%2C"width"%3A1024%2C"height"%3A600%7D' class="img-responsive main" alt="">
+                                <img src='http://lorempixel.com/1024/600/abstract'
+                                     onerror="if (this.src != 'http://lorempixel.com/1024/600/abstract') this.src = 'http://lorempixel.com/1024/600/abstract';" class="img-responsive main" alt="">
                                 <div class="carousel-caption">
                                     <p>{{app.platform.name}}</p>
                                 </div>
@@ -71,7 +72,7 @@
             <div class="row">
                 <div class="col-sm-12">
                    <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.detail" | trans }}</span></h4>
-                    <p>{{ service.description |default('No description given'|_)}}</p>
+                    <p class="text-justify">{{ service.description |default('No description given'|_)}}</p>
                 </div>
             </div>
 
