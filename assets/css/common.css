@@ -18,7 +18,16 @@
     border-radius: 13px;
     margin-bottom: 5px;
 }
-
 .app-link img {
     height: 45px;
 }
+
+
+.app-link.list {
+    padding: 20px;
+    height: 180px;
+}
+.app-link.list img {
+    height: 60px;
+}
+

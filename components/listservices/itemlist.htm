@@ -1,10 +1,10 @@
 <div class="col-sm-6 col-lg-4">
-    <div class="shop-product">
-        <a href="{{ 'services/service'|page({ serviceid: service.id}) }}"><img src="{{ service.preview_url }}" style="height:100px" class="img-responsive" alt=""></a>
-        <a href="{{ 'services/service'|page({ serviceid: service.id}) }}"><h6>{{ service.name }}</h6></a>
+    <a href="{{ 'services/service'|page({ serviceid: service.id}) }}" class="shop-product app-link list">
+        <img src="{{ service.preview_url }}" class="img-responsive" alt="">
+        <h6>{{ service.name|length > 50 ? service.name|slice(0, 40) ~ '...' : service.name  }}</h6>
         <p>
             {% partial '@stars' rating=service.average_rating %}
             <span class="text-muted reviews">({{ service.reviews|length }})</span>
         </p>
-    </div>
+    </a>
 </div>
