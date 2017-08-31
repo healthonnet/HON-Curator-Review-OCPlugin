@@ -2,8 +2,8 @@
 {% macro listTags(tags, filters, search, platform) %}
     {% for tag in tags %}
     <li class="list-group-item">
-        <a href="{{ ''| page() }}?filters={{tag.getTranslateAttribute('name', 'en')}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}{{platform ? '&platform='~platform}}">
-            {{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a> <!-- span class="badge">{#tag.services().count#}</span -->
+        <a href="{{ ''| page() }}?filters={{tag.name}}{{filters ? '|'~ filters|join('|')}}{{search ? '&search='~search}}{{platform ? '&platform='~platform}}">
+            {{ tag.name }}</a> <!-- span class="badge">{#tag.services().count#}</span -->
     </li>
     {% endfor %}
 {% endmacro %}
@@ -19,7 +19,7 @@
             {% set aFilters=filters|join('|') %}
             <a style="margin: 3px" class="btn btn-sm btn-default"
                href="{{ ''| page() }}?filters={{ filters ? filters|join('|')|replace({(filter):''})|trim('|')}}{{search ? '&search='~search}}{{platform ? '&platform='~platform}}">
-                <span>{{ "hon.honcuratorreview::lang.labels.#{filter}" | trans }}</span> <i class="fa fa-close"></i></a>
+                <span>{{filter}}</span> <i class="fa fa-close"></i></a>
         {% endfor %}
     </div>
 </div>
@@ -28,65 +28,19 @@
 <!-- Categories -->
 <div class="panel-group" id="shopNav">
     {% if tags is not empty %}
+    {% for categorie, catTags in tags %}
     <div class="panel panel-default">
         <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavOne">
-                {{ "hon.honcuratorreview::lang.search.themes" | trans }}
+            <a data-toggle="collapse" data-parent="#shopNav" href="#{{categorie}}Tag">
+                {{ categorie }}
             </a>
         </div>
-        <div id="shopNavOne" class="panel-collapse collapse in" style="max-height: 300px;">
+        <div id="{{categorie}}Tag" class="panel-collapse collapse {{loop.first ? 'in'}}" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags.theme, filters, search, platform) }}
+                {{ _self.listTags(catTags, filters, search, platform) }}
             </ul>
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavTwo" class="collapsed">
-                {{ "hon.honcuratorreview::lang.search.languages" | trans }}
-            </a>
-        </div>
-        <div id="shopNavTwo" class="panel-collapse collapse"  style="max-height: 300px;">
-            <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags.language, filters, search, platform) }}
-            </ul>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavThree" class="collapsed">
-                {{ "hon.honcuratorreview::lang.search.labels" | trans }}
-            </a>
-        </div>
-        <div id="shopNavThree" class="panel-collapse collapse" style="max-height: 300px;">
-            <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags.label, filters, search, platform) }}
-            </ul>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavFour" class="collapsed">
-                Audience
-            </a>
-        </div>
-        <div id="shopNavFour" class="panel-collapse collapse"  style="max-height: 300px;">
-            <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags.audience, filters, search, platform) }}
-            </ul>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#shopNav" href="#shopNavFive" class="collapsed">
-                Type
-            </a>
-        </div>
-        <div id="shopNavFive" class="panel-collapse collapse"  style="max-height: 300px;">
-            <ul class="list-group filter-list-group">
-                {{ _self.listTags(tags.type, filters, search, platform) }}
-            </ul>
-        </div>
-    </div>
+    {% endfor %}
     {% endif %}
 </div>
