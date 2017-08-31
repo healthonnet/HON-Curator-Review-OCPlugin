@@ -11,15 +11,6 @@ class Tag extends Model
 
     protected $fillable = ['name', 'type'];
 
-    /**
-     * Softly implement the TranslatableModel behavior.
-     */
-    public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
-
-    /**
-     * @var array Attributes that support translation, if available.
-     */
-    public $translatable = ['name'];
 
     /*
      * Validation
@@ -42,13 +33,6 @@ class Tag extends Model
         ]
     ];
 
-    /**
-     * Custom accessor for average_review
-     * @return Review[]
-     */
-    public function getUntranslatednameAttribute() {
-        return $this->getTranslateAttribute('name', 'en');
-    }
 
     /**
      * Keep only existing inputs
@@ -58,7 +42,7 @@ class Tag extends Model
     public static function cleanInput($input)
     {
         $entries = array_unique(explode('|',$input));
-        $tags = Tag::all()->lists('untranslatedname');
+        $tags = Tag::all()->lists('name');
 
         return join('|', array_intersect($entries,$tags));
 

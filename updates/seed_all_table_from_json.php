@@ -42,7 +42,7 @@ class SeedFromJSON extends Seeder
             $langs = explode(',', $honConduct->language);
             foreach ($langs as $lang) {
                 if (!empty($lang)) {
-                    $langTag = Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
+                    $langTag = Tag::firstOrCreate(array('name' => strtolower(trim($lang)), 'type' => 'language'));
                     $langTag->services()->attach($service->id);
                 }
             }
@@ -120,7 +120,7 @@ class SeedFromJSON extends Seeder
             $langs = explode(',', trim($application->language, ","));
             foreach ($langs as $lang) {
                 if (!empty($lang)) {
-                    $langTag = Tag::firstOrCreate(array('name' => trim($lang), 'type' => 'language'));
+                    $langTag = Tag::firstOrCreate(array('name' => strtolower(trim($lang)), 'type' => 'language'));
                     $langTag->services()->sync([$service->id], false);
                 }
             }

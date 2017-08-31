@@ -12,11 +12,12 @@ fields:
         required: 1
         type: dropdown
         options:
-            theme: Theme
+            life: Life
+            disease: Disease
             label: Label
             language: Language
             financial: Financial
-            type: Type
+            organisation: Organisation
             audience: Audience
 
 
