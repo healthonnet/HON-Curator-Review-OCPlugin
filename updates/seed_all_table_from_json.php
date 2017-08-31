@@ -21,37 +21,16 @@ class SeedFromJSON extends Seeder
     {
         $taggedUrl = [];
 
-        $labelsDir = dirname(__FILE__).'/labels/';
-        if (file_exists($labelsDir)) {
-            $labels = array_diff(scandir ($labelsDir), array('..', '.'));
-            // dd($labels);
-            foreach ($labels as $label) {
-                $labelName = substr($label, 10, -4);
-                if (substr($labelName , 0, 2)== 'SL') {
-                    $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'financial'));
-                } else {
-                    $tag = Tag::firstOrCreate(array('name' => $labelName, 'type' => 'theme'));
-                }
+        $allTags = json_decode(File::get(dirname(__FILE__).'/json/tags.json'));
+        $honConducts = json_decode(File::get(dirname(__FILE__).'/json/honconducts.json'));
+        $questions = json_decode(File::get(dirname(__FILE__).'/json/questions.json'));
+        $applications = json_decode(File::get(dirname(__FILE__).'/json/applications.json'));
 
-                $lines = file($labelsDir.$label);
-                foreach ($lines as $line) {
-                    $line = trim($line);
-                    $line = trim($line, "/");
-                    if(isset($taggedUrl[trim($line)])){
-                        $taggedUrl[$line][] = $tag->id;
-                    } else {
-                        $taggedUrl[$line] = [$tag->id];
-                    }
-                }
+        foreach ($allTags as $key => $tagCat) {
+            foreach ($tagCat as $sTag) {
+                Tag::firstOrCreate(['name' => $sTag, 'type' => $key]);
             }
         }
-
-        $tags = json_decode(File::get(dirname(__FILE__).'/json/whitelist_tags.json'));
-        foreach ($tags as $tag) {
-            Tag::create($this->object_to_array($tag));
-        }
-
-        $honConducts = json_decode(File::get(dirname(__FILE__).'/json/honconducts.json'));
 
         foreach ($honConducts as $honConduct) {
 
@@ -68,16 +47,20 @@ class SeedFromJSON extends Seeder
                 }
             }
 
-            if ($honConduct->certified) {
-                $certifiedTag = Tag::firstOrCreate(['name' => 'certified']);
-                $certifiedTag->services()->sync([$service->id], false);
+            if (property_exists($honConduct, 'certified')) {
+                if ($honConduct->certified) {
+                    $certifiedTag = Tag::firstOrCreate(['name' => 'certified']);
+                    $certifiedTag->services()->sync([$service->id], false);
+                }
             }
 
-            // If keyword exist, attached to service. (prevent useless keywords)
-            foreach ($honConduct->keywords as $keyword) {
-                $tag = Tag::where('name', $keyword)->first();
-                if ($tag) {
-                    $tag->services()->sync([$service->id], false);
+            if (property_exists($honConduct, 'tags')) {
+                foreach ($honConduct->tags as $key => $tagType) {
+                    $categorieName = $key;
+                    foreach ($tagType as $tagName ) {
+                        $tag = Tag::firstOrCreate(['name' => $tagName, 'type' => $categorieName]);
+                        $tag->services()->sync([$service->id], false);
+                    }
                 }
             }
 
@@ -95,7 +78,6 @@ class SeedFromJSON extends Seeder
             }
         }
 
-        $questions = json_decode(File::get(dirname(__FILE__).'/json/questions.json'));
         foreach ($questions as $quest) {
             $responseType = Responsetype::firstOrCreate(['label'=> $quest->responsetype]);
             $question = Question::create([
@@ -121,7 +103,6 @@ class SeedFromJSON extends Seeder
             $question->platforms()->attach($platforms);
         }
 
-        $applications = json_decode(File::get(dirname(__FILE__).'/json/applications.json'));
 
         $androidPlatform = Platform::where('name', 'android')->firstOrFail();
         $iosPlatform = Platform::where('name', 'ios')->firstOrFail();
