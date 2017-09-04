@@ -38,6 +38,7 @@ class ListServices extends \Cms\Classes\ComponentBase
         foreach ($tags as $tag) {
             $typeTag[$tag->type][] = $tag;
         }
+        arsort($typeTag);
         $this->page['tags'] = $typeTag;
 
     }
