@@ -229,7 +229,7 @@ class Service extends Model
     public static function prepareSearch($filters, $search, $platform, $sortBy = false)
     {
         // Prepare query
-        $query = Service::query();
+        $query = Service::has('platforms');
 
         $preparedQuery = $query->matchRequest($filters, $search, $platform);
 
