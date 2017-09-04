@@ -27,7 +27,7 @@
         'service_name' => 'Service Name',
         'description' => 'Description',
         'general_detail' => 'General details',
-        'additional' => 'Additional Questions:',
+        'additional' => 'Optional Questions:',
         'no_more' => 'No more questions for you thanks !',
         'next' => 'Next Question',
         'edit_about' => 'Edit your review about:',
