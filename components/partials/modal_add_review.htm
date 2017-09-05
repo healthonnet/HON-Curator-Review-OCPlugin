@@ -4,7 +4,7 @@
 {{ form_ajax('onSaveReview', {update: {'@modal_question': target ? target : '#modal-content_' }, data: {target: target ? target : '#modal-content_'}}) }}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.add_review" | trans }} {{ service.name }}</h4>
+        <h4 class="modal-title text-center" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.add_review" | trans }} {{ service.name }}</h4>
     </div>
     <div class="modal-body">
         <div class="row col-sm-offset-1">
@@ -19,7 +19,7 @@
 {% else %}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.add_review" | trans }} {{ service.name }}</h4>
+        <h4 class="modal-title text-center" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.review.add_review" | trans }} {{ service.name }}</h4>
     </div>
     <div class="modal-body">
         <div class="row col-sm-offset-1">
