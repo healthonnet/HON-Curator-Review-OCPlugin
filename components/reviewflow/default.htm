@@ -12,7 +12,7 @@
                     <div class="flow-item col-sm-5 col-sm-offset-1 ">
                         <div class="row cols-sm-12">
                             <img src="{{review.app.preview_url}}" class="img-responsive icon">
-                            <p><a href="{{ 'services/service'|page({ serviceid: review.app.service.id}) }}">{{review.app.service.name}}</a></p>
+                            <p><a href="{{ 'browser/service'|page({ serviceid: review.app.service.id}) }}">{{review.app.service.name}}</a></p>
                         </div>
                         <p><i class="fa fa-user"></i> {{review.user.name}}</p>
                         <p>{% partial '@stars' rating=review.global_rate %} </p>

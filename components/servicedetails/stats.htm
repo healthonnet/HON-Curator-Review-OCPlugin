@@ -14,7 +14,7 @@
             {% for app in service.apps %}
                 <div class="col-sm-4">
                     <h6 class="headline"><span>{{ "hon.honcuratorreview::lang.service.ratings_on" | trans }} {{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</span></h6>
-                    {% if app.average_rating %}
+                    {% if app.average_rating or not user %}
                         {% partial '@stars' rating=app.average_rating %} <span class="text-muted reviews">({{ app.reviews|length }} {{ "hon.honcuratorreview::lang.review.name" | trans }})</span>
                     {% else %}
                         <p class="col-sm-12 bg-warning" style="padding: 10px"> {{ 'hon.honcuratorreview::lang.review.be_first' | trans }}  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
