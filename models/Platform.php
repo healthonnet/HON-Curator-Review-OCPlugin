@@ -47,6 +47,6 @@ class Platform extends Model
      * @array hasMany Models relations
      */
     public $hasMany = [
-        'apps' => ['HON\HonCuratorReview\Models\App', 'key' => 'plat_id']
+        'apps' => ['HON\HonCuratorReview\Models\App', 'key' => 'plat_id', 'delete'=>'true']
     ];
 }

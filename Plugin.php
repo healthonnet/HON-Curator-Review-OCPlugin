@@ -34,7 +34,7 @@ class Plugin extends PluginBase
     {
         // Add extension's relations and attributes.
         UserModel::extend(function($model) {
-            $model->hasMany['reviews'] = 'HON\HonCuratorReview\Models\Review'; // user_id
+            $model->hasMany['reviews'] = ['HON\HonCuratorReview\Models\Review', 'delete'=>'true']; // user_id
             $model->hasMany['services'] = ['HON\HonCuratorReview\Models\Service', 'key' => 'owner_id']; // user_id
 
             $fillables = $model->getFillable();

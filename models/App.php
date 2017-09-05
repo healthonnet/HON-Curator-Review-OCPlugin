@@ -41,7 +41,7 @@ class App extends Model
      * @array hasMany Models relations
      */
     public $hasMany = [
-        'reviews' => 'HON\HonCuratorReview\Models\Review'
+        'reviews' => ['HON\HonCuratorReview\Models\Review', 'delete'=> true]
     ];
 
     public function getNameAttribute() {

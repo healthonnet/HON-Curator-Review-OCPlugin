@@ -65,7 +65,7 @@ class Service extends Model
      * @array hasMany Models relations
      */
     public $hasMany = [
-        'apps' => ['HON\HonCuratorReview\Models\App', 'key' => 'serv_id'] // serv_id
+        'apps' => ['HON\HonCuratorReview\Models\App', 'key' => 'serv_id', 'delete'=>'true'] // serv_id
     ];
 
     /**

@@ -30,6 +30,6 @@ class Responsetype extends Model
      * @array hasMany Models relations
      */
     public $hasMany = [
-        'questions' => 'HON\HonCuratorReview\Models\Question' // responsetype_id
+        'questions' => ['HON\HonCuratorReview\Models\Question', 'delete'=>'true'] // responsetype_id
     ];
 }
