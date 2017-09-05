@@ -1,7 +1,7 @@
 {% macro listTags(tags, type) %}
     {% for tag in tags %}
         {% if tag.type == type %}
-            <li class="col-sm-3 col-xs-6"><a href="{{'browser/browser'|page()}}?filter={{tag.untranslatedname}}">{{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a></li>
+            <li class="col-sm-3 col-xs-6"><a href="{{'browser/browser'|page()}}?filters={{tag.name}}">{{ "hon.honcuratorreview::lang.labels.#{tag.name}" | trans }}</a></li>
         {% endif %}
     {% endfor %}
 {% endmacro %}
