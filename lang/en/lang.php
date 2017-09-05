@@ -85,6 +85,7 @@
         'no_rate' => 'No rate', 
         'statistics' => 'Statistics',   
         'add_new' => 'Add a new Website/App',
+        'add_valid_url' => 'Website or Application URL. i.e. https://www.healthcurator.org',
         'create' => 'Create',
         'filter' => 'Active Filters',
         'name' => 'Websites / Apps',
