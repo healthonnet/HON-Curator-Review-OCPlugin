@@ -52,7 +52,7 @@
 
                             {% if user %}
                                 {% if service.filterReviewedAppsBy(user) is not empty %}
-                                <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+                                <button type="button" class="btn btn-sm btn-info pull-right" style="margin-right: 5px" data-toggle="modal" data-target=".form_review">
                                     <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.add' | trans }}
                                 </button>
 
