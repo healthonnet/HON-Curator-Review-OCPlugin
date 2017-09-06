@@ -1,5 +1,5 @@
 <div class="modal-content" id="modal-content_app">
-{{ form_ajax('onAddApp', {confirm: "hon.honcuratorreview::lang.platform.sure" | trans, success: 'window.location.reload()' }) }}
+{{ form_ajax('onAddApp', {confirm: "hon.honcuratorreview::lang.platform.sure" | trans, update: {'@modal_add_review': target ? target : '#modal-content_app' }, data: {target: target ? target : '#modal-content_app'}}) }}
     {{ form_model(service)}}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

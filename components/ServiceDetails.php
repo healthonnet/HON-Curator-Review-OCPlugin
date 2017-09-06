@@ -36,6 +36,8 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         self::onRun();
 
         if (!Auth::check()) return;
+
+        $user = Auth::getUser();
         $acceptedPlatforms = array();
         $erroredPlatforms = array();
         // At least one valid platform
@@ -67,6 +69,10 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
                 $app->save();
             }
         }
+        $this->page['service'] = $this->service->id;
+        $this->page['target'] = Input::get('target');
+        $this->page['apps'] = $this->service->filterReviewedAppsBy($user);
+
     }
 
     public function onSaveReview()
