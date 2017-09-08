@@ -138,6 +138,6 @@
         'indonesian' => 'Indonésien',
         'croatian' => 'Croate',
         'icelandic' => 'Islandais',
-        'malaisian' => 'Malaisien',
+        'malaysian' => 'Malaisien',
     ]
 ];

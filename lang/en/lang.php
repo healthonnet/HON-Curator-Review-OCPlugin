@@ -136,7 +136,7 @@
         'hebrew' => 'Hebrew',
         'croatian' => 'Croatian',
         'icelandic' => 'Icelandic',
-        'malaisian' => 'Malaysian',
+        'malaysian' => 'Malaysian',
         'serbian' => 'Serbian',
     ]
 ];
