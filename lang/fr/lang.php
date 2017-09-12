@@ -59,7 +59,7 @@
         'add_new' => 'Ajouter une nouvelle plateforme pour',
         'create' => 'Créer',
         'sure' => 'Êtes-vous sûr?',
-        'search' => 'Chercher le service à évaluer',
+        'search' => 'Chercher un site Web ou une App de santé à évaluer ',
         'plat_name' => 'Nom',
         'plat_description' => 'Description',
         'plat_link' => 'Lien',
