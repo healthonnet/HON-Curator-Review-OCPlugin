@@ -1,7 +1,8 @@
 <!-- Available platforms -->
+{% if service.last_reviews|length > 0 or user %}
 <div class="row">
     <div class="col-sm-12">
-        {% if service.last_reviews|length > 0%}
+        {% if service.last_reviews|length > 0 %}
         <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.review.last" | trans }}</span></h4>
         {% for review in service.last_reviews %}
         <div class="col-sm-4">
@@ -22,3 +23,4 @@
         {% endif %}
     </div>
 </div>
+{% endif %}
