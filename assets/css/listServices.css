@@ -1,5 +1,5 @@
 .panel-collapse.collapse .filter-list-group {
     /* just prevent long and annoying tag list*/
     max-height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
