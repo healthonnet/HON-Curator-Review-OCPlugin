@@ -13,7 +13,7 @@
         'add_review' => 'Add your review about:',
         'test_on' => 'Version',
         'your' => 'Title of the review',
-        'appreciation' => 'Global qppreciation',
+        'appreciation' => 'Global appreciation',
         'comment' => 'Review',
         'save' => 'Save',
         'close' => 'Close',
