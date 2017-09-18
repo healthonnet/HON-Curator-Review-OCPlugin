@@ -4,7 +4,7 @@
         <h4 class="headline"><span>{{ "hon.honcuratorreview::lang.service.available" | trans }}</span></h4>
         {% for app in apps %}
         <div class="col-sm-4" style="padding: 0 5px">
-            <a href="{{app.url}}"class="app-link">
+            <a href="{{app.url}}" target="_blank" class="app-link">
                 <p class="text-center">{{ "hon.honcuratorreview::lang.platform.#{app.platform.name}" | trans }}</p>
                 <img src="{{app.preview_url}}" class="img-responsive center-block" alt="{{app.name}}" >
             </a>
