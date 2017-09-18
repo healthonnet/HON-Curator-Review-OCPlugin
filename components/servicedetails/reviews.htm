@@ -6,7 +6,7 @@
         {% for review in service.last_reviews %}
         <div class="col-sm-4">
             <div class="last-review">
-            		<p style="text-align: right; font-size: 10px;">{{review.created_at}}</p>
+            		<p style="text-align: right; font-size: 10px;">{{review.created_at |date("Y-m-d")}}</p>
                 <p>{{ "hon.honcuratorreview::lang.review.by" | trans }} : {{review.user.name |capitalize}}</p>               
                 <p>{% partial '@platform_icon' platform=review.app.platform.name %} {{review.title}}</p>
                 <p>{% partial '@stars' rating=review.global_rate %} </p>
