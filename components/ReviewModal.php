@@ -35,6 +35,7 @@ class ReviewModal extends ServiceModal
         if (!Auth::check()) { return Redirect::to('/signin'); }
 
         $id = Input::get('service');
+        $this->page['user'] = Auth::getUser();
         $this->page['service'] = ServiceModel::find($id);
         $this->page['target'] = Input::get('target');
         $this->page['apps'] = $this->page['service']->filterReviewedAppsBy(Auth::getUser());
