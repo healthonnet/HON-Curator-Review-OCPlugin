@@ -4,7 +4,8 @@
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.your" | trans }}
-    {{ form_text('title', null, {class: 'form-control'}) }}
+    <input class="form-control" name="title" onkeyup="textCounter(this,'title_counter',30);" type="text">
+    <small><span id="title_counter">30</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.appreciation" | trans }}
