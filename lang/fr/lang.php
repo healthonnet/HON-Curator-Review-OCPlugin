@@ -90,6 +90,7 @@
         'statistics' => 'Statistiques',
         'add_new' => 'Ajouter un nouveau site ou App',
         'add_valid_url' => 'Url du site Web ou de l\'application. ex. https://www.healthcurator.org',
+        'add_valid_title' => 'Nom site Web ou de l\'application. ex. Health Curator',
         'create' => 'Créer',
         'filter' => 'Filtres activés',
         'name' => 'Sites Web / Apps',
