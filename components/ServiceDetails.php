@@ -5,6 +5,7 @@ use HON\HonCuratorReview\Models\Review;
 use HON\HonCuratorReview\Models\App;
 use HON\HonCuratorReview\Models\Service as ServiceModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use October\Rain\Exception\ValidationException;
 use RainLab\User\Facades\Auth;
@@ -27,7 +28,12 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/serviceDetails.css');
 
         // TODO Better fail catch
-        $this->page['service'] = $this->service = ServiceModel::findOrFail($this->property('id'));
+        $this->page['service'] = $this->service = ServiceModel::find($this->property('id'));
+
+        if (!$this->page['service']) {
+            $this->setStatusCode(404);
+            return $this->controller->run('404');
+        }
         $this->page['remainingPlatforms'] = $this->service->filterExistingPlatforms();
     }
 
