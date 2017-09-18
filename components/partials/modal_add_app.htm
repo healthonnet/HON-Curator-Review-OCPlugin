@@ -1,3 +1,4 @@
+{% if user %}
 <div class="modal-content" id="modal-content_app">
 {{ form_ajax('onAddApp', {confirm: "hon.honcuratorreview::lang.platform.sure" | trans, update: {'@modal_add_review': target ? target : '#modal-content_app' }, data: {target: target ? target : '#modal-content_app'}}) }}
     {{ form_model(service)}}
@@ -16,3 +17,4 @@
     </div>
 {{ form_close() }}
 </div><!-- /.modal-content -->
+{% endif %}

@@ -3,6 +3,7 @@
 use HON\HonCuratorReview\Models\Platform;
 use HON\HonCuratorReview\Models\Service as ServiceModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use RainLab\User\Facades\Auth;
 
 class ReviewModal extends ServiceModal
@@ -30,7 +31,7 @@ class ReviewModal extends ServiceModal
 
     public function onStartReview()
     {
-        if (!Auth::check()) { return; }
+        if (!Auth::check()) { return Redirect::to('/signin'); }
 
         $id = Input::get('service');
         $this->page['service'] = ServiceModel::find($id);
@@ -40,7 +41,7 @@ class ReviewModal extends ServiceModal
 
     public function onStartService()
     {
-        if (!Auth::check()) { return; }
+        if (!Auth::check()) { return Redirect::to('/signin');}
         $this->page['target'] = Input::get('target');
         $this->page['platforms'] = Platform::all();
         $this->page['user'] = Auth::getUser();
