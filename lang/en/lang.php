@@ -20,6 +20,7 @@
         'deleteConfirmation' => 'Are you sure ?',
         'deleteConfirm' => 'Yes, delete it!',
         'deleteCancel' => 'No, cancel!',
+        'remaining_characters' => 'Remaining characters',
         'already_review' => 'You already reviewed all platforms on this service thanks !',
         'edit_review' => 'You can edit or complete them on the',
         'detail' => 'detail page',

@@ -20,6 +20,7 @@
         'deleteConfirmation' => 'Êtes vous sûr ?',
         'deleteConfirm' => 'Oui, supprimer !',
         'deleteCancel' => 'Non, annuler !',
+        'remaining_characters' => 'caractères restants',
         'already_review' => 'Vous avez donné votre avis pour toutes les plateformes, merci !',
         'edit_review' => 'Vous pouvez les éditer ou les compléter sur les',
         'detail' => 'pages de détail',

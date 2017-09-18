@@ -22,6 +22,7 @@ class ReviewModal extends ServiceModal
     {
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/common.css');
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/customforms.css');
+        $this->addJs('/plugins/hon/honcuratorreview/assets/js/textCounter.js');
         $request = Input::get('modal_search', Input::get('search'));
         if ($request) {
             $this->page['modal_request'] = $request;
