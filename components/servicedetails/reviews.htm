@@ -1,5 +1,4 @@
 <!-- Available platforms -->
-{% if service.last_reviews|length > 0 or user %}
 <div class="row">
     <div class="col-sm-12">
         {% if service.last_reviews|length > 0 %}
@@ -17,10 +16,14 @@
         {% endfor %}
         {% else %}
         <h4 class="headline"><span>{{ 'hon.honcuratorreview::lang.review.no_review' | trans }}</span></h4>
-        <p class="col-sm-12 bg-warning" style="padding: 10px"> {{ 'hon.honcuratorreview::lang.review.be_first' | trans }}  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+        <p class="col-sm-12 bg-warning" style="padding: 10px"> {{ 'hon.honcuratorreview::lang.review.be_first' | trans }}
+            {% if user %}
+            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".form_review">
+            {% else %}
+                <button type="button" class="btn btn-sm btn-info" onclick="window.location='{{ 'account/signin'|page }}'">
+            {% endif %}
             <i class="fa fa-commenting-o"></i> {{ 'hon.honcuratorreview::lang.review.add' | trans }}
         </button></p>
         {% endif %}
     </div>
 </div>
-{% endif %}
