@@ -26,6 +26,8 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
     {
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/common.css');
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/serviceDetails.css');
+        $this->addCss('/plugins/hon/honcuratorreview/assets/css/customforms.css');
+        $this->addJs('/plugins/hon/honcuratorreview/assets/js/textCounter.js');
 
         // TODO Better fail catch
         $this->page['service'] = $this->service = ServiceModel::find($this->property('id'));
@@ -48,6 +50,8 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $erroredPlatforms = array();
         // At least one valid platform
         foreach (Input::get('platforms') as $platform => $url) {
+
+
             $validator = Validator::make(
                 [
                     'plat_id' => $platform,
@@ -78,6 +82,7 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $this->page['service'] = $this->service->id;
         $this->page['target'] = Input::get('target');
         $this->page['apps'] = $this->service->filterReviewedAppsBy($user);
+        $this->page['user'] = $user;
 
     }
 

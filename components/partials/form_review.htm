@@ -4,8 +4,8 @@
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.your" | trans }}
-    <input class="form-control" name="title" onkeyup="textCounter(this,'title_counter',30);" type="text">
-    <small><span id="title_counter">30</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
+    <input class="form-control" name="title" onkeyup="textCounter(this,'title_counter_{{review.id}}',30);" value="{{review.title}}" type="text">
+    <small><span id="title_counter_{{review.id}}">{{30 - review.title|length}}</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.appreciation" | trans }}
@@ -13,6 +13,6 @@
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.comment" | trans }}
-    <textarea class="form-control" rows="4" onkeyup="textCounter(this,'comment_counter',225);" name="global_comment" cols="50"></textarea>
-    <small><span id="comment_counter">225</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
+    <textarea class="form-control" rows="4" onkeyup="textCounter(this,'comment_counter_{{review.id}}',225);" name="global_comment" cols="50">{{review.global_comment}}</textarea>
+    <small><span id="comment_counter_{{review.id}}">{{225 - review.global_comment|length}}</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
