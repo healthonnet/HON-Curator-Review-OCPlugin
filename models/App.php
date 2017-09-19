@@ -46,7 +46,9 @@ class App extends Model
 
     public function getNameAttribute() {
         $service = $this->service()->find($this->serv_id);
+        if (!$service) return;
         $platform = $this->platform()->find($this->plat_id);
+        if (!$platform) return;
         return $service->name . ' ( ' . $platform->name . ' )';
     }
 

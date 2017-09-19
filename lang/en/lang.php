@@ -28,7 +28,7 @@
         'contact_you' => '(we may contact you to confirm ownership)',
         'ownership' => 'Ownership',
         'at_least' => 'at least one platform',
-        'service_name' => 'Service Name',
+        'service_name' => 'Name',
         'description' => 'Description',
         'general_detail' => 'General details',
         'additional' => 'Optional questions:',
