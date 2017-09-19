@@ -17,6 +17,7 @@
         'comment' => 'Avis',
         'save' => 'Sauver',
         'close' => 'Fermer',
+        'later' => "Plus tard",
         'deleteConfirmation' => 'Êtes vous sûr ?',
         'deleteConfirm' => 'Oui, supprimer !',
         'deleteCancel' => 'Non, annuler !',
@@ -79,6 +80,7 @@
     'search' => [
         'noresult' => 'Pas de résultat pour votre requête',
         'themes' => 'Thèmes',
+        'search' => 'Rechercher',
         'languages' => 'Langues',
         'labels' => 'Labels',
         'results' => 'résultats',

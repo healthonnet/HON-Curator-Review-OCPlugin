@@ -17,6 +17,7 @@
         'comment' => 'Review',
         'save' => 'Save',
         'close' => 'Close',
+        'later' => "I'm done",
         'deleteConfirmation' => 'Are you sure ?',
         'deleteConfirm' => 'Yes, delete it!',
         'deleteCancel' => 'No, cancel!',
@@ -79,6 +80,7 @@
     'search' => [
         'noresult' => 'No website or App is matching your request',
         'themes' => 'Themes',
+        'search' => 'Search',
         'languages' => 'Languages',
         'labels' => 'Labels',
         'results' => 'results',
