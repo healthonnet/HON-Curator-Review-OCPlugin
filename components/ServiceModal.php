@@ -19,10 +19,6 @@ class ServiceModal extends ServiceDetails
         ];
     }
 
-    public function onRun()
-    {
-
-    }
 
     public function onSaveService()
     {
@@ -73,6 +69,7 @@ class ServiceModal extends ServiceDetails
         $this->page['service'] = $service;
         $this->page['target'] = Input::get('target');
         $this->page['apps'] = $service->filterReviewedAppsBy($user);
+        $this->page['user'] = $user;
     }
 
 }
