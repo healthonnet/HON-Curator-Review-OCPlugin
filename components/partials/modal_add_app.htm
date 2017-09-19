@@ -4,7 +4,8 @@
     {{ form_model(service)}}
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.platform.add_new" | trans }} {{service.name}}</h4>
+        <p class="modal-title text-center">{{ "hon.honcuratorreview::lang.platform.add_new" | trans }}</p>
+            <h4 class="modal-title text-center" id="gridSystemModalLabel"> {{service.name}}</h4>
     </div>
     <div class="modal-body">
         <div class="row col-sm-offset-1">

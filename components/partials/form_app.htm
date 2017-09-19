@@ -2,7 +2,7 @@
 {% for platform in remainingPlatforms %}
 {% if platform not in service.platforms|keys %}
 <div class="col-sm-10 center-block form-group">    
-    {{ form_label(form.name, "hon.honcuratorreview::lang.platform.#{platform.name}" | trans) }}      
+    {{ form_label(form.name, "hon.honcuratorreview::lang.platform.#{platform.name}_version" | trans ~ ' '~ service.name)}}
     {{ form_text('platforms['~platform.id~']', null, {class: 'form-control', placeholder: "hon.honcuratorreview::lang.service.add_valid_url" | trans }) }}
     {{ form_hidden('service', service )}}
 </div>
