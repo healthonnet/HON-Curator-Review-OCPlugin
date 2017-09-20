@@ -54,6 +54,7 @@ class ServiceModal extends ServiceDetails
         if (Input::get('owner')) {
             $inputs['owner_id'] = $user->id;
         }
+        $inputs['creator_id'] = $user->id;
 
         $service = new ServiceModel();
         $service->fill($inputs);
