@@ -4,8 +4,8 @@
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.your" | trans }}
-    <input class="form-control" name="title" onkeyup="textCounter(this,'title_counter_{{review.id}}',30);" value="{{review.title}}" type="text">
-    <small><span id="title_counter_{{review.id}}">{{30 - review.title|length}}</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
+    <input class="form-control" name="title" onkeyup="textCounter(this,'title_counter_{{review.id}}',50);" value="{{review.title}}" type="text">
+    <small><span id="title_counter_{{review.id}}">{{50 - review.title|length}}</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.appreciation" | trans }}
