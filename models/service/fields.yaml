@@ -20,6 +20,9 @@ fields:
         type: textarea
         size: small
         span: full
+    creator:
+        label: Creator
+        type: relation
 tabs:
     fields:
         platforms:

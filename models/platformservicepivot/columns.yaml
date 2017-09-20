@@ -10,3 +10,6 @@ columns:
     pivot[url]:
         label: Service Url
         required: true
+    pivot[creator_id]:
+        label: creator
+        relation: creator

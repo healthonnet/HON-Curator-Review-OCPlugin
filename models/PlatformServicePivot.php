@@ -15,6 +15,7 @@ class PlatformServicePivot extends Pivot
      */
     public $rules = [
         'url' => 'required|url',
+        'creator_id' => 'integer'
     ];
 
 }

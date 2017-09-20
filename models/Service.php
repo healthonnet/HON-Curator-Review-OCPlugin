@@ -17,7 +17,7 @@ class Service extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['name', 'owner_id', 'description'];
+    protected $fillable = ['name', 'owner_id', 'description', 'creator_id'];
 
     /**
      * Softly implement the TranslatableModel behavior.
@@ -55,7 +55,7 @@ class Service extends Model
             'table'      => 'hon_honcuratorreview_services_platforms',
             'key'        => 'serv_id',
             'otherKey'   => 'plat_id',
-            'pivot'      => ['url', 'deleted_at'],
+            'pivot'      => ['url', 'creator_id', 'deleted_at'],
             'pivotModel' => 'HON\HonCuratorReview\Models\PlatformServicePivot',
             'timestamps' => true
         ]
@@ -83,7 +83,8 @@ class Service extends Model
      * @array belongsTo Models relations
      */
     public $belongsTo = [
-        'user' => ['RainLab\User\Models\User', 'key' => 'owner_id' ]
+        'user' => ['RainLab\User\Models\User', 'key' => 'owner_id' ],
+        'creator' => ['RainLab\User\Models\User', 'key' => 'creator_id' ],
     ];
 
     /**

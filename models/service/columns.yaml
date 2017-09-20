@@ -14,3 +14,7 @@ columns:
         type: text
         searchable: true
         sortable: true
+    creator:
+        label: creator
+        relation: creator
+        select: name
