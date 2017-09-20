@@ -67,3 +67,6 @@
 1.0.23:
     - 'Seed JSON File'
     - seed_all_table_from_json.php
+1.0.24:
+    - 'Add creator field'
+    - builder_table_update_hon_honcuratorreview_services_3.php
