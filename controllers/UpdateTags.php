@@ -26,14 +26,14 @@ class UpdateTags extends Controller
         foreach ($honConducts as $honConduct) {
             // don't create new tags only bind new relations
             $service = Service::where('name', $honConduct->name)->first();
-            if (!$service) return;
+            if (!$service) continue;
 
             if (property_exists($honConduct, 'tags')) {
                 foreach ($honConduct->tags as $key => $tagType) {
                     $categorieName = $key;
                     foreach ($tagType as $tagName ) {
                         $tag = Tag::where(['name' => $tagName, 'type' => $categorieName])->first();
-                        if (!$tag) return;
+                        if (!$tag) continue;
                         $tag->services()->sync([$service->id], false);
                     }
                 }
