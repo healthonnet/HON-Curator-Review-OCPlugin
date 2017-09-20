@@ -1,12 +1,14 @@
 <div class="col-sm-10 center-block form-group">
     <h4>{{ "hon.honcuratorreview::lang.review.general_detail" | trans }}</h4>
     {{ form_label(form.name, "hon.honcuratorreview::lang.review.service_name" | trans) }}
-    {{ form_text('name', null, {class: 'form-control', placeholder: "hon.honcuratorreview::lang.service.add_valid_title" | trans }) }}
+    <input class="form-control" name="name" placeholder="{{'hon.honcuratorreview::lang.service.add_valid_title' | trans}}"  onkeyup="textCounter(this,'title_add_service{{target}}',50);" value="{{review.title}}" type="text">
+    <small><span id="title_add_service{{target}}">50</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
 <div class="col-sm-10 center-block form-group">
 
-{{ form_label(form.name, "hon.honcuratorreview::lang.review.description" | trans) }}  
-{{ form_textarea('description', null, {class: 'form-control'})}}
+{{ form_label(form.name, "hon.honcuratorreview::lang.review.description" | trans) }}
+<textarea class="form-control" rows="10" onkeyup="textCounter(this,'description_add_service{{target}}',255);" name="description" cols="50"></textarea>
+<small><span id="description_add_service{{target}}">255</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
 
 <div class="col-sm-10 center-block form-group">
