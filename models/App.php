@@ -12,7 +12,7 @@ class App extends Model
     use \October\Rain\Database\Traits\SoftDelete;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['url', 'plat_id', 'serv_id'];
+    protected $fillable = ['url', 'plat_id', 'serv_id', 'creator_id'];
 
     /**
      * @var array Rules
@@ -35,6 +35,7 @@ class App extends Model
     public $belongsTo = [
         'service' => ['HON\HonCuratorReview\Models\Service', 'key' => 'serv_id' ],
         'platform' => ['HON\HonCuratorReview\Models\Platform', 'key' => 'plat_id' ],
+        'creator' => ['RainLab\User\Models\User', 'key' => 'creator_id' ],
     ];
 
     /**

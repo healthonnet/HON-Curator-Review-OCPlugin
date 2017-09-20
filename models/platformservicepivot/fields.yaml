@@ -7,3 +7,6 @@ fields:
         label: Service Url
         required: true
         span: auto
+    pivot[creator_id]:
+        label: Creator
+        span: auto

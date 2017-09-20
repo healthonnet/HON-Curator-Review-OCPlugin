@@ -70,3 +70,6 @@
 1.0.24:
     - 'Add creator field'
     - builder_table_update_hon_honcuratorreview_services_3.php
+1.0.25:
+    - 'Updated table hon_honcuratorreview_services_platforms'
+    - builder_table_update_hon_honcuratorreview_services_platforms_2.php

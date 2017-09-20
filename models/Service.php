@@ -55,7 +55,7 @@ class Service extends Model
             'table'      => 'hon_honcuratorreview_services_platforms',
             'key'        => 'serv_id',
             'otherKey'   => 'plat_id',
-            'pivot'      => ['url', 'deleted_at'],
+            'pivot'      => ['url', 'creator_id', 'deleted_at'],
             'pivotModel' => 'HON\HonCuratorReview\Models\PlatformServicePivot',
             'timestamps' => true
         ]
