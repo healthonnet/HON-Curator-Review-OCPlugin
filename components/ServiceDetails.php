@@ -74,7 +74,7 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         }
 
         foreach ($acceptedPlatforms as $plaform => $url) {
-            $app = new App(['url' => $url, 'plat_id' => $plaform, 'serv_id' => $this->service->id, 'creator_id' => $user->id ]);
+            $app = new App(['url' => trim($url, "/"), 'plat_id' => $plaform, 'serv_id' => $this->service->id, 'creator_id' => $user->id ]);
             if($app->validate()) {
                 $app->save();
             }

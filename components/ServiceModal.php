@@ -56,12 +56,16 @@ class ServiceModal extends ServiceDetails
         }
         $inputs['creator_id'] = $user->id;
 
+        // Filtering entries
+        $inputs['name'] = html_entity_decode($inputs['name']);
+        $inputs['description'] = html_entity_decode($inputs['description']);
+
         $service = new ServiceModel();
         $service->fill($inputs);
         if ($service->validate()) {
             $service->save();
             foreach ($acceptedPlatforms as $plaform => $url) {
-                $app = new App(['url' => $url, 'plat_id' => $plaform, 'serv_id' => $service->id]);
+                $app = new App(['url' => trim($url, "/"), 'plat_id' => $plaform, 'serv_id' => $service->id]);
                 if($app->validate()) {
                     $app->save();
                 }

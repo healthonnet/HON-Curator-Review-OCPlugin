@@ -14,7 +14,7 @@ class PlatformServicePivot extends Pivot
      * @var array Rules
      */
     public $rules = [
-        'url' => 'required|url',
+        'url' => 'required|url|unique:hon_honcuratorreview_services_platforms,url',
         'creator_id' => 'integer'
     ];
 
