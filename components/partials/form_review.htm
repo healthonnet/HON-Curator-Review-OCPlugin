@@ -13,6 +13,6 @@
 </div>
 <div class="col-sm-10 center-block form-group">
     {{ "hon.honcuratorreview::lang.review.comment" | trans }}
-    <textarea class="form-control" rows="4" onkeyup="textCounter(this,'comment_counter_{{review.id}}',255);" name="global_comment" cols="50">{{review.global_comment}}</textarea>
-    <small><span id="comment_counter_{{review.id}}">{{255 - review.global_comment|length}}</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
+    <textarea class="form-control" rows="4" onkeyup="textCounter(this,'comment_counter_{{review.id}}',500);" name="global_comment" cols="50">{{review.global_comment}}</textarea>
+    <small><span id="comment_counter_{{review.id}}">{{500 - review.global_comment|length}}</span> {{ "hon.honcuratorreview::lang.review.remaining_characters" | trans }}</small>
 </div>
