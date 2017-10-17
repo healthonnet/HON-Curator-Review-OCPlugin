@@ -1,9 +1,11 @@
 {% if review_flow is not empty %}
 <div class="recent-tweets">
-    <hr style="border-color: #bdc3c7">
+    <hr style="border-color: #bdc3c7; margin-top: 0">
     <h4 class="text-center"><span>{{ "hon.honcuratorreview::lang.review.recent_reviews" | trans }}</span></h4>
     <div id="carousel-review-flow" class="carousel slide" data-ride="carousel">
-
+        <!-- TODO Enable later
+        <a style="float: right; margin-right: 5%" class="btn-sm btn-primary" href="/aboutus">Show all reviews</a>
+        -->
         <!-- Wrapper for slides -->
         <div class="carousel-inner" style="padding: 10px" role="listbox">
             {% for review in review_flow %}

@@ -1,0 +1,14 @@
+<hr style="border-color: #bdc3c7; margin-top: 0">
+<h4 class="text-center"><span>Managed apps and websites</span></h4>
+{% for service in user_services %}
+<div class="col-sm-6 col-lg-4">
+    <a href="#" class="shop-product app-link list">
+        <img src="{{ service.preview_url }}" class="img-responsive" alt="">
+        <h6>{{ service.name|length > 50 ? service.name|slice(0, 40) ~ '...' : service.name  }}</h6>
+        <p>
+            {% partial '@stars' rating=service.average_rating %}
+            <span class="text-muted reviews">({{ service.reviews|length }})</span>
+        </p>
+    </a>
+</div>
+{% endfor %}
