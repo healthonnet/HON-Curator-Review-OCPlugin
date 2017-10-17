@@ -17,7 +17,7 @@
                             <img src="{{review.app.preview_url}}" class="img-responsive icon">
                             <p><a href="{{ 'browser/service'|page({ serviceid: review.app.service.id}) }}">{{review.app.service.name}}</a></p>
                         </div>
-                        <p><i class="fa fa-user"></i> {{review.user.name}}</p>
+                        <p><a class="userLink" href="{{ 'account/account'|page({ id: review.user_id}) }}"><i class="fa fa-user"></i> {{review.user.name}}</a></p>
                         <p>{% partial '@stars' rating=review.global_rate %} </p>
                         <p>{{review.title}}</p>
                     </div>

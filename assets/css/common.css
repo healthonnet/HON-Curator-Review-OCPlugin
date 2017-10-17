@@ -10,6 +10,13 @@
     width: 25px;
     font-size: 200%;
 }
+.flow-item .userLink {
+    color: #0f354c;
+}
+.flow-item .userLink:hover {
+    color: #2986bf;
+}
+
 
 .app-link {
     border: 1px solid #DDDDDD;
