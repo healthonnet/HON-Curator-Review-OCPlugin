@@ -14,10 +14,29 @@ class ReviewFlow extends ServiceModal
         ];
     }
 
+    public function defineProperties()
+    {
+        return [
+            'userId' => [
+                'title'             => 'userId',
+                'description'       => '(optional) user id review flow',
+                'default'           => 0,
+                'type'              => 'integer',
+            ]
+        ];
+    }
+
     public function onRun()
     {
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/common.css');
-        $this->page['review_flow'] = Review::query()->latest()->take(6)->get();
+        $query = Review::query()->latest()->take(6);
+        $userId = $this->property('userId');
+
+        if ($userId) {
+            $query = Review::query()->where('user_id', $userId)->latest()->take(6);
+        }
+
+        $this->page['review_flow'] = $query->get();
     }
 
 }

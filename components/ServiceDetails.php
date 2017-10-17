@@ -29,7 +29,6 @@ class ServiceDetails extends \Cms\Classes\ComponentBase
         $this->addCss('/plugins/hon/honcuratorreview/assets/css/customforms.css');
         $this->addJs('/plugins/hon/honcuratorreview/assets/js/textCounter.js');
 
-        // TODO Better fail catch
         $this->page['service'] = $this->service = ServiceModel::find($this->property('id'));
 
         if (!$this->page['service']) {
