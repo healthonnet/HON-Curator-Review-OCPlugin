@@ -3,9 +3,9 @@
 <hr style="border-color: #bdc3c7; margin-top: 0">
 
 {% if service_owner.id == user.id %}
-<h4 class="text-center"><span>My apps and websites</span></h4>
+<h4 class="text-center"><span>{{ "hon.honcuratorreview::lang.userservices.myappsandwebsites" | trans }}</span></h4>
 {% else %}
-<h4 class="text-center"><span>Managed apps and websites by {{service_owner.name}}</span></h4>
+<h4 class="text-center"><span>{{ "hon.honcuratorreview::lang.userservices.appsandwebsitesmanagedby" | trans }} {{service_owner.name}}</span></h4>
 {% endif %}
 
 {% for service in user_services %}

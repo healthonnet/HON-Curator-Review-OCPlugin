@@ -145,5 +145,9 @@
         'icelandic' => 'Icelandic',
         'malaysian' => 'Malaysian',
         'serbian' => 'Serbian',
+    ],
+    'userservices' => [
+        'myappsandwebsites' => 'My apps and websites',
+        'appsandwebsitesmanagedby' => 'Apps and websites managed by ',
     ]
 ];
