@@ -1,6 +1,7 @@
 <?php namespace HON\HonCuratorReview\Components;
 
 use HON\HonCuratorReview\Models\Service;
+use RainLab\User\Models\User;
 
 class UserServices extends ServiceModal
 {
@@ -32,6 +33,7 @@ class UserServices extends ServiceModal
         $userId = $this->property('userId');
         $query = Service::query()->where('owner_id', $userId);
         $this->page['user_services'] = $query->get();
+        $this->page['service_owner'] = User::find($userId);
     }
 
 }

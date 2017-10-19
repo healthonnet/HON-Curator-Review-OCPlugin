@@ -1,5 +1,13 @@
+{% if user_services is not empty %}
+
 <hr style="border-color: #bdc3c7; margin-top: 0">
-<h4 class="text-center"><span>Managed apps and websites</span></h4>
+
+{% if service_owner.id == user.id %}
+<h4 class="text-center"><span>My apps and websites</span></h4>
+{% else %}
+<h4 class="text-center"><span>Managed apps and websites by {{service_owner.name}}</span></h4>
+{% endif %}
+
 {% for service in user_services %}
 <div class="col-sm-6 col-lg-4">
     <a href="#" class="shop-product app-link list">
@@ -12,3 +20,4 @@
     </a>
 </div>
 {% endfor %}
+{% endif %}
