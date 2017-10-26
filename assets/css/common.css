@@ -16,6 +16,16 @@
     width: 25px;
     font-size: 200%;
 }
+
+.flow-item {
+    padding: 0 40px !important;
+}
+.flow-item p {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .flow-item .userLink {
     color: #0f354c;
 }
