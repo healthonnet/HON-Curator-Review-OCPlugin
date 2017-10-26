@@ -4,7 +4,7 @@
         <h4 class="modal-title text-center" id="gridSystemModalLabel">{{ "hon.honcuratorreview::lang.platform.search" | trans }}</h4>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <div>
         {{ form_ajax('onSearchService', {update: {'@modal_search_service': '#modal-content-search_'}, data:{target: '#modal-content-search_'}, id: 'nav-search-form' }) }}
             <div class="input-group">
                 <input type="text" class="form-control" name="search" value="{{modal_request}}" placeholder="{{ "hon.honcuratorreview::lang.search.fieldsearch" | trans }}">
