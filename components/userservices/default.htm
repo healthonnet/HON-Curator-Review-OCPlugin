@@ -10,7 +10,7 @@
 
 {% for service in user_services %}
 <div class="col-sm-6 col-lg-4">
-    <a href="#" class="shop-product app-link list">
+    <a href="{{'browser/service'|page({id: service.id})}}" class="shop-product app-link list">
         <img src="{{ service.preview_url }}" class="img-responsive" alt="">
         <h6>{{ service.name|length > 50 ? service.name|slice(0, 40) ~ '...' : service.name  }}</h6>
         <p>
