@@ -1,6 +1,12 @@
 .breakable {
     white-space:normal !important;
     word-wrap: break-word;
+    word-break: break-word;
+}
+
+.table-responsive .links .btn {
+    display: table!important;
+    width: 100%;
 }
 
 .flow-item .icon {
