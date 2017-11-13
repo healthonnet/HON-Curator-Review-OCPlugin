@@ -44,6 +44,7 @@
 </div>
 {% set urlFilters= filters ? {'filters': filters} %}
 {% set urlSearch= search ? {'search': search} %}
+{% set urlPlatform= platform ? {'platform': platform} %}
 
 {% if not services is empty %}
 <p><small><em>{{services.total}} {{ "hon.honcuratorreview::lang.search.results" | trans }}</em></small></p>
@@ -64,4 +65,4 @@
     <p>{{ "hon.honcuratorreview::lang.platform.prevent_duplicate" | trans }}</p>
 {% endif %}
 
-{{ services.appends(urlFilters).appends(urlSearch).render|raw }}
+{{ services.appends(urlFilters).appends(urlSearch).appends(urlPlatform).render|raw }}
