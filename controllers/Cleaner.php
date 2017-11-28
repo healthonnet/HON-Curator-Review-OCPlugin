@@ -23,485 +23,6 @@ class Cleaner extends Controller
     {
         // Load the Json file in updates/json/
         $cleanList = [
-            "http://www.airway-educ.org/ ",
-            "http://www.airway-educ.com/v3/ ",
-            "http://www.pudendalhelp.com/  http://selarl-du-dr-jerome-elias.chirurgiens-dentistes.fr/ ",
-            "http://www.e-maxima.ch/ ",
-            "http://www.seg-web.org/ ",
-            "http://farmacologiaoculare.wordpress.com/ ",
-            "https://www.accumalaga.es/ ",
-            "http://www.fm33.com/ ",
-            "http://www.macirculation.com/ ",
-            "http://www.junior.cybermed.it/ ",
-            "http://www.clinique-opportunites.bf/ ",
-            "http://www.emedicinezone.com/ ",
-            "http://www.eucalb.com/ ",
-            "http://www.lepharmacienhospitalier.fr/ ",
-            "http://www.safeguards.org/ ",
-            "http://www.cmuif.org/ ",
-            "http://www.galenotech.org/ ",
-            "http://www.areacritica.net/",
-            "http://crau.ujf-grenoble.fr/ ",
-            "http://smokersclinic.com.au/ ",
-            "http://osteopathie-recherche.org/ ",
-            "http://mediguideamerica.com/ ",
-            "http://nephronest.fr/ ",
-            "http://nephropar.org/ ",
-            "http://dermatologue-schucht.com/ ",
-            "http://cardiologiasemfronteiras.com.br/ ",
-            "http://europeanhydrationinstitute.org/ ",
-            "http://infobiogen.fr/services/chromcancer/ ",
-            "http://alzheimer.le-guide-sante.org/ ",
-            "http://researchinhomeopathy.com/ ",
-            "http://lasik-secrets.com/ ",
-            "http://selarl-bmg.chirurgiens-dentistes.fr/ ",
-            "http://afgs-syndromes-secs.net/ ",
-            "http://natural-menopause-journey.com/ ",
-            "http://www3.chu-rouen.fr/internet/ ",
-            "http://scanner_urgence_abdo.med.univ-tours.fr/ ",
-            "http://dr-thiaville-christian.chirurgiens-dentistes.fr/ ",
-            "http://moving.bpco.it/ ",
-            "http://blog.quesgen.com/ ",
-            "http://cmub.org/ ",
-            "http://musicotherapie.le-guide-sante.org/ ",
-            "http://cmhc.com/ ",
-            "http://www2.som.uq.edu.au/som/research/whiplash/pages/ ",
-            "http://dooox.de/ ",
-            "http://mymedicalpodcasts.co.uk/ ",
-            "http://heartgenes.org/ ",
-            "http://hemorroides.le-guide-sante.org/ ",
-            "http://muenier.info/ ",
-            "http://highlighthealthtech.com/",
-            "http://laserliposuction.org/ ",
-            "http://laserandcosmeticmedecine.fr/ ",
-            "http://dr-azam-franck.chirurgiens-dentistes.fr/ ",
-            "http://selarl-dents-in.chirurgiens-dentistes.fr/ ",
-            "http://chirurgievasculaire.le-guide-sante.org/ ",
-            "http://selarl-dentalena.chirurgiens-dentistes.fr/ ",
-            "http://marquettehealth.com/ ",
-            "http://joomla.onco28.org/ ",
-            "http://cancerologie.le-guide-sante.org/ ",
-            "http://medicinedict.co.uk/ ",
-            "http://jml.anemgi.org/ ",
-            "http://dr-capet-jean-philippe.chirurgiens-dentistes.fr/ ",
-            "http://centregauducheau.fr/ ",
-            "http://dr-foultier-colson-pascale.chirurgiens-dentistes.fr/ ",
-            "http://diabetes-india.com/ ",
-            "http://mad.benetic.net/ ",
-            "http://ohp.ksc.nasa.gov/ ",
-            "http://ohp.nasa.gov/ ",
-            "http://internalradiotherapy.com/ ",
-            "http://ordremedecin.bf.refer.org/ ",
-            "http://cataracte.le-guide-sante.org/ ",
-            "http://docteur-watier-julien.chirurgiens-dentistes.fr/ ",
-            "http://texascancercenter.com/ ",
-            "http://aspirin-salicylate-intolerance.co.uk/ ",
-            "http://surgical-tutor.org.uk/ ",
-            "http://balbuzie.tv/ ",
-            "http://dr-soubiron-corinne.chirurgiens-dentistes.fr/ ",
-            "http://blog.marinahospital.com/ ",
-            "http://praten-over-gezondheid.nl/ ",
-            "http://praten-over-gezondheid.org/ ",
-            "http://drboragk.de/ ",
-            "http://mystroke.com/",
-            "praderwilli.es/",
-            " kystedetarlov.fr/",
-            " beatbloodcancers.org/",
-            " mirialis.bigfamily.biz/",
-            " arztauskunft-niedersachsen.de/",
-            " arztauskunftniedersachsen.de/",
-            " ineedanurse.net/",
-            " selarl-cd.chirurgiens-dentistes.fr/",
-            " parischirurgieesthetique.com/",
-            " acneinversa.info/",
-            " chirurgieesthetique.le-guide-sante.org/",
-            " drmindywc.com/",
-            " epu95.nexenservices.com/",
-            " microdermabrasion.net/",
-            " dr-abellard-jacques.chirurgiens-dentistes.fr/",
-            " diabete.le-guide-sante.org/",
-            " med-list.info/",
-            " dr-luce-jean-pierre.chirurgiens-dentistes.fr/",
-            " reisemedizin.at/",
-            " celine1.club.fr/",
-            " schlafmedizin-pirmasens.de/",
-            " docteur-jean-luc-masserann.chirurgiens-dentistes.fr/",
-            " remakehealth.com/",
-            " rirlorraine.org/",
-            " healthcaretv.com/",
-            " blog.babies411.com/",
-            " mediscuss.com/",
-            " mediscuss.net/",
-            " mediscuss.org/",
-            " medecinedutravail.net/",
-            " dr-rousselle-francis.chirurgiens-dentistes.fr/",
-            " cancer.le-guide-sante.org/",
-            " solime.fr/",
-            " arch-espanoles-de-urologia.es/",
-            " consultationmedicale.org/",
-            " scele.enfe.ua.es/",
-            " dr-christophe-le-map.chirurgiens-dentistes.fr/",
-            " healtheducationcentral.com/",
-            " sircamt.canceraquitaine.org/rca/",
-            " parapharmacie.le-guide-sante.org/",
-            " genmed.info/",
-            " villaggiodellasalute.com/",
-            " nephro-maroc.ma/",
-            " infoseno.ch/",
-            " infoseno.com/",
-            " infoseno.it/",
-            " selarl-edouard-spataru.chirurgiens-dentistes.fr/",
-            " facialrejuvenation.net/",
-            "cochrane-gyncan.org/",
-            " josseointegration.com/",
-            " josseointegration.eu/",
-            " journalofosseointegration.com/",
-            " journalofosseointegration.it/",
-            " cim3.fr/",
-            " eyecaresource.com/",
-            " smartguiden.com/",
-            " smartguiden.nu/",
-            " crs-klinikportal.de/",
-            " rad.usuhs.edu/medpix/",
-            " members.home.net/smking/",
-            " clinicalcases.org/",
-            " avc.le-guide-sante.org/",
-            " gynecologie.le-guide-sante.org/",
-            " forum.enfant-different.org/",
-            " medstudents.net/",
-            " balbuzie-terapia.com/",
-            " cild.it/",
-            " dr-bon-frederic.chirurgiens-dentistes.fr/",
-            " healthleader.uthouston.edu/",
-            " provena-highways.org/",
-            " axasanteplus.com/",
-            " blog-prevention.fr/",
-            " blog-prevention.fr/idees-recettes/",
-            " freespace.virgin.net/gwen.harlow/",
-            " dr-franchimont-catherine.chirurgiens-dentistes.fr/",
-            " jginda.com/",
-            " sen.onmedic.net/inicio/tabid/36/",
-            " cnnhg.fr/",
-            " mammadellemamme.com/",
-            " cliniqueshopitauxprives.fr/",
-            " cliniqueshopitauxprives.org/",
-            " parlonscosmetiques.com/",
-            " cieloposteriore.it/",
-            " laserponcture.eu/",
-            " lifestylewellnesscoach.com/",
-            "blog psychiatrie.le-guide-sante.org/",
-            "refabert-luc-75.medecin.fr/",
-            " quiero-salud.org/",
-            " drgerhardbecker.de/",
-            " dr-wagon-patrick.chirurgiens-dentistes.fr/",
-            " sildenafil-generika.de/",
-            " dr-touron-philippe.chirurgiens-dentistes.fr/",
-            " dr-pirot-marie-helene.chirurgiens-dentistes.fr/",
-            " armony-esthetique.fr/",
-            " medgrid.ro/",
-            " portal.medgrid.ro/",
-            " worldmedicalcenter.com/",
-            " dr-le-normand-philippe.chirurgiens-dentistes.fr/",
-            " persjrp.ca/",
-            " persjrp.com/",
-            " rpersaud.ca/",
-            " rpersaud.com/",
-            " surgytec.com/",
-            " drug-side-effects-and-clinical-trials.com/",
-            " edrugsideeffects.com/",
-            " idrugsideeffects.com/",
-            " ors-bourgogne.org/",
-            " depistage-cancers-aveyron.fr/",
-            " depistage-cancers-aveyron.net/",
-            " depistage-cancers-aveyron.org/",
-            " depistagecancersaveyron.com/",
-            " depistagecancersaveyron.net/",
-            " depistagecancersaveyron.org/",
-            " despistagecancersaveyron.fr/",
-            " clinicalwindow.net/",
-            " urgentcaresolutions.com/",
-            " agespots.net/",
-            " abouthealthquality.org/",
-            " nyshaf.org/",
-            " focosi.immunesig.org/",
-            " space.tin.it/edicola/efocosi/healthnet/molecular/",
-            " sedolor.com/",
-            " sedolor.net/",
-            " sedolor.org/",
-            " diariomedico.recoletos.es/",
-            " innovastem.it/",
-            " stemcellsmedicalservice.com/",
-            " dr-farache-michel.chirurgiens-dentistes.fr/",
-            " fahc.org/",
-            " programmeeole.com/",
-            " 9mois-et-moi.com/",
-            " bmlabs-mag.gr/",
-            " sgpo.fr/",
-            " cocainehelp.org/",
-            " ampweb.info/",
-            " centredentairemutualiste-b2s-bonnesource-narbonne.fr/",
-            " ibdsupport.dragonpack.com/",
-            " fume-et-defume.asso.fr/",
-            " dr-lesnik-alexandre.chirurgiens-dentistes.fr/",
-            " andess.org/",
-            " abnehmfragen.net/",
-            " mdpoint.com/",
-            " news.healthguru.com/",
-            " senior.le-guide-sante.org/",
-            " medterms.com/",
-            " rosaceatreatment.org/",
-            " bulario.com.br/",
-            " dermatlas.med.jhmi.edu/derm/",
-            " apape.fr/",
-            "lopez-eduardo-stomatologie.fr/",
-            " dr-arnaud-froehly.chirurgien-dentiste.fr/",
-            " idil.com.br/",
-            " meddiagnostico.com.br/",
-            " cicoph.org/wiki/",
-            " dr-peyraverney-gilles.chirurgiens-dentistes.fr/",
-            " eutherapsy.com/",
-            " eutherapsy.fr/",
-            " carresbleus.fr/",
-            " opis.cmft.nhs.uk/",
-            " cienciasinseso.com/",
-            " sitetest.rett.fr/",
-            " organizedwisdom.com/",
-            " myeyesurgery.org.uk/",
-            " dottordambrosio.it/",
-            " guiadevacunacion.com.ar/",
-            " cholesterol.le-guide-sante.org/",
-            " imstilljosh.com/",
-            " prep.imstilljosh.com/",
-            " miscaminatas.com/",
-            " smartsport.it/",
-            " aeacap.org/",
-            " afroaidsinfo.org/",
-            " ca-eugin.es/",
-            " wrinkles.org/",
-            " dr-charles-carrere.chirurgiens-dentistes.fr/",
-            " dr-francis-carrere.chirurgiens-dentistes.fr/",
-            " ww2.med.jhu.edu/peds/",
-            " dr-ponsmoureou.fr/",
-            " doc.com.cy/",
-            " mohepc.org/",
-            " dr-lesnik-cannavo-sylvaine.chirurgiens-dentistes.fr/",
-            " ophtalmologie.le-guide-sante.org/",
-            " piedbot.ifrance.com/",
-            " med-urg.com/",
-            " laurent-leininger.fr/",
-            " leininger-vision.fr/",
-            " freckles.org/",
-            " fluglaerm-fakten.de/",
-            " forum.healthable.org/",
-            " shop.healthable.org/",
-            " douglasrecherche.qc.ca/",
-            " aljamiila.com/",
-            " blogdelhipertenso.com/",
-            " asociacionmedicadeoriente.com/",
-            " chirurgia-firenze.it/",
-            " healthstring.com/",
-            " healthizen.com/",
-            " mgh.org/",
-            "forumclinic.cat/",
-            " lamaisonducancer.com/",
-            " beaute.le-guide-sante.org/",
-            " waterhealthconnection.org/",
-            " geswebapp.com/interface/",
-            " docatus.com/",
-            " e-algos.co.uk/",
-            " cheshirecardiology.co.uk/",
-            " sgh-radiology.com/",
-            " dr-cohen-stomatologie-paris.fr/",
-            " herzchirurgie.med.uni-erlangen.de/",
-            " mspine.com/",
-            " marocinfirmiers.com/",
-            " rmpd.org.uk/",
-            " vih-sida.hug-ge.ch/",
-            " blanchimentesthetique-chirurgiendentiste-implantparis.com/",
-            " myonlinehealth.com/",
-            " cardio-sfc.com/",
-            " cardio-sfc.fr/",
-            " cardio-sfc.net/",
-            " smig.hug-ge.ch/",
-            " berggeneeskunde.nl/",
-            " it.lundbeck.com/",
-            " zahninfo24.de/",
-            " anepc.org/",
-            " blog.medicalresourcelinks.com/",
-            " heartfailurematters.es/",
-            " ophta83.com/",
-            " urologie.le-guide-sante.org/",
-            " minidcc.fr/",
-            " netwellness.org/",
-            " catts.ie/",
-            " irontherapy.org/",
-            " cicatrizando.es/",
-            " homebusinessandfamilylife.com/",
-            " snfge.org/",
-            " medlib.overlakehospital.org/",
-            " longqt-anaesthesia.it/",
-            " chadstonedoctorhk.com.au/",
-            "corp.sonoahealth.com/",
-            " ymcentre.freeserve.co.uk/",
-            " pediatriaenlared.com.ar/",
-            " pediatriaenlared.com/",
-            " cellulite-removal.com/",
-            " radiologie-lyon-caluire.com/",
-            " dermalfiller.net/",
-            " developpementmental.hug-ge.ch/",
-            " congresslink.it/",
-            " rehabilitacionpuertoreal.info/",
-            " matthewsgroup.com/",
-            " dr-lesnik-arcady.chirurgiens-dentistes.fr/",
-            " dr-haus-christophe.chirurgiens-dentistes.fr/",
-            " mediscon.eu/",
-            " mediscon.net/",
-            " mediscon.org/",
-            " tourism-medicine.com/",
-            " tourism-medicine.de/",
-            " tourismus-medizin.de/",
-            " travelmedica.de/",
-            " travelmedicus.eu/",
-            " orthopedie.le-guide-sante.org/",
-            " dr-raphael-piard.dentistefrance.fr/",
-            " episante-bourgogne.com/",
-            " episante-bourgogne.fr/",
-            " anesthesistes-dijon.fr/",
-            " mutuelledutresor.fr/coeur/",
-            " lillyganjohotown.jp/",
-            " dginternet.hug-ge.ch/",
-            " pole-saintjean.com/",
-            " pole-saintjean.net/",
-            " ngal.fr/",
-            " trinitas.org/library/",
-            " osteo-conseils.fr/",
-            " dr-bonello-florence.chirurgiens-dentistes.fr/",
-            " reshaoc.unice.fr/",
-            "ttmed.com/urology/",
-            " diabetesfragen.net/",
-            " drfernando.com.br/",
-            " anti-ageing.com.sg/",
-            " anti-ageing.sg/",
-            " antiageing.com.sg/",
-            " antiaging.com.sg/",
-            " pain-talk.co.uk/",
-            " ethnopsychanalyse.org/",
-            " ethnopsychologie.net/",
-            " dentiste-ambilly.fr/",
-            " mms-europe-rouen.fr/",
-            " agmc.org/",
-            " akrongeneral.org/",
-            " dirc.aphp.fr/",
-            " drrc.aphp.fr/",
-            " mfldclin.edu/",
-            " labos.hug-ge.ch/",
-            " vasculairechirurgie.nl/",
-            " diariosalud.net/",
-            " resumenmedico.com/",
-            " chirurgiecardiaque.le-guide-sante.org/",
-            " diabetespraxis-hameln.de/",
-            " ssl-id.de/",
-            "doclueg.de/",
-            " skin-rejuvenation.org/",
-            " bebaustralia.org.au/",
-            " vasculairetransfrontalier.fr/",
-            " som.uq.edu.au/ptsd/",
-            " www2.som.uq.edu.au/som/research/ptsd/pages/",
-            " hepatites.fmb.unesp.br/",
-            " cabinet-penthievre.com/",
-            " dr-pierre-mioche.chirurgiens-dentistes.fr/",
-            " biotherapie.fr/",
-            " afssaps.fr/",
-            " afssaps.sante.fr/",
-            " dr-chamozzi-maryse.chirurgiens-dentistes.fr/",
-            " dspace.dial.pipex.com/town/park/gfm11/",
-            " lasante.tv/",
-            " help4headaches.com/",
-            " sciatiqueetvous.com/",
-            " mel.org/",
-            "healthandwellness acnescars.com/",
-            " dr-amsallem-serge.chirurgiens-dentistes.fr/",
-            " hmos4seniors.com/",
-            " pflegesearch.com/",
-            " mdlatam.org/",
-            " spahs.umt.edu/dis/",
-            " dr-bonnave-rene.chirurgiens-dentistes.fr/",
-            " hotkey.net.au/~string/",
-            " autism.healingthresholds.com/",
-            " healingthresholds.com/",
-            " cysticfibrosisgames.net/",
-            " juegosfibrosisquistica.net/",
-            " studiomedicodelilla.it/",
-            " dr-galindo-pierre.chirurgiens-dentistes.fr/",
-            " cabinet-dentaire-besse.fr/",
-            " amend.org.nz/",
-            "cliniquedefisante.com/",
-            " ml.refer.org/",
-            " dr-bensasson-jacques.chirurgiens-dentistes.fr/",
-            "http://dr-chiaverini-guillaume.chirurgiens-dentistes.fr/ ",
-            "http://dr-berdougo-marc.chirurgiens-dentistes.fr/ ",
-            "http://dr-borsier.dentistefrance.com/ ",
-            "http://dr-gardez-nicolas.chirurgiens-dentistes.fr/ ",
-            "http://dr-caussil-jean-sebastien.chirurgiens-dentistes.fr/ ",
-            "http://dr-chiaverini-guillaume.chirurgiens-dentistes.fr/ ",
-            "http://dr-chidiac-jihad.chirurgiens-dentistes.fr/ ",
-            "http://dr-civel-pascal.chirurgiens-dentistes.fr/ ",
-            "http://dr-colas-julien.chirurgiens-dentistes.fr/ ",
-            "http://dr-berdougo-marc.chirurgiens-dentistes.fr/ ",
-            "http://dr-gardez-nicolas.chirurgiens-dentistes.fr/ ",
-            "http://dr-garin-pascal.chirurgiens-dentistes.fr/ ",
-            "http://dr-grandjean-guy.chirurgiens-dentistes.fr/ ",
-            "http://dr-grunberg-laurence.chirurgiens-dentistes.fr/ ",
-            "http://dr-guerin-antoine.chirurgiens-dentistes.fr/ ",
-            "http://dr-guigues-denis.chirurgiens-dentistes.fr/ ",
-            "http://dr-jean-claude-tran.chirurgiens-dentistes.fr/ ",
-            "http://dr-jerome-bousson.chirurgiens-dentistes.fr/ ",
-            "http://dr-jonquard-valerie.chirurgiens-dentistes.fr/ ",
-            "http://dr-julien-sin.chirurgiens-dentistes.fr/ ",
-            "http://dr-kiffel-armelle.chirurgiens-dentistes.fr/ ",
-            "http://dr-kohen-albert.chirurgiens-dentistes.fr/ ",
-            "http://dr-laugier-dominique.chirurgiens-dentistes.fr/ ",
-            "http://dr-lebreton-julien.dentistefrance.fr/ ",
-            "http://dr-manuel-gomez.chirurgiens-dentistes.fr/ ",
-            "http://dr-mariot-didier.chirurgiens-dentistes.fr/ ",
-            "http://dr-michael-devouassoux.chirurgiens-dentistes.fr/ ",
-            "http://www.dr-muller-jp.chirurgiens-dentistes.fr/ ",
-            "http://dr-odinn-richard.chirurgiens-dentistes.fr/ ",
-            "http://dr-pans-francois.chirurgiens-dentistes.fr/ ",
-            "http://dr-philippe-audibert.chirurgiens-dentistes.fr/ ",
-            "http://dr-renaud-beaumont.chirurgiens-dentistes.fr/ ",
-            "http://www.dr-thomas-sylvaine.chirurgiens-dentistes.fr/",
-            "geocities.com/bettycjung/",
-            " geocities.com/bpradines/",
-            " geocities.com/f_migliori/",
-            " geocities.com/kostasmuscles/",
-            " geocities.com/wrozenba/",
-            " http://www.digestivesystemdisorder.com/ ",
-            "http://www.depression-leitlinien.de/ ",
-            "http://www.clinicalcases.org/ ",
-            "http://clinicalcases.blogspot.com/ ",
-            "http://www.echokardiographiekurs.de/ ",
-            "http://www.e-cancer.fr/",
-            "http://www.institutcancer.fr",
-            "http://www.jkmerrill.ca/ ",
-            "http://www.dottoresionne.com/ ",
-            "http://www.dottoresionne.it/ ",
-            "http://www.dottorsionne.com/ ",
-            "http://www.kinebrul-pro.com/ ",
-            "http://www.oculista.altervista.org/ ",
-            "http://www.oculista.tk/ ",
-            "http://www.endocrinologodimartino.com/ ",
-            "http://www.gsss.co.uk/ ",
-            "http://www.dianasterapeuticas.com/ ",
-            "http://www.clinicaltrialsfeeds.org/ ",
-            "http://www.medinet.fr/ ",
-            "http://www.implantologen24.de/ ",
-            "http://www.gesundheitsexperten24.de/ ",
-            "http://www.masantenet.com/ ",
-            "http://www.collagen.org/ ",
-            "http://www.cocainehelp.org/ ",
-            "http://www.angelfire.com/co/cocaine/",
-            " http://www.dolorenograzie.com/",
             "http://example.com"
         ];
 
