@@ -1,6 +1,7 @@
 <?php namespace HON\HonCuratorReview\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Model;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -151,25 +152,18 @@ class Service extends Model
      * @return float
      */
     public function getAverageRatingAttribute() {
-        if (!count($this->apps)) {
+
+        $reviews = DB::select('select count(1) as count, SUM(global_rate) as sum 
+        from hon_honcuratorreview_reviews as rev 
+        join hon_honcuratorreview_services_platforms as app on app.id = rev.app_id 
+        join hon_honcuratorreview_services as serv on app.serv_id = serv.id 
+        where serv.id = ? ', [$this->id]);
+
+        if (!$reviews[0]->count) {
             return 0;
         }
 
-        $value = 0;
-        $reviewedPlatorms = 0;
-        foreach ($this->apps as $app){
-            $appAverage  = $app->average_rating;
-            if ($appAverage) {
-                $value += $appAverage;
-                $reviewedPlatorms++;
-            }
-        }
-
-        if (empty($reviewedPlatorms)) {
-            return 0;
-        }
-
-        return $value / $reviewedPlatorms;
+        return $reviews[0]->sum / $reviews[0]->count;
     }
 
     /**

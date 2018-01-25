@@ -1,5 +1,6 @@
 <?php namespace HON\HonCuratorReview\Models;
 
+use Illuminate\Support\Facades\DB;
 use Model;
 
 /**
@@ -70,14 +71,13 @@ class App extends Model
      */
     public function getAverageRatingAttribute() {
         // TODO get all computable values.
-        if (!count($this->reviews)) {
+
+        $reviews = DB::select('select count(1) as count, SUM(global_rate) as sum from hon_honcuratorreview_reviews where app_id = ?', [$this->id]);
+
+        if (!$reviews[0]->count) {
             return 0;
         }
 
-        $value = 0;
-        foreach ($this->reviews as $review) {
-            $value += $review->global_rate;
-        }
-        return $value / count($this->reviews);
+        return $reviews[0]->sum / $reviews[0]->count;
     }
 }

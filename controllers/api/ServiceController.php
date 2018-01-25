@@ -30,11 +30,10 @@ class ServiceController extends Controller
     public function show($id){
 
         $data = $this->Service->where('id',$id)->first();
-
+        $data->ratings = $data->averageRating;
+        
         if( count($data) > 0){
-
             return $this->helpers->apiArrayResponseBuilder(200, 'success', $data);
-
         }
 
         $this->helpers->apiArrayResponseBuilder(400, 'bad request', ['error' => 'invalid key']);
