@@ -78,7 +78,7 @@ class ReviewController extends Controller
         
         if( $validation->passes() ){
             $this->Review->save();
-            return $this->helpers->apiArrayResponseBuilder(201, 'created', ['id' => $this->Review->id]);
+            return $this->helpers->apiArrayResponseBuilder(201, 'created', $this->Review);
         }else{
             return $this->helpers->apiArrayResponseBuilder(400, 'fail', $validation->errors() );
         }
@@ -86,11 +86,13 @@ class ReviewController extends Controller
     }
 
     public function update($id, Request $request){
+        $data = $request->all();
+        unset($data['review_id']);
 
         $status = $this->Review->where('id',$id)->update($data);
     
         if( $status ){
-            
+
             return $this->helpers->apiArrayResponseBuilder(200, 'success', 'Data has been updated successfully.');
 
         }else{
