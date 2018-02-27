@@ -3,10 +3,13 @@
 use Cms\Classes\Controller;
 use BackendMenu;
 
+use HON\HonCuratorReview\Models\Review;
 use Illuminate\Http\Request;
 use Hon\Honcuratorreview\Helpers\Helpers;
 use Illuminate\Support\Facades\Validator;
 use HON\HonCuratorReview\Models\Service;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 class ServiceController extends Controller
 {
 	protected $Service;
@@ -31,8 +34,59 @@ class ServiceController extends Controller
 
         $data = $this->Service->where('id',$id)->first();
         $data->ratings = $data->averageRating;
-        
+
         if( count($data) > 0){
+            $user = false;
+            try {
+                $user = JWTAuth::parseToken()->authenticate();
+            } catch (\Exception $e){
+
+            }
+
+            if ($user) {
+                $review = Review::where('app_id', $data->id)->where('user_id', $user->id)->first();
+                if ($review) {
+                    $data->user_review = $review;
+                }
+            }
+            return $this->helpers->apiArrayResponseBuilder(200, 'success', $data);
+        }
+
+        $this->helpers->apiArrayResponseBuilder(400, 'bad request', ['error' => 'invalid key']);
+
+    }
+
+    public function showByDomain(Request $request){
+        $arr = $request->all();
+
+        $host = trim($arr['q'], '/');
+        $disallowed = array('http://', 'https://');
+        foreach($disallowed as $d) {
+            if(strpos($host, $d) === 0) {
+                $host = str_replace($d, '', $host);
+            }
+        }
+
+        $data = $this->Service->whereHas('platforms', function ($query) use ($host){
+            $query->where('url', 'like', '%'.$host.'%');
+        })->first();
+
+        $data->ratings = $data->averageRating;
+
+        if( count($data) > 0){
+            $user = false;
+            try {
+                $user = JWTAuth::parseToken()->authenticate();
+            } catch (\Exception $e){
+
+            }
+
+            if ($user) {
+                $review = Review::where('app_id', $data->id)->where('user_id', $user->id)->first();
+                if ($review) {
+                    $data->user_review = $review;
+                }
+            }
             return $this->helpers->apiArrayResponseBuilder(200, 'success', $data);
         }
 
