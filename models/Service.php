@@ -157,13 +157,32 @@ class Service extends Model
         from hon_honcuratorreview_reviews as rev 
         join hon_honcuratorreview_services_platforms as app on app.id = rev.app_id 
         join hon_honcuratorreview_services as serv on app.serv_id = serv.id 
-        where serv.id = ? ', [$this->id]);
+        where serv.id = ? and rev.deleted_at IS NULL', [$this->id]);
 
         if (!$reviews[0]->count) {
             return 0;
         }
 
         return $reviews[0]->sum / $reviews[0]->count;
+    }
+
+    /**
+     * Custom accessor for reviewCount
+     * @return float
+     */
+    public function getReviewCountAttribute() {
+
+        $reviews = DB::select('select count(1) as count, SUM(global_rate) as sum 
+        from hon_honcuratorreview_reviews as rev 
+        join hon_honcuratorreview_services_platforms as app on app.id = rev.app_id 
+        join hon_honcuratorreview_services as serv on app.serv_id = serv.id 
+        where serv.id = ? and rev.deleted_at IS NULL', [$this->id]);
+
+        if (!$reviews[0]->count) {
+            return 0;
+        }
+
+        return $reviews[0]->count;
     }
 
     /**
