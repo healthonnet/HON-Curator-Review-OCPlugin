@@ -40,19 +40,6 @@ class ServiceController extends Controller
             $data->ratings = $data->averageRating;
             $data->reviewCount = $data->getReviewCountAttribute();
 
-            $user = false;
-            try {
-                $user = JWTAuth::parseToken()->authenticate();
-            } catch (\Exception $e){
-
-            }
-
-            if ($user) {
-                $review = Review::where('app_id', $data->id)->where('user_id', $user->id)->first();
-                if ($review) {
-                    $data->user_review = $review;
-                }
-            }
             return $this->helpers->apiArrayResponseBuilder(200, 'success', $data);
         }
 
