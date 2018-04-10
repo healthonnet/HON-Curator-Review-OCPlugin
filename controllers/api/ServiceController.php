@@ -3,11 +3,13 @@
 use Cms\Classes\Controller;
 use BackendMenu;
 
+use HON\HonCuratorReview\Models\App;
 use HON\HonCuratorReview\Models\Review;
 use Illuminate\Http\Request;
 use Hon\Honcuratorreview\Helpers\Helpers;
 use Illuminate\Support\Facades\Validator;
 use HON\HonCuratorReview\Models\Service;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ServiceController extends Controller
@@ -73,20 +75,31 @@ class ServiceController extends Controller
             $query->where('url', 'like', '%'.$host.'%');
         })->first();
 
+        $app = App::where('url', 'like', '%'. $host .'%')->first();
 
         if($data instanceof Service){
             $data->ratings = $data->averageRating;
             $data->reviewCount = $data->getReviewCountAttribute();
 
+            $jwtAuth = null;
             $user = false;
-            try {
-                $user = JWTAuth::parseToken()->authenticate();
-            } catch (\Exception $e){
 
+            try {
+                $jwtAuth = JWTAuth::parseToken();
+                $user = $jwtAuth->authenticate();
+            } catch (\Exception $e) {
+                // token refresh fallback
+                if ($e instanceof TokenExpiredException) {
+                    if ($token = $jwtAuth->refresh()) {
+                        $data->token = $token;
+                        $user = $jwtAuth->authenticate();
+                    }
+                }
+                // silent others.
             }
 
             if ($user) {
-                $review = Review::where('app_id', $data->id)->where('user_id', $user->id)->first();
+                $review = Review::where('app_id', $app->id)->where('user_id', $user->id)->first();
                 if ($review) {
                     $data->user_review = $review;
                 }
