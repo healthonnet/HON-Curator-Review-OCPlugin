@@ -8,6 +8,9 @@
     {% endfor %}
 {% endmacro %}
 
+<!-- Macro needs to be "imported" -->
+{% import _self as list %}
+
 <!-- Filters -->
 {% if filters %}
 <div class="well">
@@ -37,7 +40,7 @@
         </div>
         <div id="{{categorie}}Tag" class="panel-collapse collapse {{loop.first ? 'in'}}" style="max-height: 300px;">
             <ul class="list-group filter-list-group">
-                {{ _self.listTags(catTags, filters, search, platform) }}
+                {{ list.listTags(catTags, filters, search, platform) }}
             </ul>
         </div>
     </div>
