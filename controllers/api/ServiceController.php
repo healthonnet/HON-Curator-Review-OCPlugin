@@ -77,9 +77,13 @@ class ServiceController extends Controller
             } catch (\Exception $e) {
                 // token refresh fallback
                 if ($e instanceof TokenExpiredException) {
-                    if ($token = $jwtAuth->refresh()) {
-                        $data->token = $token;
-                        $user = $jwtAuth->authenticate();
+                    try {
+                        if ($token = $jwtAuth->refresh()) {
+                            $data->token = $token;
+                            $user = $jwtAuth->authenticate();
+                        }
+                    } catch (\Exception $e) {
+                        // Token may be blacklisted. User will log-in again
                     }
                 }
                 // silent others.
